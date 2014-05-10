@@ -26,16 +26,17 @@ Scene* GameStageScene::createScene()
 
 bool GameStageScene::init()
 {
-    if (!Layer::init()) {
+    if (!LayerColor::initWithColor(Color4B(120,180,180,255))) {
         return false;
     }
     
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("fes042.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("es042.wav");
     
     
 	winSize = Director::getInstance()->getWinSize();
 	mCurrentLevel = 3;
+    tileTouchEnable = false;
 	gameStart(0);
 
     return true;
@@ -47,7 +48,6 @@ void GameStageScene::gameStart(float dt) {
 
 	mTiles.clear();
 	mTilesSelected.clear();
-
 	getStageInfo();
     drawBoard();
 	addEventListener(_eventDispatcher);
@@ -65,6 +65,8 @@ void GameStageScene::drawBoard() {
 	float delayTime = 3.0f * (float)info.matrixSize / 3.0f;
 	scheduleOnce(schedule_selector(GameStageScene::hideTiles), delayTime);
 
+    scheduleOnce(schedule_selector(GameStageScene::makeTimer), delayTime);
+    
 	for (int t=0; t<info.actionNum; t++) {
 
 
@@ -101,12 +103,15 @@ void GameStageScene::drawBoard() {
 		default:
 			break;
 		}
+        
+        
+        
 		//action = RotateBy::create(0.5, 90);
 		//action = FlipX3D::create(0.5);
         //action =FlipX3D::create(0.5);
 
         //boardLayer->setScaleX(-1);
-		// ³ªÁß¿¡ °× retry ÇÒ ¶§ È¿°ú^^
+		// â‰¥â„¢Â¡ï¬‚Ã¸Â° âˆžâ—Š retry Â«â€œ âˆ‚ÃŸ Â»Ã¸âˆžË™^^
 		//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 360);
 		/**temp**/
 		//boardLayer->runAction(Sequence::create(delay, action, NULL));
@@ -141,7 +146,7 @@ void GameStageScene::drawInitBoard() {
 
 			auto tile = Sprite::create(IMAGE_TILE_NORAML);
 			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));// + MARGIN_BOTTOM);
-			float tileScale = 5.0f / (float)info.matrixSize;
+			float tileScale = 4.0f / (float)info.matrixSize;
 			tile->setScale(tileScale);
 			tile->setTag(idx);
 			boardLayer->addChild(tile);
@@ -229,6 +234,8 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		int tileNum = target->getTag();
 
         // touch sound
+        if (tileTouchEnable == false) return;
+        
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("es042.wav");
         
 		mTilesSelected[tileNum] = (mTilesSelected[tileNum] + 1) % 2;
@@ -245,6 +252,8 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		}
         if (count == mTilesSelected.size()) {
 			log("stage clear!");
+            unschedule(schedule_selector(GameStageScene::drawTimerLabel));
+            tileTouchEnable = false;
             
             auto delay1_exp = DelayTime::create(0.2);
             auto delay2_exp = DelayTime::create(0.5);
@@ -288,3 +297,35 @@ void GameStageScene::flower(Point s)
     
     this->addChild(emitter,101);
 }
+
+void GameStageScene::makeTimer(float dt) {
+
+    timerLabel = LabelTTF::create("Ready!", "arial", 90.0f);
+    timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
+    timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
+    this->addChild(timerLabel);
+
+    timerCount = 10;
+    schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
+    
+}
+
+void GameStageScene::drawTimerLabel(float dt) {
+    
+    if (timerCount < 0) {
+        unschedule(schedule_selector(GameStageScene::drawTimerLabel));
+        scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
+        timerLabel->setString("Game Over");
+        timerLabel->setScale(1.0f);
+        timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
+        tileTouchEnable = false;
+    } else {
+        char buffer[2];
+        std::sprintf(buffer, "%d", timerCount--);
+        timerLabel->setScale(1.0f);
+        timerLabel->setString(buffer);
+        timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
+        tileTouchEnable = true;
+    }
+}
+
