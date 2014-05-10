@@ -6,7 +6,7 @@ USING_NS_CC;
 #define IMAGE_TILE_NORAML "YellowSquare.png"
 #define IMAGE_TILE_SELECTED "MagentaSquare.png"
 #define SPEED_FOR_FLIP 0.05
-#define SPEED_FOR_FLIP_DELAY 0.5
+#define SPEED_FOR_FLIP_DELAY 0.3
 
 Scene* GameStageScene::createScene()
 {
