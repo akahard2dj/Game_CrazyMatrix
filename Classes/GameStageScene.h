@@ -24,7 +24,8 @@ private:
 	CCrazyMatrix matrix;
     StageInfo info;
 	int mCurrentLevel;
-	Layer* boardLayer;
+	NodeGrid* boardLayer;
+    //NodeGrid* nodeGrid;
 
 	void gameStart(float dt);
 	void getStageInfo();
@@ -37,6 +38,7 @@ private:
 	void drawBoardTiles(int n);
 	void addEventListener(EventDispatcher* e);
 	void explosion(Point s);
+    void flower(Point s);
 
 	FiniteTimeAction* getActionByShuffleType(ShuffleType type);
 };

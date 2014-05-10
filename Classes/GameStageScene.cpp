@@ -1,4 +1,5 @@
 #include "GameStageScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -28,6 +29,8 @@ bool GameStageScene::init()
     if (!Layer::init()) {
         return false;
     }
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
     
 	winSize = Director::getInstance()->getWinSize();
 	mCurrentLevel = 3;
@@ -68,12 +71,14 @@ void GameStageScene::drawBoard() {
 		FiniteTimeAction* action;
 		switch(info.actions[t]) {
 		case TRANSFORM_FLIP_X:
-			action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 0);
-			log("flip x");
+			//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 0);
+            action = FlipX3D::create(0.5);
+            log("flip x");
 			break;
 		case TRANSFORM_FLIP_Y:
-			action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 0);
-			log("flip y");
+			//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 0);
+            action = FlipY3D::create(0.5);
+            log("flip y");
 			break;
 		case TRANSFORM_ROT_CW:
 			action = RotateBy::create(0.5, 90);
@@ -95,12 +100,15 @@ void GameStageScene::drawBoard() {
 			break;
 		}
 		//action = RotateBy::create(0.5, 90);
-		
+		//action = FlipX3D::create(0.5);
+        //action =FlipX3D::create(0.5);
+
+        //boardLayer->setScaleX(-1);
 		// 나중에 겜 retry 할 때 효과^^
 		//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 360);
-		
 		/**temp**/
-		//boardLayer->runAction(Sequence::create(delay, action, NULL));
+		boardLayer->runAction(Sequence::create(delay, action, NULL));
+        //nodeGrid->runAction(Sequence::create(delay, action, NULL));
 	}
 	float actionsTime = delayTime + 1.0 * (float)info.actionNum;
 }
@@ -116,8 +124,11 @@ void GameStageScene::drawInitBoard() {
 
 	const int BOARD_SIZE = info.matrixSize;
 	const int MARGIN_BOTTOM = winSize.height * 0.3;
-
-	boardLayer = Layer::create();
+    
+    //nodeGrid = NodeGrid::create();
+    
+	//boardLayer = Layer::create();
+    boardLayer = NodeGrid::create();
 	boardLayer->setPosition(0, MARGIN_BOTTOM);
 	boardLayer->setContentSize(Size(winSize.width, winSize.width));
 	boardLayer->setColor(Color3B(255, 0,0));
@@ -133,7 +144,7 @@ void GameStageScene::drawInitBoard() {
 			tile->setScale(tileScale);
 			tile->setTag(idx);
 			boardLayer->addChild(tile);
-
+            
 			mTiles.push_back(tile);
 			mTilesSelected.push_back(0);
 		}
@@ -220,6 +231,8 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		std::string image = mTilesSelected[tileNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
 		mTiles[tileNum]->setTexture(image);
 
+        flower(touch->getLocation());
+        
 		int count = 0;
 		for (int i=0; i<mTiles.size(); i++) {
 			if (info.before[i] == mTilesSelected.at(i)) {
@@ -228,11 +241,17 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		}
         if (count == mTilesSelected.size()) {
 			log("stage clear!");
-			explosion(Point(winSize.width/2, winSize.height * 0.9));
+            
+            auto delay1_exp = DelayTime::create(0.2);
+            auto delay2_exp = DelayTime::create(0.5);
+            auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(128,672)) );
+            auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(530,622)) );
+            auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(350,912)) );
+            this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
+            
 			mCurrentLevel += 1;
 			
 			scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
-			
 		}
     };
     
@@ -244,12 +263,24 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 }
 
 void GameStageScene::explosion(Point s) {
-	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(5000);
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("firework.mp3");
+	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(200);
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
-	particle->setGravity(Point(0, -100));
-	//particle->setSpeed(3);
-	log("%f", particle->getSpeed());
-	particle->setEndSize(0.0);
-	this->addChild(particle,100);
+	particle->setGravity(Point(0, -80));
+    particle->setLife(4.5);
+	particle->setEndColor(Color4F(0,0,0,1));
+	
+    this->addChild(particle,100);
+}
+
+void GameStageScene::flower(Point s)
+{
+    ParticleSystem *emitter = ParticleFlower::create();
+    emitter->setTexture(Director::getInstance()->getTextureCache()->addImage("stars.png"));
+    emitter->setPosition(s);
+    emitter->setLife(0.5);
+    emitter->setDuration(1);
+    
+    this->addChild(emitter,101);
 }
