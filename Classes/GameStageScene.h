@@ -7,7 +7,7 @@
 
 USING_NS_CC;
 
-class GameStageScene : public cocos2d::Layer
+class GameStageScene : public cocos2d::LayerColor
 {
 public:
 
@@ -26,12 +26,16 @@ private:
 	int mCurrentLevel;
 	Layer* boardLayer;
     NodeGrid* nodeGrid;
+    LabelTTF* timerLabel;
+    int timerCount;
+    bool tileTouchEnable;
 
 	void gameStart(float dt);
 	void getStageInfo();
 	void drawInitBoard();
 	void drawBoard();
-	
+	void makeTimer(float dt);
+    void drawTimerLabel(float dt);
 	void showTiles(float dt);
 	void hideTiles(float dt);
 	void drawSolutionTiles(int n);
