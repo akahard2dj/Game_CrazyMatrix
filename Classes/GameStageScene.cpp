@@ -31,6 +31,8 @@ bool GameStageScene::init()
     }
     
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("fes042.wav");
+    
     
 	winSize = Director::getInstance()->getWinSize();
 	mCurrentLevel = 3;
@@ -107,7 +109,7 @@ void GameStageScene::drawBoard() {
 		// 나중에 겜 retry 할 때 효과^^
 		//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 360);
 		/**temp**/
-		boardLayer->runAction(Sequence::create(delay, action, NULL));
+		//boardLayer->runAction(Sequence::create(delay, action, NULL));
         //nodeGrid->runAction(Sequence::create(delay, action, NULL));
 	}
 	float actionsTime = delayTime + 1.0 * (float)info.actionNum;
@@ -127,10 +129,9 @@ void GameStageScene::drawInitBoard() {
     
     //nodeGrid = NodeGrid::create();
     
-	//boardLayer = Layer::create();
-    boardLayer = NodeGrid::create();
+	boardLayer = Layer::create();
 	boardLayer->setPosition(0, MARGIN_BOTTOM);
-	boardLayer->setContentSize(Size(winSize.width, winSize.width));
+    boardLayer->setContentSize(Size(winSize.width, winSize.width));
 	boardLayer->setColor(Color3B(255, 0,0));
 
 	for (int n=0; n<BOARD_SIZE; n++) {
@@ -140,7 +141,7 @@ void GameStageScene::drawInitBoard() {
 
 			auto tile = Sprite::create(IMAGE_TILE_NORAML);
 			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));// + MARGIN_BOTTOM);
-			float tileScale = 3.0f / (float)info.matrixSize;
+			float tileScale = 5.0f / (float)info.matrixSize;
 			tile->setScale(tileScale);
 			tile->setTag(idx);
 			boardLayer->addChild(tile);
@@ -227,6 +228,9 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
         auto target = event->getCurrentTarget();
 		int tileNum = target->getTag();
 
+        // touch sound
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("es042.wav");
+        
 		mTilesSelected[tileNum] = (mTilesSelected[tileNum] + 1) % 2;
 		std::string image = mTilesSelected[tileNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
 		mTiles[tileNum]->setTexture(image);

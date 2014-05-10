@@ -24,8 +24,8 @@ private:
 	CCrazyMatrix matrix;
     StageInfo info;
 	int mCurrentLevel;
-	NodeGrid* boardLayer;
-    //NodeGrid* nodeGrid;
+	Layer* boardLayer;
+    NodeGrid* nodeGrid;
 
 	void gameStart(float dt);
 	void getStageInfo();
