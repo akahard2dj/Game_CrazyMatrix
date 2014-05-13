@@ -277,12 +277,15 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 
 void GameStageScene::explosion(Point s) {
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("firework.mp3");
-	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(200);
+	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(150);
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
-	particle->setGravity(Point(0, -80));
-    particle->setLife(4.5);
+	particle->setGravity(Point(0, -70));
+    particle->setLife(2.0);
+    particle->setSpeed(80);
+    particle->setEmissionRate(1300);
 	particle->setEndColor(Color4F(0,0,0,1));
+    particle->setEndSize(0.0);
 	
     this->addChild(particle,100);
 }
@@ -292,8 +295,10 @@ void GameStageScene::flower(Point s)
     ParticleSystem *emitter = ParticleFlower::create();
     emitter->setTexture(Director::getInstance()->getTextureCache()->addImage("stars.png"));
     emitter->setPosition(s);
-    emitter->setLife(0.5);
-    emitter->setDuration(1);
+    emitter->setLife(0.1);
+    emitter->setDuration(0.5);
+    emitter->setEmissionRate(100);
+    emitter->setSpeed(100);
     
     this->addChild(emitter,101);
 }
