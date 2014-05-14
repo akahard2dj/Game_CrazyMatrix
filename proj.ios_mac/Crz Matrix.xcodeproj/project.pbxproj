@@ -62,6 +62,8 @@
 		CDC50F1A1923B0AB003391CD /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F121923B0AB003391CD /* Icon-60@2x.png */; };
 		CDC50F1B1923B0AB003391CD /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F131923B0AB003391CD /* Icon-40@2x.png */; };
 		CDC50F1E1923B206003391CD /* StageClearScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDC50F1C1923B206003391CD /* StageClearScene.cpp */; };
+		CDC50F211923BC22003391CD /* f2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F1F1923BC22003391CD /* f2.png */; };
+		CDC50F221923BC22003391CD /* f1.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F201923BC22003391CD /* f1.png */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -276,6 +278,8 @@
 		CDC50F131923B0AB003391CD /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		CDC50F1C1923B206003391CD /* StageClearScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StageClearScene.cpp; path = ../Classes/StageClearScene.cpp; sourceTree = "<group>"; };
 		CDC50F1D1923B206003391CD /* StageClearScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StageClearScene.h; path = ../Classes/StageClearScene.h; sourceTree = "<group>"; };
+		CDC50F1F1923BC22003391CD /* f2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f2.png; sourceTree = "<group>"; };
+		CDC50F201923BC22003391CD /* f1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f1.png; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -520,6 +524,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDC50F1F1923BC22003391CD /* f2.png */,
+				CDC50F201923BC22003391CD /* f1.png */,
 				E29C3D43192252FF00DC481B /* ticktock.wav */,
 				E2064CF5191E53F7007271A6 /* es042.wav */,
 				E2064CF1191CF2DC007271A6 /* stars.png */,
@@ -719,11 +725,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC50F221923BC22003391CD /* f1.png in Resources */,
 				CDC50F151923B0AB003391CD /* Icon-Small.png in Resources */,
 				E2064CF2191CF2DC007271A6 /* stars.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				CDC50F171923B0AB003391CD /* Icon-Small@2x.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				CDC50F211923BC22003391CD /* f2.png in Resources */,
 				E29C3D44192252FF00DC481B /* ticktock.wav in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				CDC50F161923B0AB003391CD /* launcher01.png in Resources */,

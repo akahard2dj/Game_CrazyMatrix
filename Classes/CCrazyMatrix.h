@@ -5,7 +5,7 @@
 #include <time.h>
 
 #define	MAX_SHUFFLES 	16
-#define MAX_LEVEL		10
+#define MAX_LEVEL		20
 
 typedef enum _ShuffleType
 {

@@ -1,6 +1,6 @@
 #include "GameStageScene.h"
 #include "SimpleAudioEngine.h"
-
+#include "StageClearScene.h"
 USING_NS_CC;
 
 #define IMAGE_TILE_NORAML "YellowSquare.png"
@@ -32,10 +32,11 @@ bool GameStageScene::init()
     
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("es042.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ticktock.wav");
     
     
 	winSize = Director::getInstance()->getWinSize();
-	mCurrentLevel = 3;
+	mCurrentLevel = 1;
     tileTouchEnable = false;
 	gameStart(0);
 
@@ -62,7 +63,7 @@ void GameStageScene::drawBoard() {
 	drawInitBoard();
 	scheduleOnce(schedule_selector(GameStageScene::showTiles), 0.05);
 
-	float delayTime = 3.0f * (float)info.matrixSize / 3.0f;
+	float delayTime = 2.0f * (float)info.matrixSize / 3.0f;
 	scheduleOnce(schedule_selector(GameStageScene::hideTiles), delayTime);
 
     scheduleOnce(schedule_selector(GameStageScene::makeTimer), delayTime);
@@ -211,15 +212,20 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
     
-    listener->onTouchBegan = [](Touch* touch, Event* event){
+    listener->onTouchBegan = [=](Touch* touch, Event* event){
         
         auto target = event->getCurrentTarget();
+        int tileNum = target->getTag();
+        
         Point locationInNode = target->convertToNodeSpace(touch->getLocation());
         Size s = target->getContentSize();
         Rect rect = Rect(0, 0, s.width, s.height);
         
         if (rect.containsPoint(locationInNode)) {
+            if (tileTouchEnable == false) return false;
             //log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
+            float currentScale = mTiles[tileNum]->getScale();
+            mTiles[tileNum]->setScale(currentScale * 1.1);
             return true;
         }
         return false;
@@ -234,14 +240,15 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		int tileNum = target->getTag();
 
         // touch sound
-        if (tileTouchEnable == false) return;
+        
         
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("es042.wav");
         
 		mTilesSelected[tileNum] = (mTilesSelected[tileNum] + 1) % 2;
 		std::string image = mTilesSelected[tileNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
 		mTiles[tileNum]->setTexture(image);
-
+        float currentScale = mTiles[tileNum]->getScale();
+        mTiles[tileNum]->setScale(currentScale - currentScale * 0.1);
         flower(touch->getLocation());
         
 		int count = 0;
@@ -254,6 +261,11 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 			log("stage clear!");
             unschedule(schedule_selector(GameStageScene::drawTimerLabel));
             tileTouchEnable = false;
+            mCurrentLevel += 1;
+            
+            //auto popup = StageClearScene::createScene();
+            //Director::getInstance()->pushScene(popup);
+            //this->addChild(popup);
             
             auto delay1_exp = DelayTime::create(0.2);
             auto delay2_exp = DelayTime::create(0.5);
@@ -262,9 +274,11 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
             auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(350,912)) );
             this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
             
-			mCurrentLevel += 1;
+			
 			
 			scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
+            
+            
 		}
     };
     
@@ -310,7 +324,7 @@ void GameStageScene::makeTimer(float dt) {
     timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
     this->addChild(timerLabel);
 
-    timerCount = 10;
+    timerCount = 5;
     schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
     
 }
@@ -319,12 +333,18 @@ void GameStageScene::drawTimerLabel(float dt) {
     
     if (timerCount < 0) {
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
+        mCurrentLevel = 1;
         scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
         timerLabel->setString("Game Over");
         timerLabel->setScale(1.0f);
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
         tileTouchEnable = false;
     } else {
+        if (timerCount < 3) {
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ticktock.wav");
+            boardLayer->runAction(JumpBy::create(0.5, Point(0, 0), 20, 1));
+            
+        }
         char buffer[2];
         std::sprintf(buffer, "%d", timerCount--);
         timerLabel->setScale(1.0f);
