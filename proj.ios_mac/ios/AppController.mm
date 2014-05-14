@@ -53,20 +53,20 @@ static AppDelegate s_sharedApplication;
                                  numberOfSamples: 0];
 
     // Use RootViewController manage CCEAGLView 
-    _viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-    _viewController.wantsFullScreenLayout = YES;
-    _viewController.view = eaglView;
+    viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.wantsFullScreenLayout = YES;
+    viewController.view = eaglView;
 
     // Set RootViewController to window
     if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
     {
         // warning: addSubView doesn't work on iOS6
-        [window addSubview: _viewController.view];
+        [window addSubview: viewController.view];
     }
     else
     {
         // use this method on ios6
-        [window setRootViewController:_viewController];
+        [window setRootViewController:viewController];
     }
 
     [window makeKeyAndVisible];
@@ -78,6 +78,21 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     cocos2d::Application::getInstance()->run();
+    
+    //Admob
+    CGPoint origin = CGPointMake(0.0,
+                                 viewController.view.frame.size.height -
+                                 50.0);
+    
+    bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:origin];
+    bannerView.delegate = self;
+    bannerView.adUnitID = @"ca-app-pub-6185986108413626/9904533594";
+    
+    bannerView.rootViewController = viewController;
+    [viewController.view addSubview:bannerView];
+    
+    GADRequest* adRequest = [GADRequest request];
+    [bannerView loadRequest:adRequest];
 
     return YES;
 }
@@ -121,6 +136,18 @@ static AppDelegate s_sharedApplication;
      See also applicationDidEnterBackground:.
      */
 }
+
+#pragma mark -
+#pragma mark Admob
+/*- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    [UIView beginAnimations:@"BannerSlide" context:nil];
+    bannerView.frame = CGRectMake(0.0,
+                                  self.view.frame.size.height -
+                                  bannerView.frame.size.height,
+                                  bannerView.frame.size.width,
+                                  bannerView.frame.size.height);
+    [UIView commitAnimations];
+}*/
 
 
 #pragma mark -
