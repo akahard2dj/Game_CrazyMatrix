@@ -30,11 +30,13 @@ private:
     int timerCount;
     bool tileTouchEnable;
     Sprite* bgImage;
-
+    LabelTTF* currentStage;
+    
 	void gameStart(float dt);
 	void getStageInfo();
 	void drawInitBoard();
 	void drawBoard();
+    void drawCurrentStageInfo();
 	void makeTimer(float dt);
     void drawTimerLabel(float dt);
 	void showTiles(float dt);

@@ -63,9 +63,19 @@ void GameStageScene::gameStart(float dt) {
 	mTilesSelected.clear();
 	getStageInfo();
     drawBoard();
+    drawCurrentStageInfo();
 	addEventListener(_eventDispatcher);
     
     
+}
+
+void GameStageScene::drawCurrentStageInfo() {
+    char stageInfo[3];
+    std::sprintf(stageInfo, "%d", mCurrentLevel);
+    currentStage = LabelTTF::create(stageInfo, "arial.ttf", 80);
+    currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.3));
+    
+    this->addChild(currentStage);
 }
 
 void GameStageScene::getStageInfo() {
