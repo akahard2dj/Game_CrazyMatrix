@@ -53,6 +53,10 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		CD01214C1924CEDD0071F067 /* bgMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD01214B1924CEDD0071F067 /* bgMusic.wav */; };
+		CD0121501924D4A50071F067 /* pageFlip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CD01214F1924D4A50071F067 /* pageFlip.mp3 */; };
+		CD0121521924D8270071F067 /* applause.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CD0121511924D8270071F067 /* applause.mp3 */; };
+		CD8A17FB1924CBF400304CD4 /* stage_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8A17FA1924CBF400304CD4 /* stage_bg.png */; };
 		CDC50F141923B0AB003391CD /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F0C1923B0AB003391CD /* Icon-60.png */; };
 		CDC50F151923B0AB003391CD /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F0D1923B0AB003391CD /* Icon-Small.png */; };
 		CDC50F161923B0AB003391CD /* launcher01.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F0E1923B0AB003391CD /* launcher01.png */; };
@@ -268,6 +272,10 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CD01214B1924CEDD0071F067 /* bgMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bgMusic.wav; sourceTree = "<group>"; };
+		CD01214F1924D4A50071F067 /* pageFlip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pageFlip.mp3; sourceTree = "<group>"; };
+		CD0121511924D8270071F067 /* applause.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = applause.mp3; sourceTree = "<group>"; };
+		CD8A17FA1924CBF400304CD4 /* stage_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stage_bg.png; sourceTree = "<group>"; };
 		CDC50F0C1923B0AB003391CD /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		CDC50F0D1923B0AB003391CD /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		CDC50F0E1923B0AB003391CD /* launcher01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launcher01.png; sourceTree = "<group>"; };
@@ -524,6 +532,10 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD0121511924D8270071F067 /* applause.mp3 */,
+				CD01214F1924D4A50071F067 /* pageFlip.mp3 */,
+				CD01214B1924CEDD0071F067 /* bgMusic.wav */,
+				CD8A17FA1924CBF400304CD4 /* stage_bg.png */,
 				CDC50F1F1923BC22003391CD /* f2.png */,
 				CDC50F201923BC22003391CD /* f1.png */,
 				E29C3D43192252FF00DC481B /* ticktock.wav */,
@@ -617,7 +629,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = PFT6ZXU5VE;
+						DevelopmentTeam = 25K2LU66RG;
 					};
 				};
 			};
@@ -738,13 +750,17 @@
 				CDC50F141923B0AB003391CD /* Icon-60.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				CD0121521924D8270071F067 /* applause.mp3 in Resources */,
 				E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */,
+				CD01214C1924CEDD0071F067 /* bgMusic.wav in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				E2064CF6191E53F7007271A6 /* es042.wav in Resources */,
+				CD8A17FB1924CBF400304CD4 /* stage_bg.png in Resources */,
 				E2064CEB191CEFBC007271A6 /* MagentaSquare.png in Resources */,
 				CDC50F1B1923B0AB003391CD /* Icon-40@2x.png in Resources */,
 				E2064CEF191CEFC8007271A6 /* fire.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				CD0121501924D4A50071F067 /* pageFlip.mp3 in Resources */,
 				CDC50F1A1923B0AB003391CD /* Icon-60@2x.png in Resources */,
 				E2064CEC191CEFBC007271A6 /* YellowSquare.png in Resources */,
 				CDC50F191923B0AB003391CD /* Icon-76@2x.png in Resources */,
@@ -852,6 +868,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -876,6 +893,7 @@
 					"/Users/akahard2dj/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -887,6 +905,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -909,6 +928,7 @@
 					"/Users/akahard2dj/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

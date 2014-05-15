@@ -7,6 +7,7 @@ USING_NS_CC;
 #define IMAGE_TILE_SELECTED "MagentaSquare.png"
 #define SPEED_FOR_FLIP 0.05
 #define SPEED_FOR_FLIP_DELAY 0.3
+#define MSG_PLAY_AGAIN "play-again"
 
 Scene* GameStageScene::createScene()
 {
@@ -30,12 +31,18 @@ bool GameStageScene::init()
         return false;
     }
     
+    winSize = Director::getInstance()->getWinSize();
+	
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("es042.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ticktock.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("bgMusic.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("pageFlip.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("applause.mp3");
     
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
     
-	winSize = Director::getInstance()->getWinSize();
 	mCurrentLevel = 1;
     tileTouchEnable = false;
 	gameStart(0);
@@ -47,11 +54,18 @@ void GameStageScene::gameStart(float dt) {
 
 	this->removeAllChildren();
 
+    //bgImage = Sprite::create("stage_bg.png", Rect(0, 0, winSize.width, winSize.height));
+    bgImage = Sprite::create("stage_bg.png");
+    bgImage->setPosition(Point(winSize.width/2, winSize.height/2));
+    this->addChild(bgImage);
+    
 	mTiles.clear();
 	mTilesSelected.clear();
 	getStageInfo();
     drawBoard();
 	addEventListener(_eventDispatcher);
+    
+    
 }
 
 void GameStageScene::getStageInfo() {
@@ -161,6 +175,7 @@ void GameStageScene::drawInitBoard() {
 }
 
 void GameStageScene::showTiles(float dt) {
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("pageFlip.mp3");
 	for (int n=0; n<mTiles.size(); n++) {
 
 		float delayTime = n * SPEED_FOR_FLIP;
@@ -238,10 +253,7 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
     listener->onTouchEnded = [=](Touch* touch, Event* event){
         auto target = event->getCurrentTarget();
 		int tileNum = target->getTag();
-
-        // touch sound
-        
-        
+ 
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("es042.wav");
         
 		mTilesSelected[tileNum] = (mTilesSelected[tileNum] + 1) % 2;
@@ -259,9 +271,11 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		}
         if (count == mTilesSelected.size()) {
 			log("stage clear!");
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("applause.mp3");
             unschedule(schedule_selector(GameStageScene::drawTimerLabel));
             tileTouchEnable = false;
             mCurrentLevel += 1;
+            this->removeChild(timerLabel);
             
             //auto popup = StageClearScene::createScene();
             //Director::getInstance()->pushScene(popup);
@@ -321,7 +335,7 @@ void GameStageScene::makeTimer(float dt) {
 
     timerLabel = LabelTTF::create("Ready!", "arial", 90.0f);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
-    timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
+    timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
     this->addChild(timerLabel);
 
     timerCount = 5;
@@ -332,13 +346,23 @@ void GameStageScene::makeTimer(float dt) {
 void GameStageScene::drawTimerLabel(float dt) {
     
     if (timerCount < 0) {
+        //CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ALARM.WAV");
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
         mCurrentLevel = 1;
-        scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
         timerLabel->setString("Game Over");
         timerLabel->setScale(1.0f);
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
         tileTouchEnable = false;
+        
+        //NotificationCenter::getInstance()->addObserver(this, NULL, "sdfsf", NULL);
+        //NotificationCenter::getInstance()->addObserver(this, CallFunc0(GameStageScene::doNothing), "sfsdf", NULL);
+        
+        
+        //GameStageScene::getInstance()->addObserver(this, callfunc0_selector(GameStageScene::gameStart), MSG_PLAY_AGAIN, NULL);
+        
+        
+        scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
+        
     } else {
         if (timerCount < 3) {
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ticktock.wav");

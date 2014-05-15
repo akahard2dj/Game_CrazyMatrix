@@ -29,6 +29,7 @@ private:
     LabelTTF* timerLabel;
     int timerCount;
     bool tileTouchEnable;
+    Sprite* bgImage;
 
 	void gameStart(float dt);
 	void getStageInfo();
