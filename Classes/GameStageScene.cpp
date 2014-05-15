@@ -3,8 +3,8 @@
 #include "StageClearScene.h"
 USING_NS_CC;
 
-#define IMAGE_TILE_NORAML "YellowSquare.png"
-#define IMAGE_TILE_SELECTED "MagentaSquare.png"
+#define IMAGE_TILE_NORAML "YELLOW.png"
+#define IMAGE_TILE_SELECTED "MAGENTA.png"
 #define SPEED_FOR_FLIP 0.05
 #define SPEED_FOR_FLIP_DELAY 0.3
 #define MSG_PLAY_AGAIN "play-again"
