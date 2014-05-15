@@ -5,6 +5,7 @@ USING_NS_CC;
 
 #define IMAGE_TILE_NORAML "YELLOW.png"
 #define IMAGE_TILE_SELECTED "MAGENTA.png"
+#define IMAGE_BG_CURRENT_STAGE "GREEN_CIRCLE.png"
 #define SPEED_FOR_FLIP 0.05
 #define SPEED_FOR_FLIP_DELAY 0.3
 #define MSG_PLAY_AGAIN "play-again"
@@ -70,12 +71,17 @@ void GameStageScene::gameStart(float dt) {
 }
 
 void GameStageScene::drawCurrentStageInfo() {
+    
+    bgCurrentStage = Sprite::create(IMAGE_BG_CURRENT_STAGE);
+    bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.3));
+    this->addChild(bgCurrentStage);
+    
     char stageInfo[3];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
     currentStage = LabelTTF::create(stageInfo, "arial.ttf", 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.3));
-    
     this->addChild(currentStage);
+    
 }
 
 void GameStageScene::getStageInfo() {
@@ -290,6 +296,10 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
             tileTouchEnable = false;
             mCurrentLevel += 1;
             this->removeChild(timerLabel);
+            
+            auto scaleUp = ScaleBy::create(0.4, 1.5);
+            auto scaleDown = scaleUp->reverse();
+            bgCurrentStage->runAction(Sequence::create(scaleUp, scaleDown, scaleUp, scaleDown, scaleUp, scaleDown, NULL));
             
             //auto popup = StageClearScene::createScene();
             //Director::getInstance()->pushScene(popup);

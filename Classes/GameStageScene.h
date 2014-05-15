@@ -31,6 +31,7 @@ private:
     bool tileTouchEnable;
     Sprite* bgImage;
     LabelTTF* currentStage;
+    Sprite* bgCurrentStage;
     
 	void gameStart(float dt);
 	void getStageInfo();
