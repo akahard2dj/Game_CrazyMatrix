@@ -44,6 +44,7 @@ private:
 	void addEventListener(EventDispatcher* e);
 	void explosion(Point s);
     void flower(Point s);
+    void effectShowSolution(Point s);
 
 	FiniteTimeAction* getActionByShuffleType(ShuffleType type);
 };

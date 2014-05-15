@@ -164,7 +164,7 @@ void GameStageScene::drawInitBoard() {
 			float tileScale = 4.0f / (float)info.matrixSize;
 			tile->setScale(tileScale);
 			tile->setTag(idx);
-			boardLayer->addChild(tile);
+			boardLayer->addChild(tile,10);
             
 			mTiles.push_back(tile);
 			mTilesSelected.push_back(0);
@@ -331,6 +331,15 @@ void GameStageScene::flower(Point s)
     this->addChild(emitter,101);
 }
 
+void GameStageScene::effectShowSolution(Point s)
+{
+    ParticleSystem *emitter = ParticleFlower::create();
+    emitter->setTexture(Director::getInstance()->getTextureCache()->addImage("stars.png"));
+    emitter->setPosition(s);
+    boardLayer->addChild(emitter,0);
+    
+}
+
 void GameStageScene::makeTimer(float dt) {
 
     timerLabel = LabelTTF::create("Ready!", "arial", 90.0f);
@@ -359,6 +368,14 @@ void GameStageScene::drawTimerLabel(float dt) {
         
         
         //GameStageScene::getInstance()->addObserver(this, callfunc0_selector(GameStageScene::gameStart), MSG_PLAY_AGAIN, NULL);
+        for (int i=0; i<mTiles.size(); i++) {
+            Point pt;
+            if (info.before[i] == 1) {
+                pt = mTiles.at(i)->getPosition();
+                log("%f %f",pt.x, pt.y);
+                effectShowSolution(pt);
+            }
+        }
         
         
         scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
