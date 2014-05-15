@@ -73,13 +73,13 @@ void GameStageScene::gameStart(float dt) {
 void GameStageScene::drawCurrentStageInfo() {
     
     bgCurrentStage = Sprite::create(IMAGE_BG_CURRENT_STAGE);
-    bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.3));
+    bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
     this->addChild(bgCurrentStage);
     
     char stageInfo[3];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
     currentStage = LabelTTF::create(stageInfo, "arial.ttf", 80);
-    currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.3));
+    currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
     this->addChild(currentStage);
     
 }
@@ -165,7 +165,15 @@ FiniteTimeAction* GameStageScene::getActionByShuffleType(ShuffleType type) {
 void GameStageScene::drawInitBoard() {
 
 	const int BOARD_SIZE = info.matrixSize;
-	const int MARGIN_BOTTOM = winSize.height * 0.3;
+	
+    int MARGIN_BOTTOM;
+    if (winSize.height > 1000) {
+        // 3.5 inch
+        MARGIN_BOTTOM = winSize.height * 0.3;
+    } else {
+        // 4 inch
+        MARGIN_BOTTOM = winSize.height * 0.2;
+    }
     
     //nodeGrid = NodeGrid::create();
     
