@@ -55,7 +55,8 @@ StageInfo CCrazyMatrix::getStageInfo(int _level)
 		
 	info.matrixSize = numSides;
 	info.level = level;
-	info.actionNum = numPairs;
+	info.actionNum = numShuffles;
+    info.solutionNum = numPairs;
 
 	info.before = new int[numSides*numSides];
 	info.after = new int[numSides*numSides];

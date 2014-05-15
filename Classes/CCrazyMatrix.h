@@ -23,6 +23,7 @@ typedef struct _StageInfo
 	int level;
     int matrixSize;
     int actionNum;
+    int solutionNum;
     ShuffleType actions[MAX_SHUFFLES];
     int *before;
     int *after;

@@ -70,6 +70,7 @@ void GameStageScene::gameStart(float dt) {
 
 void GameStageScene::getStageInfo() {
     info = matrix.getStageInfo(mCurrentLevel);
+    log("action Num: %d, level: %d, matrixSize: %d",info.actionNum, info.level, info.matrixSize);
 }
 
 void GameStageScene::drawBoard() {
