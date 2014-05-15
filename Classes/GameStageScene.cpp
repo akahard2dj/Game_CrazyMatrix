@@ -79,41 +79,46 @@ void GameStageScene::drawBoard() {
 	scheduleOnce(schedule_selector(GameStageScene::showTiles), 0.05);
 
 	float delayTime = 2.0f * (float)info.matrixSize / 3.0f;
+    float hideTime = 1.0f * (float)info.matrixSize / 3.0f;
+    const float delayForOneAnimation = 0.8;
+    const float animationTime = delayForOneAnimation + 0.2f * info.actionNum;
+    
 	scheduleOnce(schedule_selector(GameStageScene::hideTiles), delayTime);
-
-    scheduleOnce(schedule_selector(GameStageScene::makeTimer), delayTime);
+    scheduleOnce(schedule_selector(GameStageScene::makeTimer), delayTime + animationTime + hideTime);
+    
+    FiniteTimeAction* action1 = NULL;
+    FiniteTimeAction* action2 = NULL;
+    FiniteTimeAction* action3 = NULL;
     
 	for (int t=0; t<info.actionNum; t++) {
 
-
-		// FIX ME :
-		auto delay = DelayTime::create(delayTime + 2.0 + t * 2.0);
-		FiniteTimeAction* action;
+        FiniteTimeAction* action;
+        
 		switch(info.actions[t]) {
 		case TRANSFORM_FLIP_X:
-			//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 0);
-            action = FlipX3D::create(0.5);
+			action = OrbitCamera::create(delayForOneAnimation, 1, 0, 0, 180, 0, 0);
+            //action = FlipX3D::create(0.5);
             log("flip x");
 			break;
 		case TRANSFORM_FLIP_Y:
-			//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 0);
-            action = FlipY3D::create(0.5);
+			action = OrbitCamera::create(delayForOneAnimation, 1, 0, 0, 180, 0, 0);
+            //action = FlipY3D::create(0.5);
             log("flip y");
 			break;
 		case TRANSFORM_ROT_CW:
-			action = RotateBy::create(0.5, 90);
+			action = RotateBy::create(delayForOneAnimation, 90);
 			log("rotate 90");
 			break;
 		case TRANSFORM_ROT_CCW:
-			action = RotateBy::create(0.5, -90);
+			action = RotateBy::create(delayForOneAnimation, -90);
 			log("rotate -90");
 			break;
 		case TRANSFORM_TRANS1:
-			action = RotateBy::create(0.5, 90);
+			action = RotateBy::create(delayForOneAnimation, 90);
 			log("trans 1");
 			break;
 		case TRANSFORM_TRANS2:
-			action = RotateBy::create(0.5, -90);
+			action = RotateBy::create(delayForOneAnimation, -90);
 			log("trans 2");
 			break;
 		default:
@@ -121,19 +126,17 @@ void GameStageScene::drawBoard() {
 		}
         
         
-        
-		//action = RotateBy::create(0.5, 90);
-		//action = FlipX3D::create(0.5);
-        //action =FlipX3D::create(0.5);
-
-        //boardLayer->setScaleX(-1);
-		// ≥™¡ﬂø° ∞◊ retry «“ ∂ß »ø∞˙^^
-		//action = OrbitCamera::create(0.5, 1, 0, 0, 180, 0, 360);
-		/**temp**/
-		//boardLayer->runAction(Sequence::create(delay, action, NULL));
-        //nodeGrid->runAction(Sequence::create(delay, action, NULL));
+        if (t==0) {
+            action1 = action;
+        } else if(t==1) {
+            action2 = action;
+        } else if(t==2) {
+            action3 = action;
+        }
 	}
-	float actionsTime = delayTime + 1.0 * (float)info.actionNum;
+    
+    auto delay = DelayTime::create(delayTime + hideTime);
+    boardLayer->runAction(Sequence::create(delay, action1, action2, action3, NULL));
 }
 
 FiniteTimeAction* GameStageScene::getActionByShuffleType(ShuffleType type) {
