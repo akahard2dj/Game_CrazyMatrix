@@ -55,7 +55,6 @@ void GameStageScene::gameStart(float dt) {
 
 	this->removeAllChildren();
 
-    //bgImage = Sprite::create("stage_bg.png", Rect(0, 0, winSize.width, winSize.height));
     bgImage = Sprite::create("stage_bg.png");
     bgImage->setPosition(Point(winSize.width/2, winSize.height/2));
     this->addChild(bgImage);
@@ -66,7 +65,6 @@ void GameStageScene::gameStart(float dt) {
     drawBoard();
     drawCurrentStageInfo();
 	addEventListener(_eventDispatcher);
-    
     
 }
 
@@ -110,7 +108,6 @@ void GameStageScene::drawBoard() {
     
 	for (int t=0; t<info.actionNum; t++) {
 
-        //FiniteTimeAction* action;
         ActionInterval* action;
         
 		switch(info.actions[t]) {
@@ -187,8 +184,8 @@ void GameStageScene::drawInitBoard() {
 			int idx = n * BOARD_SIZE + m;
 
 			auto tile = Sprite::create(IMAGE_TILE_NORAML);
-			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));// + MARGIN_BOTTOM);
-			float tileScale = 4.0f / (float)info.matrixSize;
+			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));
+            float tileScale = 4.0f / (float)info.matrixSize;
 			tile->setScale(tileScale);
 			tile->setTag(idx);
 			boardLayer->addChild(tile,10);
@@ -298,37 +295,36 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		}
         if (count == mTilesSelected.size()) {
 			log("stage clear!");
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("applause.mp3");
-            unschedule(schedule_selector(GameStageScene::drawTimerLabel));
-            tileTouchEnable = false;
-            mCurrentLevel += 1;
-            this->removeChild(timerLabel);
-            
-            auto scaleUp = ScaleBy::create(0.4, 1.5);
-            auto scaleDown = scaleUp->reverse();
-            bgCurrentStage->runAction(Sequence::create(scaleUp, scaleDown, scaleUp, scaleDown, scaleUp, scaleDown, NULL));
-            
-            //auto popup = StageClearScene::createScene();
-            //Director::getInstance()->pushScene(popup);
-            //this->addChild(popup);
-            
-            auto delay1_exp = DelayTime::create(0.2);
-            auto delay2_exp = DelayTime::create(0.5);
-            auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(128,672)) );
-            auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(530,622)) );
-            auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(350,912)) );
-            this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
-            
-			scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
-            
+            stageClear();
 		}
     };
     
 	for (int n=0; n<mTiles.size(); n++) {
 		e->addEventListenerWithSceneGraphPriority(listener->clone(), mTiles.at(n));
 	}
- 
     
+}
+
+void GameStageScene::stageClear() {
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("applause.mp3");
+    unschedule(schedule_selector(GameStageScene::drawTimerLabel));
+    tileTouchEnable = false;
+    mCurrentLevel += 1;
+    this->removeChild(timerLabel);
+    
+    auto scaleUp = ScaleBy::create(0.4, 1.5);
+    auto scaleDown = scaleUp->reverse();
+    bgCurrentStage->runAction(Sequence::create(scaleUp, scaleDown, scaleUp, scaleDown, scaleUp, scaleDown, NULL));
+    
+    auto delay1_exp = DelayTime::create(0.2);
+    auto delay2_exp = DelayTime::create(0.5);
+    auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(128,672)) );
+    auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(530,622)) );
+    auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(350,912)) );
+    this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
+    
+    scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
 }
 
 void GameStageScene::explosion(Point s) {
@@ -392,11 +388,6 @@ void GameStageScene::drawTimerLabel(float dt) {
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
         tileTouchEnable = false;
         
-        //NotificationCenter::getInstance()->addObserver(this, NULL, "sdfsf", NULL);
-        //NotificationCenter::getInstance()->addObserver(this, CallFunc0(GameStageScene::doNothing), "sfsdf", NULL);
-        
-        
-        //GameStageScene::getInstance()->addObserver(this, callfunc0_selector(GameStageScene::gameStart), MSG_PLAY_AGAIN, NULL);
         for (int i=0; i<mTiles.size(); i++) {
             Point pt;
             if (info.before[i] == 1) {
@@ -405,7 +396,6 @@ void GameStageScene::drawTimerLabel(float dt) {
                 effectShowSolution(pt);
             }
         }
-        
         
         scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
         

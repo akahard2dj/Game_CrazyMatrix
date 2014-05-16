@@ -48,6 +48,7 @@ private:
 	void explosion(Point s);
     void flower(Point s);
     void effectShowSolution(Point s);
+    void stageClear();
 };
 
 #endif // __GAMESTAGE_SCENE_H__
