@@ -412,7 +412,8 @@ void GameStageScene::drawTimerLabel(float dt) {
     } else {
         if (timerCount < 3) {
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ticktock.wav");
-            boardLayer->runAction(JumpBy::create(0.5, Point(0, 0), 20, 1));
+            auto jump = JumpBy::create(0.25, Point(0, 0), 20, 1);
+            boardLayer->runAction(Sequence::create(jump, jump, NULL));
             
         }
         char buffer[2];
