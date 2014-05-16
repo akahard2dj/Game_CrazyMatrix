@@ -110,7 +110,8 @@ void GameStageScene::drawBoard() {
     
 	for (int t=0; t<info.actionNum; t++) {
 
-        FiniteTimeAction* action;
+        //FiniteTimeAction* action;
+        ActionInterval* action;
         
 		switch(info.actions[t]) {
 		case TRANSFORM_FLIP_X:
@@ -143,6 +144,8 @@ void GameStageScene::drawBoard() {
 			break;
 		}
         
+        //action = EaseExponentialIn::create(action);
+        action = EaseBackOut::create(action);
         
         if (t==0) {
             action1 = action;
@@ -157,12 +160,6 @@ void GameStageScene::drawBoard() {
     boardLayer->runAction(Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, NULL));
 }
 
-FiniteTimeAction* GameStageScene::getActionByShuffleType(ShuffleType type) {
-
-	// temp 
-	log("wow");
-	return RotateBy::create(1, 90);
-}
 
 void GameStageScene::drawInitBoard() {
 
@@ -322,10 +319,7 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
             auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(350,912)) );
             this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
             
-			
-			
 			scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
-            
             
 		}
     };

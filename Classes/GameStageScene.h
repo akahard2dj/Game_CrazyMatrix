@@ -48,8 +48,6 @@ private:
 	void explosion(Point s);
     void flower(Point s);
     void effectShowSolution(Point s);
-
-	FiniteTimeAction* getActionByShuffleType(ShuffleType type);
 };
 
 #endif // __GAMESTAGE_SCENE_H__
