@@ -70,20 +70,14 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 
-    cocos2d::GLView *glview = cocos2d::Director::getInstance()->getOpenGLView();
-
-    if (glview)
-    {
+        cocos2d::GLView *glview = cocos2d::Director::getInstance()->getOpenGLView();
         CCEAGLView *eaglview = (CCEAGLView*) glview->getEAGLView();
 
-        if (eaglview)
-        {
-            CGSize s = CGSizeMake([eaglview getWidth], [eaglview getHeight]);
-            cocos2d::Application::getInstance()->applicationScreenSizeChanged((int) s.width, (int) s.height);
-        }
-    }
+	CGSize s = CGSizeMake([eaglview getWidth], [eaglview getHeight]);
+
+	cocos2d::Application::getInstance()->applicationScreenSizeChanged((int) s.width, (int) s.height);
 }
 
 //fix not hide status on ios7

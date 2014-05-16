@@ -78,7 +78,7 @@ void GameStageScene::drawCurrentStageInfo() {
     
     char stageInfo[3];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
-    currentStage = LabelTTF::create(stageInfo, "arial.ttf", 80);
+    currentStage = LabelTTF::create(stageInfo, "arial", 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
     this->addChild(currentStage);
     
