@@ -6,6 +6,7 @@
 
 #define	MAX_SHUFFLES 	16
 #define MAX_LEVEL		20
+#define TARGET_LEVEL    5
 
 typedef enum _ShuffleType
 {
