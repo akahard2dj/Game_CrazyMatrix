@@ -106,6 +106,8 @@ void GameStageScene::drawBoard() {
     FiniteTimeAction* action2 = NULL;
     FiniteTimeAction* action3 = NULL;
     
+    auto delay_interval = DelayTime::create(0.1);
+    
 	for (int t=0; t<info.actionNum; t++) {
 
         FiniteTimeAction* action;
@@ -152,7 +154,7 @@ void GameStageScene::drawBoard() {
 	}
     
     auto delay = DelayTime::create(delayTime + hideTime);
-    boardLayer->runAction(Sequence::create(delay, action1, action2, action3, NULL));
+    boardLayer->runAction(Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, NULL));
 }
 
 FiniteTimeAction* GameStageScene::getActionByShuffleType(ShuffleType type) {
@@ -379,7 +381,7 @@ void GameStageScene::makeTimer(float dt) {
     timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
     this->addChild(timerLabel);
 
-    timerCount = 5;
+    timerCount = info.TimeLimit;
     schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
     
 }

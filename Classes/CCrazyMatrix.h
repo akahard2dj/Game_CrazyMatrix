@@ -24,6 +24,7 @@ typedef struct _StageInfo
     int matrixSize;
     int actionNum;
     int solutionNum;
+    int TimeLimit;
     ShuffleType actions[MAX_SHUFFLES];
     int *before;
     int *after;
@@ -46,6 +47,7 @@ private:
     int numPairs;
     int numSides;
 	int numShuffles;
+    int timeLimit;
 	int gameSchedule[MAX_SHUFFLES];
 	int **boardOriginal;
     int **board;

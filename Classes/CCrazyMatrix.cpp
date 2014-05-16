@@ -6,6 +6,8 @@ int g_designedNumPairs[MAX_LEVEL] =    {2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
                                         6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 int g_designedNumSides[MAX_LEVEL] =    {4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
                                         5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+int g_designedTimeLimit[MAX_LEVEL] =   {5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+                                        5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 
 CCrazyMatrix::CCrazyMatrix()
 {
@@ -57,6 +59,7 @@ StageInfo CCrazyMatrix::getStageInfo(int _level)
 	info.level = level;
 	info.actionNum = numShuffles;
     info.solutionNum = numPairs;
+    info.TimeLimit = timeLimit;
 
 	info.before = new int[numSides*numSides];
 	info.after = new int[numSides*numSides];
@@ -84,7 +87,8 @@ void CCrazyMatrix::levelDesign()
 {
 	numPairs =  g_designedNumPairs[level-1];
 	numShuffles = g_designedNumShuffles[level-1];
-	numSides = g_designedNumSides[level-1];	
+	numSides = g_designedNumSides[level-1];
+    timeLimit = g_designedTimeLimit[level-1];
 }
 
 CCrazyMatrix::~CCrazyMatrix()
