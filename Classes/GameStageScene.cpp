@@ -342,6 +342,7 @@ void GameStageScene::explosion(Point s) {
     particle->setEmissionRate(1300);
 	particle->setEndColor(Color4F(0,0,0,1));
     particle->setEndSize(0.0);
+    particle->setStartColor(Color4F(255, 0, 0, 255));
 	
     this->addChild(particle,100);
 }
