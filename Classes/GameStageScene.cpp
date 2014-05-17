@@ -368,12 +368,12 @@ void GameStageScene::explosion(Point s) {
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
 	particle->setGravity(Point(0, -70));
-    particle->setLife(1.5);
-    particle->setSpeed(120);
+    particle->setLife(2.0);
+    particle->setSpeed(80);
     particle->setEmissionRate(1300);
 	particle->setEndColor(Color4F(0,0,0,1));
     particle->setEndSize(0.0);
-    particle->setStartColor(Color4F(255, 0, 0, 1));
+    particle->setStartColor(Color4F(255, 0, 0, 255));
 	
     this->addChild(particle,100);
 }

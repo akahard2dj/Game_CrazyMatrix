@@ -202,33 +202,16 @@ void CCrazyMatrix::lightGameDesign()
 void CCrazyMatrix::lightGameShuffle()
 {
 	srand((unsigned int)time(NULL));
-    
-    gameSchedule[0] = rand() % TRANSFORM_NUM_TYPE;
-    
-    if (level < TARGET_LEVEL) {
-        while (gameSchedule[0] < 2) {
-            gameSchedule[0] = rand() % TRANSFORM_NUM_TYPE;
-        }
-    }
-
+	gameSchedule[0] = rand() % TRANSFORM_NUM_TYPE;
 	int temp;
 
 	for (int i=1; i<numShuffles; i++) {
 		temp = rand() % TRANSFORM_NUM_TYPE;
-		if (level < TARGET_LEVEL) {
-            while ((temp == gameSchedule[i-1]) || (temp < 2)) {
-                temp = rand() % TRANSFORM_NUM_TYPE;
-            }
-        }
-        
-        else {
-            while (temp == gameSchedule[i-1]) {
-                temp = rand() % TRANSFORM_NUM_TYPE;
-            }
-        }
+		while (temp == gameSchedule[i-1]) {
+			temp = rand() % TRANSFORM_NUM_TYPE;
+		}
 		gameSchedule[i] = temp;
 	}
-
 	//printf(">> Game Schedule \n");
 	//for (int i=0; i<numShuffles; i++)
 	//	printf("%d\n",gameSchedule[i]);
