@@ -4,6 +4,7 @@
 #include <vector>
 #include "cocos2d.h"
 #include "CCrazyMatrix.h"
+#include "extensions/GUI/CCControlExtension/CCScale9Sprite.h"
 
 USING_NS_CC;
 
@@ -32,6 +33,8 @@ private:
     Sprite* bgImage;
     LabelTTF* currentStage;
     Sprite* bgCurrentStage;
+    bool isPopupShowing;
+    Sprite* pauseLayout;
     
 	void gameStart(float dt);
 	void getStageInfo();
@@ -49,6 +52,9 @@ private:
     void flower(Point s);
     void effectShowSolution(Point s);
     void stageClear();
+    void showMenuPopup();
+    void hideMenuPopup();
+
 };
 
 #endif // __GAMESTAGE_SCENE_H__

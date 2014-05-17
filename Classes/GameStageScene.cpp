@@ -1,6 +1,7 @@
 #include "GameStageScene.h"
 #include "SimpleAudioEngine.h"
 #include "StageClearScene.h"
+
 USING_NS_CC;
 
 #define IMAGE_TILE_NORAML "YELLOW.png"
@@ -10,6 +11,7 @@ USING_NS_CC;
 #define SPEED_FOR_FLIP_DELAY 0.3
 #define MSG_PLAY_AGAIN "play-again"
 #define TAG_BUTTON_CURRENT_STAGE_BG 500
+#define Z_ORDER_POPUP 1000
 
 Scene* GameStageScene::createScene()
 {
@@ -56,7 +58,10 @@ bool GameStageScene::init()
 void GameStageScene::gameStart(float dt) {
 
 	this->removeAllChildren();
-
+    if (isPopupShowing == true) {
+        showMenuPopup();
+    }
+    
     bgImage = Sprite::create("stage_bg.png");
     bgImage->setPosition(Point(winSize.width/2, winSize.height/2));
     this->addChild(bgImage);
@@ -278,7 +283,7 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
                         break;
                 }
                 return true;
-            } else if (tileTouchEnable == true) {
+            } else if (tileTouchEnable == true && isPopupShowing == false) {
                 float currentScale = mTiles[tagNum]->getScale();
                 mTiles[tagNum]->setScale(currentScale * 1.1);
                 return true;
@@ -302,6 +307,12 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
                     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
                     bgCurrentStage->stopAllActions();
                     bgCurrentStage->setScale(1.0f);
+                    if (isPopupShowing == false) {
+                        showMenuPopup();
+                    } else {
+                        hideMenuPopup();
+                    }
+                    
                     break;
                 default:
                     break;
@@ -447,5 +458,20 @@ void GameStageScene::drawTimerLabel(float dt) {
         timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
         tileTouchEnable = true;
     }
+}
+
+void GameStageScene::showMenuPopup() {
+    isPopupShowing = true;
+    
+    pauseLayout = Sprite::create("popupBg.png", Rect(0, 0, winSize.width, winSize.height));
+    pauseLayout->setPosition(Point(winSize.width/2, winSize.height/2));
+    this->addChild(pauseLayout, Z_ORDER_POPUP);
+
+}
+
+void GameStageScene::hideMenuPopup() {
+    isPopupShowing = false;
+    pauseLayout->removeFromParent();
+
 }
 
