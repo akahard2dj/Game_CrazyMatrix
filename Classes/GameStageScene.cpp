@@ -13,6 +13,8 @@ USING_NS_CC;
 #define TAG_BUTTON_CURRENT_STAGE_BG 500
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_LABEL 1002
+#define NUM_POPUP_MENU 5
+#define NUM_SHARE_MENU 4
 
 
 Scene* GameStageScene::createScene()
@@ -509,16 +511,53 @@ void GameStageScene::showMenuPopup(float dt) {
     char stageInfo[15];
     std::sprintf(stageInfo, "stage : %d", mCurrentLevel);
     LabelTTF* score = LabelTTF::create(stageInfo, "arial", 70.0f);
-    score->setPosition(Point(winSize.width/2, winSize.height * 0.8));
+    score->setPosition(Point(winSize.width/2, winSize.height - 100));
     pauseLayout->addChild(score, Z_ORDER_POPUP_LABEL);
     
     char wrongInfo[15];
     std::sprintf(wrongInfo, "wrong : %d", wrongNumberPerGame);
     LabelTTF* wrong = LabelTTF::create(wrongInfo, "arial", 70.0f);
-    wrong->setPosition(Point(winSize.width/2, winSize.height * 0.7));
+    wrong->setPosition(Point(winSize.width/2, winSize.height - 200));
     pauseLayout->addChild(wrong, Z_ORDER_POPUP_LABEL);
     
-    this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_LABEL);
+    //this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_LABEL);
+    
+    // Menu item Layout
+    popMenuImage[0] = Sprite::create("RankingIcon.png");
+    popMenuImage[1] = Sprite::create("NewIcon.png");
+    popMenuImage[2] = Sprite::create("BackIcon.png");
+    popMenuImage[3] = Sprite::create("OptionIcon.png");
+    popMenuImage[4] = Sprite::create("ShareIcon.png");
+    
+    shareImage[0] = Sprite::create("FacebookIcon.png");
+    shareImage[1] = Sprite::create("TwitterIcon.png");
+    shareImage[2] = Sprite::create("MailIcon.png");
+    shareImage[3] = Sprite::create("SMSIcon.png");
+    
+    float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width/2 + 90, winSize.width/2 - 90, 80, winSize.width-80};
+    float popY[NUM_POPUP_MENU] = {winSize.height*2/3-50, winSize.height*2/3 - 230, winSize.height*2/3 - 230, 200, winSize.height-100};
+    float shareX[NUM_SHARE_MENU] = {winSize.width-80, winSize.width-80, winSize.width-80, winSize.width-80};
+    float shareY[NUM_SHARE_MENU] = {winSize.height-230, winSize.height-330, winSize.height-430, winSize.height-530};
+    
+    for (int i=0; i<NUM_POPUP_MENU; i++) {
+        popMenuImage[i]->setScale(0.8, 0.8);
+        popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
+    }
+    popMenuImage[3]->setScale(0.7, 0.7);
+    popMenuImage[4]->setScale(0.7, 0.7);
+    
+    for (int i=0; i<NUM_SHARE_MENU; i++) {
+        shareImage[i]->setScale(0.5, 0.5);
+        shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
+    }
+    
+    for (int i=0; i<NUM_POPUP_MENU; i++) {
+        this->addChild(popMenuImage[i], Z_ORDER_POPUP);
+    }
+    
+    for (int i=0; i<NUM_SHARE_MENU; i++) {
+        this->addChild(shareImage[i], Z_ORDER_POPUP);
+    }
 }
 
 void GameStageScene::hideMenuPopup() {
@@ -526,5 +565,12 @@ void GameStageScene::hideMenuPopup() {
     isPopupShowing = false;
     pauseLayout->removeFromParent();
     this->reorderChild(bgCurrentStage, 0);
+    for (int i=0; i<NUM_POPUP_MENU; i++) {
+        popMenuImage[i]->removeFromParent();
+    }
+    
+    for (int i=0; i<NUM_SHARE_MENU; i++) {
+        shareImage[i]->removeFromParent();
+    }
 }
 

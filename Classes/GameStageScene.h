@@ -31,6 +31,8 @@ private:
     int timerCount;
     bool tileTouchEnable;
     Sprite* bgImage;
+    Sprite* shareImage[4];
+    Sprite* popMenuImage[5];
     LabelTTF* currentStage;
     Sprite* bgCurrentStage;
     bool isPopupShowing;
