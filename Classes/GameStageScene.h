@@ -36,6 +36,8 @@ private:
     bool isPopupShowing;
     Sprite* pauseLayout;
     bool hasOneMoreChange;
+    int wrongNumberPerGame;
+    bool isGameFinished;
     
 	void gameStart(float dt);
 	void getStageInfo();
@@ -53,7 +55,7 @@ private:
     void flower(Point s);
     void effectShowSolution(Point s);
     void stageClear();
-    void showMenuPopup();
+    void showMenuPopup(float dt);
     void hideMenuPopup();
 
 };

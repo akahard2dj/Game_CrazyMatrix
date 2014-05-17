@@ -12,6 +12,8 @@ USING_NS_CC;
 #define MSG_PLAY_AGAIN "play-again"
 #define TAG_BUTTON_CURRENT_STAGE_BG 500
 #define Z_ORDER_POPUP 1000
+#define Z_ORDER_POPUP_LABEL 1002
+
 
 Scene* GameStageScene::createScene()
 {
@@ -50,6 +52,7 @@ bool GameStageScene::init()
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
     
 	mCurrentLevel = 1;
+    wrongNumberPerGame = 0;
     hasOneMoreChange = true;
     tileTouchEnable = false;
 	gameStart(0);
@@ -60,9 +63,7 @@ bool GameStageScene::init()
 void GameStageScene::gameStart(float dt) {
 
 	this->removeAllChildren();
-    if (isPopupShowing == true) {
-        showMenuPopup();
-    }
+    isPopupShowing = false;
     
     bgImage = Sprite::create("stage_bg.png");
     bgImage->setPosition(Point(winSize.width/2, winSize.height/2));
@@ -81,14 +82,15 @@ void GameStageScene::drawCurrentStageInfo() {
     
     bgCurrentStage = Sprite::create(IMAGE_BG_CURRENT_STAGE);
     bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
-    this->addChild(bgCurrentStage);
+    this->addChild(bgCurrentStage, 0);
     
     char stageInfo[3];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
     currentStage = LabelTTF::create(stageInfo, "arial", 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
     bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
-    this->addChild(currentStage);
+    this->addChild(currentStage, 1);
+    
     
 }
 
@@ -309,10 +311,23 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
                     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
                     bgCurrentStage->stopAllActions();
                     bgCurrentStage->setScale(1.0f);
+                    
                     if (isPopupShowing == false) {
-                        showMenuPopup();
+                        log("touch show");
+                        showMenuPopup(0);
                     } else {
+                        log("touch hide");
                         hideMenuPopup();
+                    }
+                    
+                    if (isGameFinished == true) {
+                        // restart game
+                        isGameFinished = false;
+                        mCurrentLevel = 1;
+                        wrongNumberPerGame = 0;
+                        hasOneMoreChange = true;
+                        gameStart(0);
+                        isPopupShowing = false;
                     }
                     
                     break;
@@ -432,16 +447,6 @@ void GameStageScene::drawTimerLabel(float dt) {
         
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
         
-        if (hasOneMoreChange) {
-            hasOneMoreChange = false;
-            timerLabel->setString("Once More!");
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("failFirst.wav");
-        } else {
-            mCurrentLevel = 1;
-            timerLabel->setString("Game Over!");
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
-        }
-        
         timerLabel->setScale(1.0f);
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
         tileTouchEnable = false;
@@ -454,8 +459,27 @@ void GameStageScene::drawTimerLabel(float dt) {
             }
         }
         
-        scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
-        
+        if (hasOneMoreChange) {
+            // MISSION FAIL BUT HAS ONE CHANCE MORE...
+            hasOneMoreChange = false;
+            wrongNumberPerGame++;
+            timerLabel->setString("Once More!");
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("failFirst.wav");
+            scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
+        } else {
+            // GAME OVER
+            timerLabel->setString("Game Over!");
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
+            if (isPopupShowing == true) {
+                hideMenuPopup();
+            }
+            
+            isGameFinished = true;
+            scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 1.0f);
+
+            
+        }
+
     } else {
         if (timerCount < 3) {
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ticktock.wav");
@@ -472,18 +496,35 @@ void GameStageScene::drawTimerLabel(float dt) {
     }
 }
 
-void GameStageScene::showMenuPopup() {
+void GameStageScene::showMenuPopup(float dt) {
+    log("show popup!");
+    
     isPopupShowing = true;
     
     pauseLayout = Sprite::create("popupBg.png", Rect(0, 0, winSize.width, winSize.height));
     pauseLayout->setPosition(Point(winSize.width/2, winSize.height/2));
+    
     this->addChild(pauseLayout, Z_ORDER_POPUP);
-
+    
+    char stageInfo[15];
+    std::sprintf(stageInfo, "stage : %d", mCurrentLevel);
+    LabelTTF* score = LabelTTF::create(stageInfo, "arial", 70.0f);
+    score->setPosition(Point(winSize.width/2, winSize.height * 0.8));
+    pauseLayout->addChild(score, Z_ORDER_POPUP_LABEL);
+    
+    char wrongInfo[15];
+    std::sprintf(wrongInfo, "wrong : %d", wrongNumberPerGame);
+    LabelTTF* wrong = LabelTTF::create(wrongInfo, "arial", 70.0f);
+    wrong->setPosition(Point(winSize.width/2, winSize.height * 0.7));
+    pauseLayout->addChild(wrong, Z_ORDER_POPUP_LABEL);
+    
+    this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_LABEL);
 }
 
 void GameStageScene::hideMenuPopup() {
+    log("hide popup!");
     isPopupShowing = false;
     pauseLayout->removeFromParent();
-
+    this->reorderChild(bgCurrentStage, 0);
 }
 
