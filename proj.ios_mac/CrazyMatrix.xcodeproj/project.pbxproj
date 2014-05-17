@@ -63,6 +63,9 @@
 		E26EC49A1924FA7700F6AF5D /* MAGENTA.png in Resources */ = {isa = PBXBuildFile; fileRef = E26EC4941924FA7700F6AF5D /* MAGENTA.png */; };
 		E26EC49B1924FA7700F6AF5D /* RED.png in Resources */ = {isa = PBXBuildFile; fileRef = E26EC4951924FA7700F6AF5D /* RED.png */; };
 		E26EC49C1924FA7700F6AF5D /* YELLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = E26EC4961924FA7700F6AF5D /* YELLOW.png */; };
+		E278674519278F5400AB395E /* RateIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E278674219278F5400AB395E /* RateIcon.png */; };
+		E278674619278F5400AB395E /* ReviewIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E278674319278F5400AB395E /* ReviewIcon.png */; };
+		E278674719278F5400AB395E /* TeamIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E278674419278F5400AB395E /* TeamIcon.png */; };
 		E28A896F192654BB0024232F /* ticktock.wav in Resources */ = {isa = PBXBuildFile; fileRef = E28A896E192654BB0024232F /* ticktock.wav */; };
 		E290BD981924DF3E003F4EF1 /* applause.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E290BD941924DF3E003F4EF1 /* applause.mp3 */; };
 		E290BD991924DF3E003F4EF1 /* bgMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = E290BD951924DF3E003F4EF1 /* bgMusic.wav */; };
@@ -297,6 +300,9 @@
 		E26EC4941924FA7700F6AF5D /* MAGENTA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MAGENTA.png; sourceTree = "<group>"; };
 		E26EC4951924FA7700F6AF5D /* RED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RED.png; sourceTree = "<group>"; };
 		E26EC4961924FA7700F6AF5D /* YELLOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YELLOW.png; sourceTree = "<group>"; };
+		E278674219278F5400AB395E /* RateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RateIcon.png; sourceTree = "<group>"; };
+		E278674319278F5400AB395E /* ReviewIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReviewIcon.png; sourceTree = "<group>"; };
+		E278674419278F5400AB395E /* TeamIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeamIcon.png; sourceTree = "<group>"; };
 		E28A896E192654BB0024232F /* ticktock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticktock.wav; sourceTree = "<group>"; };
 		E290BD941924DF3E003F4EF1 /* applause.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = applause.mp3; sourceTree = "<group>"; };
 		E290BD951924DF3E003F4EF1 /* bgMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bgMusic.wav; sourceTree = "<group>"; };
@@ -589,6 +595,9 @@
 		E2AC9C1019275174008629E5 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				E278674219278F5400AB395E /* RateIcon.png */,
+				E278674319278F5400AB395E /* ReviewIcon.png */,
+				E278674419278F5400AB395E /* TeamIcon.png */,
 				E2AC9C15192758B2008629E5 /* BGMoffIcon.png */,
 				E2AC9C16192758B2008629E5 /* BGMonIcon.png */,
 				E2AC9C17192758B2008629E5 /* EffectOffIcon.png */,
@@ -821,6 +830,7 @@
 				E290BD991924DF3E003F4EF1 /* bgMusic.wav in Resources */,
 				E2B51B211927242400D5C4F9 /* NewIcon.png in Resources */,
 				E2AA96CA19242F45004C9CE3 /* f2.png in Resources */,
+				E278674619278F5400AB395E /* ReviewIcon.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				E2B51B201927242400D5C4F9 /* MailIcon.png in Resources */,
@@ -830,6 +840,7 @@
 				E290BD9A1924DF3E003F4EF1 /* pageFlip.mp3 in Resources */,
 				E26EC49A1924FA7700F6AF5D /* MAGENTA.png in Resources */,
 				E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */,
+				E278674719278F5400AB395E /* TeamIcon.png in Resources */,
 				E2FB9B2C192706D20085D9BB /* Marker Felt.ttf in Resources */,
 				E26EC4991924FA7700F6AF5D /* GREEN.png in Resources */,
 				E2064CF6191E53F7007271A6 /* es042.wav in Resources */,
@@ -849,6 +860,7 @@
 				E293BE361924FDCF00CEAF6B /* GREEN_CIRCLE.png in Resources */,
 				E2EF20CA1927032E008AA78D /* gameFail.wav in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				E278674519278F5400AB395E /* RateIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

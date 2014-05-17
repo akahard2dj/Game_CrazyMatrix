@@ -14,9 +14,10 @@ USING_NS_CC;
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_ICON 1001
 #define Z_ORDER_POPUP_LABEL 1002
-#define NUM_POPUP_MENU 3
+#define NUM_POPUP_MENU 4
 #define NUM_SHARE_MENU 4
 #define NUM_OPTION_MENU 4
+#define NUM_TEAM_MENU 2
 
 
 Scene* GameStageScene::createScene()
@@ -557,6 +558,7 @@ void GameStageScene::showMenuPopup(float dt) {
     popMenuImage[0] = Sprite::create("RankingIcon.png");
     popMenuImage[1] = Sprite::create("OptionIcon.png");
     popMenuImage[2] = Sprite::create("ShareIcon.png");
+    popMenuImage[3] = Sprite::create("TeamIcon.png");
     
     shareImage[0] = Sprite::create("FacebookIcon.png");
     shareImage[1] = Sprite::create("TwitterIcon.png");
@@ -568,19 +570,23 @@ void GameStageScene::showMenuPopup(float dt) {
     optionImage[2] = Sprite::create("BGMoffIcon.png");
     optionImage[3] = Sprite::create("EffectOffIcon.png");
     
-    float popX[NUM_POPUP_MENU] = {winSize.width/2, 80, winSize.width-80};
-    float popY[NUM_POPUP_MENU] = {winSize.height/2, 200, winSize.height-100};
+    teamImage[0] = Sprite::create("ReviewIcon.png");
+    teamImage[1] = Sprite::create("RateIcon.png");
+    
+    float popX[NUM_POPUP_MENU] = {winSize.width/2, 80, winSize.width-80, 80};
+    float popY[NUM_POPUP_MENU] = {winSize.height/2, 200, winSize.height-100, winSize.height-100};
     float shareX[NUM_SHARE_MENU] = {winSize.width-80, winSize.width-80, winSize.width-80, winSize.width-80};
     float shareY[NUM_SHARE_MENU] = {winSize.height-230, winSize.height-330, winSize.height-430, winSize.height-530};
     float optionX[NUM_OPTION_MENU/2] = {80, 80};
     float optionY[NUM_OPTION_MENU/2] = {330, 430};
+    float teamX[NUM_TEAM_MENU] = {80, 80};
+    float teamY[NUM_TEAM_MENU] = {winSize.height-230, winSize.height-330};
     
     for (int i=0; i<NUM_POPUP_MENU; i++) {
-        popMenuImage[i]->setScale(0.8, 0.8);
+        popMenuImage[i]->setScale(0.7, 0.7);
         popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
     }
-    popMenuImage[1]->setScale(0.7, 0.7);
-    popMenuImage[2]->setScale(0.7, 0.7);
+    popMenuImage[0]->setScale(0.8, 0.8);
     
     for (int i=0; i<NUM_SHARE_MENU; i++) {
         shareImage[i]->setScale(0.5, 0.5);
@@ -590,6 +596,11 @@ void GameStageScene::showMenuPopup(float dt) {
     for (int i=0; i<NUM_OPTION_MENU; i++) {
         optionImage[i]->setScale(0.5, 0.5);
         optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
+    }
+    
+    for (int i=0; i<NUM_TEAM_MENU; i++) {
+        teamImage[i]->setScale(0.5, 0.5);
+        teamImage[i]->setPosition(Point(teamX[i],teamY[i]));
     }
     
     for (int i=0; i<NUM_POPUP_MENU; i++) {
@@ -602,6 +613,10 @@ void GameStageScene::showMenuPopup(float dt) {
     
     for (int i=0; i<NUM_OPTION_MENU/2; i++) {
         this->addChild(optionImage[i], Z_ORDER_POPUP);
+    }
+    
+    for (int i=0; i<NUM_TEAM_MENU; i++) {
+        this->addChild(teamImage[i], Z_ORDER_POPUP);
     }
 }
 
@@ -620,6 +635,10 @@ void GameStageScene::hideMenuPopup() {
     
     for (int i=0; i<NUM_OPTION_MENU/2; i++) {
         optionImage[i]->removeFromParent();
+    }
+    
+    for (int i=0; i<NUM_TEAM_MENU; i++) {
+        teamImage[i]->removeFromParent();
     }
 }
 
