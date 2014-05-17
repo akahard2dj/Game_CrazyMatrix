@@ -108,8 +108,11 @@ void GameStageScene::drawBoard() {
 
 	float delayTime = 2.0f * (float)info.matrixSize / 3.0f;
     float hideTime = 1.0f * (float)info.matrixSize / 3.0f;
-    const float delayForOneAnimation = 0.8;
-    const float animationTime = delayForOneAnimation + 0.2f * info.actionNum;
+    const float delayForRotationAnimation = 0.8f;
+    const float delayForFlipAnimation = 1.5f;
+    const float delayAnimationMargin = 0.5f;
+    const float animationTime = (delayForRotationAnimation + delayForFlipAnimation) / 2
+                                 + delayAnimationMargin * info.actionNum;
     
 	scheduleOnce(schedule_selector(GameStageScene::hideTiles), delayTime);
     scheduleOnce(schedule_selector(GameStageScene::makeTimer), delayTime + animationTime + hideTime);
@@ -117,6 +120,9 @@ void GameStageScene::drawBoard() {
     FiniteTimeAction* action1 = NULL;
     FiniteTimeAction* action2 = NULL;
     FiniteTimeAction* action3 = NULL;
+    FiniteTimeAction* action4 = NULL;
+    FiniteTimeAction* action5 = NULL;
+    
     
     auto delay_interval = DelayTime::create(0.1);
     
@@ -126,29 +132,27 @@ void GameStageScene::drawBoard() {
         
 		switch(info.actions[t]) {
 		case TRANSFORM_FLIP_X:
-			action = OrbitCamera::create(delayForOneAnimation, 1, 0, 0, 180, 0, 0);
-            //action = FlipX3D::create(0.5);
+			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
             log("flip x");
 			break;
 		case TRANSFORM_FLIP_Y:
-			action = OrbitCamera::create(delayForOneAnimation, 1, 0, 0, 180, 0, 0);
-            //action = FlipY3D::create(0.5);
+			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
             log("flip y");
 			break;
 		case TRANSFORM_ROT_CW:
-			action = RotateBy::create(delayForOneAnimation, 90);
+			action = RotateBy::create(delayForRotationAnimation, 90);
 			log("rotate 90");
 			break;
 		case TRANSFORM_ROT_CCW:
-			action = RotateBy::create(delayForOneAnimation, -90);
+			action = RotateBy::create(delayForRotationAnimation, -90);
 			log("rotate -90");
 			break;
 		case TRANSFORM_TRANS1:
-			action = RotateBy::create(delayForOneAnimation, 90);
+			action = RotateBy::create(delayForRotationAnimation, 90);
 			log("trans 1");
 			break;
 		case TRANSFORM_TRANS2:
-			action = RotateBy::create(delayForOneAnimation, -90);
+			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
 			log("trans 2");
 			break;
 		default:
@@ -160,15 +164,21 @@ void GameStageScene::drawBoard() {
         
         if (t==0) {
             action1 = action;
-        } else if(t==1) {
+        } else if (t==1) {
             action2 = action;
-        } else if(t==2) {
+        } else if (t==2) {
             action3 = action;
+        } else if (t==3) {
+            action4 = action;
+        } else if (t==4) {
+            action5 = action;
         }
 	}
     
     auto delay = DelayTime::create(delayTime + hideTime);
-    boardLayer->runAction(Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, NULL));
+    boardLayer->runAction(
+        Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, delay_interval, action4, delay_interval, action5, NULL));
+    
 }
 
 
@@ -477,7 +487,7 @@ void GameStageScene::drawTimerLabel(float dt) {
             }
             
             isGameFinished = true;
-            scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 1.0f);
+            scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 2.0f);
 
             
         }
@@ -520,7 +530,7 @@ void GameStageScene::showMenuPopup(float dt) {
     wrong->setPosition(Point(winSize.width/2, winSize.height - 200));
     pauseLayout->addChild(wrong, Z_ORDER_POPUP_LABEL);
     
-    //this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_LABEL);
+    this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_LABEL);
     
     // Menu item Layout
     popMenuImage[0] = Sprite::create("RankingIcon.png");

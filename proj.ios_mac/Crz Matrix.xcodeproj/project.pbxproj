@@ -61,6 +61,15 @@
 		CD339F6F1926E06600DBB2E7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD339F6E1926E06600DBB2E7 /* GameKit.framework */; };
 		CD339F731926FDFC00DBB2E7 /* popupBg.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F721926FDFC00DBB2E7 /* popupBg.png */; };
 		CD339F7619270FBF00DBB2E7 /* failFirst.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7519270FBF00DBB2E7 /* failFirst.wav */; };
+		CD339F8219273E4100DBB2E7 /* BackIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7919273E4100DBB2E7 /* BackIcon.png */; };
+		CD339F8319273E4100DBB2E7 /* FacebookIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7A19273E4100DBB2E7 /* FacebookIcon.png */; };
+		CD339F8419273E4100DBB2E7 /* MailIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7B19273E4100DBB2E7 /* MailIcon.png */; };
+		CD339F8519273E4100DBB2E7 /* NewIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7C19273E4100DBB2E7 /* NewIcon.png */; };
+		CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7D19273E4100DBB2E7 /* OptionIcon.png */; };
+		CD339F8719273E4100DBB2E7 /* RankingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7E19273E4100DBB2E7 /* RankingIcon.png */; };
+		CD339F8819273E4100DBB2E7 /* ShareIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F7F19273E4100DBB2E7 /* ShareIcon.png */; };
+		CD339F8919273E4100DBB2E7 /* SMSIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8019273E4100DBB2E7 /* SMSIcon.png */; };
+		CD339F8A19273E4100DBB2E7 /* TwitterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8119273E4100DBB2E7 /* TwitterIcon.png */; };
 		CD61909C1924FBC5006D7099 /* BLUE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190961924FBC5006D7099 /* BLUE.png */; };
 		CD61909D1924FBC5006D7099 /* CYAN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190971924FBC5006D7099 /* CYAN.png */; };
 		CD61909E1924FBC5006D7099 /* GREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190981924FBC5006D7099 /* GREEN.png */; };
@@ -292,6 +301,15 @@
 		CD339F6E1926E06600DBB2E7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD339F721926FDFC00DBB2E7 /* popupBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popupBg.png; sourceTree = "<group>"; };
 		CD339F7519270FBF00DBB2E7 /* failFirst.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = failFirst.wav; sourceTree = "<group>"; };
+		CD339F7919273E4100DBB2E7 /* BackIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackIcon.png; sourceTree = "<group>"; };
+		CD339F7A19273E4100DBB2E7 /* FacebookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookIcon.png; sourceTree = "<group>"; };
+		CD339F7B19273E4100DBB2E7 /* MailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MailIcon.png; sourceTree = "<group>"; };
+		CD339F7C19273E4100DBB2E7 /* NewIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewIcon.png; sourceTree = "<group>"; };
+		CD339F7D19273E4100DBB2E7 /* OptionIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OptionIcon.png; sourceTree = "<group>"; };
+		CD339F7E19273E4100DBB2E7 /* RankingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RankingIcon.png; sourceTree = "<group>"; };
+		CD339F7F19273E4100DBB2E7 /* ShareIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareIcon.png; sourceTree = "<group>"; };
+		CD339F8019273E4100DBB2E7 /* SMSIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SMSIcon.png; sourceTree = "<group>"; };
+		CD339F8119273E4100DBB2E7 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterIcon.png; sourceTree = "<group>"; };
 		CD6190961924FBC5006D7099 /* BLUE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BLUE.png; sourceTree = "<group>"; };
 		CD6190971924FBC5006D7099 /* CYAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CYAN.png; sourceTree = "<group>"; };
 		CD6190981924FBC5006D7099 /* GREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GREEN.png; sourceTree = "<group>"; };
@@ -558,6 +576,15 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD339F7919273E4100DBB2E7 /* BackIcon.png */,
+				CD339F7A19273E4100DBB2E7 /* FacebookIcon.png */,
+				CD339F7B19273E4100DBB2E7 /* MailIcon.png */,
+				CD339F7C19273E4100DBB2E7 /* NewIcon.png */,
+				CD339F7D19273E4100DBB2E7 /* OptionIcon.png */,
+				CD339F7E19273E4100DBB2E7 /* RankingIcon.png */,
+				CD339F7F19273E4100DBB2E7 /* ShareIcon.png */,
+				CD339F8019273E4100DBB2E7 /* SMSIcon.png */,
+				CD339F8119273E4100DBB2E7 /* TwitterIcon.png */,
 				CD339F7519270FBF00DBB2E7 /* failFirst.wav */,
 				CD339F721926FDFC00DBB2E7 /* popupBg.png */,
 				CD339F6C1926D71B00DBB2E7 /* stageBtClick.wav */,
@@ -780,6 +807,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD61909E1924FBC5006D7099 /* GREEN.png in Resources */,
+				CD339F8419273E4100DBB2E7 /* MailIcon.png in Resources */,
 				CDC50F221923BC22003391CD /* f1.png in Resources */,
 				CD339F691926D67400DBB2E7 /* gameFail.wav in Resources */,
 				CDC50F151923B0AB003391CD /* Icon-Small.png in Resources */,
@@ -789,24 +817,32 @@
 				CD339F731926FDFC00DBB2E7 /* popupBg.png in Resources */,
 				CD61909C1924FBC5006D7099 /* BLUE.png in Resources */,
 				CD6190A51924FDBE006D7099 /* GREEN_CIRCLE.png in Resources */,
+				CD339F8519273E4100DBB2E7 /* NewIcon.png in Resources */,
 				CD6190A01924FBC5006D7099 /* RED.png in Resources */,
 				CDC50F171923B0AB003391CD /* Icon-Small@2x.png in Resources */,
+				CD339F8A19273E4100DBB2E7 /* TwitterIcon.png in Resources */,
+				CD339F8319273E4100DBB2E7 /* FacebookIcon.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				CD339F8819273E4100DBB2E7 /* ShareIcon.png in Resources */,
 				CDC50F211923BC22003391CD /* f2.png in Resources */,
 				E29C3D44192252FF00DC481B /* ticktock.wav in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
+				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
 				CD339F6D1926D71B00DBB2E7 /* stageBtClick.wav in Resources */,
+				CD339F8219273E4100DBB2E7 /* BackIcon.png in Resources */,
 				CDC50F161923B0AB003391CD /* launcher01.png in Resources */,
 				CDC50F141923B0AB003391CD /* Icon-60.png in Resources */,
 				CD61909D1924FBC5006D7099 /* CYAN.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				CD0121521924D8270071F067 /* applause.mp3 in Resources */,
+				CD339F8719273E4100DBB2E7 /* RankingIcon.png in Resources */,
 				E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */,
 				CD01214C1924CEDD0071F067 /* bgMusic.wav in Resources */,
 				CD339F7619270FBF00DBB2E7 /* failFirst.wav in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				E2064CF6191E53F7007271A6 /* es042.wav in Resources */,
+				CD339F8919273E4100DBB2E7 /* SMSIcon.png in Resources */,
 				CD8A17FB1924CBF400304CD4 /* stage_bg.png in Resources */,
 				E2064CEB191CEFBC007271A6 /* MagentaSquare.png in Resources */,
 				CDC50F1B1923B0AB003391CD /* Icon-40@2x.png in Resources */,

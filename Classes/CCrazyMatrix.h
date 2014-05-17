@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <time.h>
 
-#define	MAX_SHUFFLES 	16
-#define MAX_LEVEL		20
-#define TARGET_LEVEL    11
+#define	MAX_SHUFFLES 	5
+#define MAX_LEVEL		50
+#define TARGET_LEVEL    1
 
 typedef enum _ShuffleType
 {
