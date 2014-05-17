@@ -1,6 +1,6 @@
 #include "CCrazyMatrix.h"
 
-int g_designedNumShuffles[MAX_LEVEL] = {0, 1, 1, 2, 1, 1, 1, 2, 1, 1,
+int g_designedNumShuffles[MAX_LEVEL] = {0, 1, 1, 1, 2, 1, 1, 2, 1, 1,
                                         0, 0, 1, 1, 1, 2, 2, 2, 2, 3};
 int g_designedNumPairs[MAX_LEVEL] =    {2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
                                         6, 7, 8, 9, 10, 11, 12, 13, 14, 15};

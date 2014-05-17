@@ -9,6 +9,7 @@ USING_NS_CC;
 #define SPEED_FOR_FLIP 0.05
 #define SPEED_FOR_FLIP_DELAY 0.3
 #define MSG_PLAY_AGAIN "play-again"
+#define TAG_BUTTON_CURRENT_STAGE_BG 500
 
 Scene* GameStageScene::createScene()
 {
@@ -37,9 +38,10 @@ bool GameStageScene::init()
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("es042.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ticktock.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("bgMusic.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("pageFlip.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("applause.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("gameFail.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("stageBtClick.wav");
     
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
@@ -78,6 +80,7 @@ void GameStageScene::drawCurrentStageInfo() {
     std::sprintf(stageInfo, "%d", mCurrentLevel);
     currentStage = LabelTTF::create(stageInfo, "arial", 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
+    bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
     this->addChild(currentStage);
     
 }
@@ -249,23 +252,38 @@ void GameStageScene::drawBoardTiles(int n) {
 void GameStageScene::addEventListener(EventDispatcher* e) {
 
     auto listener = EventListenerTouchOneByOne::create();
-    listener->setSwallowTouches(true);
+    listener->setSwallowTouches(false);
     
     listener->onTouchBegan = [=](Touch* touch, Event* event){
         
         auto target = event->getCurrentTarget();
-        int tileNum = target->getTag();
+        int tagNum = target->getTag();
         
         Point locationInNode = target->convertToNodeSpace(touch->getLocation());
         Size s = target->getContentSize();
-        Rect rect = Rect(0, 0, s.width, s.height);
+        const float MARGIN_TOUCH_AREA = target->getContentSize().width * 0.1;
+        Rect rect = Rect(-MARGIN_TOUCH_AREA, -MARGIN_TOUCH_AREA, s.width + MARGIN_TOUCH_AREA, s.height + MARGIN_TOUCH_AREA);
         
         if (rect.containsPoint(locationInNode)) {
-            if (tileTouchEnable == false) return false;
-            //log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
-            float currentScale = mTiles[tileNum]->getScale();
-            mTiles[tileNum]->setScale(currentScale * 1.1);
-            return true;
+            
+            if (tagNum > mTiles.size()) {
+                switch (tagNum) {
+                    case TAG_BUTTON_CURRENT_STAGE_BG:
+                        //auto scaleInitup = ScaleBy::create(0.2f, 1.3f);
+                        auto scaledown = ScaleBy::create(0.1f, 0.9f);
+                        auto scaleup = ScaleBy::create(0.1f, 1.1f);
+                        auto scaleupdowon = RepeatForever::create(Sequence::create(scaleup, scaledown, NULL));
+                        bgCurrentStage->setScale(1.3f);
+                        bgCurrentStage->runAction(scaleupdowon);
+                        break;
+                }
+                return true;
+            } else if (tileTouchEnable == true) {
+                float currentScale = mTiles[tagNum]->getScale();
+                mTiles[tagNum]->setScale(currentScale * 1.1);
+                return true;
+            }
+            
         }
         return false;
     };
@@ -276,15 +294,29 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
     
     listener->onTouchEnded = [=](Touch* touch, Event* event){
         auto target = event->getCurrentTarget();
-		int tileNum = target->getTag();
+		int tagNum = target->getTag();
  
+        if (tagNum > mTiles.size()) {
+            switch (tagNum) {
+                case TAG_BUTTON_CURRENT_STAGE_BG:
+                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
+                    bgCurrentStage->stopAllActions();
+                    bgCurrentStage->setScale(1.0f);
+                    break;
+                default:
+                    break;
+            }
+            return;
+        }
+        
+        
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("es042.wav");
         
-		mTilesSelected[tileNum] = (mTilesSelected[tileNum] + 1) % 2;
-		std::string image = mTilesSelected[tileNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
-		mTiles[tileNum]->setTexture(image);
-        float currentScale = mTiles[tileNum]->getScale();
-        mTiles[tileNum]->setScale(currentScale - currentScale * 0.1);
+		mTilesSelected[tagNum] = (mTilesSelected[tagNum] + 1) % 2;
+		std::string image = mTilesSelected[tagNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
+		mTiles[tagNum]->setTexture(image);
+        float currentScale = mTiles[tagNum]->getScale();
+        mTiles[tagNum]->setScale(currentScale - currentScale * 0.1);
         flower(touch->getLocation());
         
 		int count = 0;
@@ -298,6 +330,9 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
             stageClear();
 		}
     };
+    
+    e->addEventListenerWithSceneGraphPriority(listener->clone(), bgCurrentStage);
+    e->addEventListenerWithSceneGraphPriority(listener->clone(), currentStage);
     
 	for (int n=0; n<mTiles.size(); n++) {
 		e->addEventListenerWithSceneGraphPriority(listener->clone(), mTiles.at(n));
@@ -380,7 +415,7 @@ void GameStageScene::makeTimer(float dt) {
 void GameStageScene::drawTimerLabel(float dt) {
     
     if (timerCount < 0) {
-        //CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ALARM.WAV");
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
         mCurrentLevel = 1;
         timerLabel->setString("Game Over");
