@@ -428,7 +428,7 @@ void GameStageScene::drawTimerLabel(float dt) {
     if (timerCount < 0) {
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
-        mCurrentLevel = 1;
+        //mCurrentLevel = 1;
         timerLabel->setString("Game Over");
         timerLabel->setScale(1.0f);
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
