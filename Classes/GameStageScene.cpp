@@ -428,7 +428,7 @@ void GameStageScene::flower(Point s)
     emitter->setDuration(0.5);
     emitter->setEmissionRate(100);
     emitter->setSpeed(100);
-    
+
     this->addChild(emitter,101);
 }
 
@@ -437,8 +437,29 @@ void GameStageScene::effectShowSolution(Point s)
     ParticleSystem *emitter = ParticleFlower::create();
     emitter->setTexture(Director::getInstance()->getTextureCache()->addImage("stars.png"));
     emitter->setPosition(s);
-    boardLayer->addChild(emitter,0);
     
+    switch (info.matrixSize) {
+        case 2:
+            emitter->setSpeed(130);
+            break;
+        case 3:
+            emitter->setSpeed(95);
+            break;
+        case 4:
+            emitter->setSpeed(85);
+            break;
+        case 5:
+            emitter->setSpeed(70);
+            break;
+        case 6:
+            emitter->setSpeed(65);
+            break;
+        default:
+            emitter->setSpeed(80);
+            break;
+    }
+    
+    boardLayer->addChild(emitter,0);
 }
 
 void GameStageScene::makeTimer(float dt) {
