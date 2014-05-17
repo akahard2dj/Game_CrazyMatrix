@@ -368,8 +368,8 @@ void GameStageScene::explosion(Point s) {
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
 	particle->setGravity(Point(0, -70));
-    particle->setLife(2.0);
-    particle->setSpeed(80);
+    particle->setLife(1.8);
+    particle->setSpeed(120);
     particle->setEmissionRate(1300);
 	particle->setEndColor(Color4F(0,0,0,1));
     particle->setEndSize(0.0);
@@ -427,7 +427,6 @@ void GameStageScene::drawTimerLabel(float dt) {
             Point pt;
             if (info.before[i] == 1) {
                 pt = mTiles.at(i)->getPosition();
-                log("%f %f",pt.x, pt.y);
                 effectShowSolution(pt);
             }
         }
