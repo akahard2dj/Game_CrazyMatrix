@@ -35,6 +35,7 @@ private:
     Sprite* bgCurrentStage;
     bool isPopupShowing;
     Sprite* pauseLayout;
+    bool hasOneMoreChange;
     
 	void gameStart(float dt);
 	void getStageInfo();

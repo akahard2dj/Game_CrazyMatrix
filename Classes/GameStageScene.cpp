@@ -44,11 +44,13 @@ bool GameStageScene::init()
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("applause.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("gameFail.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("stageBtClick.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("failFirst.wav");
     
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
     
 	mCurrentLevel = 1;
+    hasOneMoreChange = true;
     tileTouchEnable = false;
 	gameStart(0);
 
@@ -357,6 +359,7 @@ void GameStageScene::stageClear() {
     unschedule(schedule_selector(GameStageScene::drawTimerLabel));
     tileTouchEnable = false;
     mCurrentLevel += 1;
+    hasOneMoreChange = true;
     this->removeChild(timerLabel);
     
     auto scaleUp = ScaleBy::create(0.4, 1.5);
@@ -426,10 +429,19 @@ void GameStageScene::makeTimer(float dt) {
 void GameStageScene::drawTimerLabel(float dt) {
     
     if (timerCount < 0) {
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
+        
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
-        //mCurrentLevel = 1;
-        timerLabel->setString("Game Over");
+        
+        if (hasOneMoreChange) {
+            hasOneMoreChange = false;
+            timerLabel->setString("Once More!");
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("failFirst.wav");
+        } else {
+            mCurrentLevel = 1;
+            timerLabel->setString("Game Over!");
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
+        }
+        
         timerLabel->setScale(1.0f);
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
         tileTouchEnable = false;
