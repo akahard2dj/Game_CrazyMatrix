@@ -136,7 +136,11 @@ void GameStageScene::drawBoard() {
             log("flip x");
 			break;
 		case TRANSFORM_FLIP_Y:
+<<<<<<< HEAD
             action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0,0);
+=======
+			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, -180, 0, 0);
+>>>>>>> FETCH_HEAD
             log("flip y");
 			break;
 		case TRANSFORM_ROT_CW:
@@ -148,18 +152,33 @@ void GameStageScene::drawBoard() {
             log("rotate -90");
 			break;
 		case TRANSFORM_TRANS1:
+<<<<<<< HEAD
             action = RotateBy::create(delayForRotationAnimation, 180);
 			log("trans 1");
 			break;
 		case TRANSFORM_TRANS2:
             action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
             log("trans 2");
+=======
+			action = RotateBy::create(delayForRotationAnimation, 45);
+			log("trans 1");
+			break;
+		case TRANSFORM_TRANS2:
+			action = RotateBy::create(delayForRotationAnimation, -45);
+			log("trans 2");
+>>>>>>> FETCH_HEAD
 			break;
 		default:
 			break;
 		}
         
-        //action = EaseExponentialIn::create(action);
+        //for test
+        /*action = Sequence::create(
+               OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, -180, 0, 0),
+              // RotateBy::create(delayForRotationAnimation, 45),
+              // OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0),
+              // RotateBy::create(delayForRotationAnimation, -45),
+                                  NULL );*/
         action = EaseBackOut::create(action);
         
         if (t==0) {
