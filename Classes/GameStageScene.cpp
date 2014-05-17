@@ -12,6 +12,7 @@ USING_NS_CC;
 #define MSG_PLAY_AGAIN "play-again"
 #define TAG_BUTTON_CURRENT_STAGE_BG 500
 #define Z_ORDER_POPUP 1000
+#define Z_ORDER_POPUP_ICON 1001
 #define Z_ORDER_POPUP_LABEL 1002
 #define NUM_POPUP_MENU 3
 #define NUM_SHARE_MENU 4
@@ -539,19 +540,18 @@ void GameStageScene::showMenuPopup(float dt) {
     
     this->addChild(pauseLayout, Z_ORDER_POPUP);
     
-    char stageInfo[15];
-    std::sprintf(stageInfo, "stage : %d", mCurrentLevel);
-    LabelTTF* score = LabelTTF::create(stageInfo, "arial", 70.0f);
-    score->setPosition(Point(winSize.width/2, winSize.height - 100));
+    LabelTTF* score = LabelTTF::create("Stage", "arial", 30.0f);
+    score->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
     pauseLayout->addChild(score, Z_ORDER_POPUP_LABEL);
     
-    char wrongInfo[15];
-    std::sprintf(wrongInfo, "wrong : %d", wrongNumberPerGame);
-    LabelTTF* wrong = LabelTTF::create(wrongInfo, "arial", 70.0f);
-    wrong->setPosition(Point(winSize.width/2, winSize.height - 200));
-    pauseLayout->addChild(wrong, Z_ORDER_POPUP_LABEL);
+    //char wrongInfo[15];
+    //std::sprintf(wrongInfo, "wrong : %d", wrongNumberPerGame);
+    //LabelTTF* wrong = LabelTTF::create(wrongInfo, "arial", 70.0f);
+    //wrong->setPosition(Point(winSize.width/2, winSize.height - 200));
+    //pauseLayout->addChild(wrong, Z_ORDER_POPUP_LABEL);
     
-    this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_LABEL);
+    this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_ICON);
+    this->reorderChild(currentStage, Z_ORDER_POPUP_LABEL);
     
     // Menu item Layout
     popMenuImage[0] = Sprite::create("RankingIcon.png");
