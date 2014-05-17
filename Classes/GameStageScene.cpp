@@ -13,8 +13,9 @@ USING_NS_CC;
 #define TAG_BUTTON_CURRENT_STAGE_BG 500
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_LABEL 1002
-#define NUM_POPUP_MENU 5
+#define NUM_POPUP_MENU 3
 #define NUM_SHARE_MENU 4
+#define NUM_OPTION_MENU 4
 
 
 Scene* GameStageScene::createScene()
@@ -112,7 +113,7 @@ void GameStageScene::drawBoard() {
     const float delayForFlipAnimation = 1.5f;
     const float delayAnimationMargin = 0.5f;
     const float animationTime = (delayForRotationAnimation + delayForFlipAnimation) / 2
-                                 + delayAnimationMargin * info.actionNum;
+                                + delayAnimationMargin * info.actionNum;
     
 	scheduleOnce(schedule_selector(GameStageScene::hideTiles), delayTime);
     scheduleOnce(schedule_selector(GameStageScene::makeTimer), delayTime + animationTime + hideTime);
@@ -122,7 +123,6 @@ void GameStageScene::drawBoard() {
     FiniteTimeAction* action3 = NULL;
     FiniteTimeAction* action4 = NULL;
     FiniteTimeAction* action5 = NULL;
-    
     
     auto delay_interval = DelayTime::create(0.1);
     
@@ -136,24 +136,24 @@ void GameStageScene::drawBoard() {
             log("flip x");
 			break;
 		case TRANSFORM_FLIP_Y:
-			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
+            action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0,0);
             log("flip y");
 			break;
 		case TRANSFORM_ROT_CW:
-			action = RotateBy::create(delayForRotationAnimation, 90);
+            action = RotateBy::create(delayForRotationAnimation, 90);
 			log("rotate 90");
 			break;
 		case TRANSFORM_ROT_CCW:
-			action = RotateBy::create(delayForRotationAnimation, -90);
-			log("rotate -90");
+            action = RotateBy::create(delayForRotationAnimation, -90);
+            log("rotate -90");
 			break;
 		case TRANSFORM_TRANS1:
-			action = RotateBy::create(delayForRotationAnimation, 90);
+            action = RotateBy::create(delayForRotationAnimation, 180);
 			log("trans 1");
 			break;
 		case TRANSFORM_TRANS2:
-			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
-			log("trans 2");
+            action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
+            log("trans 2");
 			break;
 		default:
 			break;
@@ -164,9 +164,9 @@ void GameStageScene::drawBoard() {
         
         if (t==0) {
             action1 = action;
-        } else if (t==1) {
+        } else if(t==1) {
             action2 = action;
-        } else if (t==2) {
+        } else if(t==2) {
             action3 = action;
         } else if (t==3) {
             action4 = action;
@@ -176,9 +176,9 @@ void GameStageScene::drawBoard() {
 	}
     
     auto delay = DelayTime::create(delayTime + hideTime);
-    boardLayer->runAction(
-        Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, delay_interval, action4, delay_interval, action5, NULL));
+    boardLayer->runAction(Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, delay_interval, action4, delay_interval, action5, NULL));
     
+
 }
 
 
@@ -389,7 +389,7 @@ void GameStageScene::stageClear() {
     hasOneMoreChange = true;
     this->removeChild(timerLabel);
     
-    auto scaleUp = ScaleBy::create(0.4, 1.5);
+    auto scaleUp = ScaleBy::create(0.4, 1.2);
     auto scaleDown = scaleUp->reverse();
     bgCurrentStage->runAction(Sequence::create(scaleUp, scaleDown, scaleUp, scaleDown, scaleUp, scaleDown, NULL));
     
@@ -534,31 +534,41 @@ void GameStageScene::showMenuPopup(float dt) {
     
     // Menu item Layout
     popMenuImage[0] = Sprite::create("RankingIcon.png");
-    popMenuImage[1] = Sprite::create("NewIcon.png");
-    popMenuImage[2] = Sprite::create("BackIcon.png");
-    popMenuImage[3] = Sprite::create("OptionIcon.png");
-    popMenuImage[4] = Sprite::create("ShareIcon.png");
+    popMenuImage[1] = Sprite::create("OptionIcon.png");
+    popMenuImage[2] = Sprite::create("ShareIcon.png");
     
     shareImage[0] = Sprite::create("FacebookIcon.png");
     shareImage[1] = Sprite::create("TwitterIcon.png");
     shareImage[2] = Sprite::create("MailIcon.png");
     shareImage[3] = Sprite::create("SMSIcon.png");
     
-    float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width/2 + 90, winSize.width/2 - 90, 80, winSize.width-80};
-    float popY[NUM_POPUP_MENU] = {winSize.height*2/3-50, winSize.height*2/3 - 230, winSize.height*2/3 - 230, 200, winSize.height-100};
+    optionImage[0] = Sprite::create("BGMonIcon.png");
+    optionImage[1] = Sprite::create("EffectOnIcon.png");
+    optionImage[2] = Sprite::create("BGMoffIcon.png");
+    optionImage[3] = Sprite::create("EffectOffIcon.png");
+    
+    float popX[NUM_POPUP_MENU] = {winSize.width/2, 80, winSize.width-80};
+    float popY[NUM_POPUP_MENU] = {winSize.height/2, 200, winSize.height-100};
     float shareX[NUM_SHARE_MENU] = {winSize.width-80, winSize.width-80, winSize.width-80, winSize.width-80};
     float shareY[NUM_SHARE_MENU] = {winSize.height-230, winSize.height-330, winSize.height-430, winSize.height-530};
+    float optionX[NUM_OPTION_MENU/2] = {80, 80};
+    float optionY[NUM_OPTION_MENU/2] = {330, 430};
     
     for (int i=0; i<NUM_POPUP_MENU; i++) {
         popMenuImage[i]->setScale(0.8, 0.8);
         popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
     }
-    popMenuImage[3]->setScale(0.7, 0.7);
-    popMenuImage[4]->setScale(0.7, 0.7);
+    popMenuImage[1]->setScale(0.7, 0.7);
+    popMenuImage[2]->setScale(0.7, 0.7);
     
     for (int i=0; i<NUM_SHARE_MENU; i++) {
         shareImage[i]->setScale(0.5, 0.5);
         shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
+    }
+    
+    for (int i=0; i<NUM_OPTION_MENU; i++) {
+        optionImage[i]->setScale(0.5, 0.5);
+        optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
     }
     
     for (int i=0; i<NUM_POPUP_MENU; i++) {
@@ -567,6 +577,10 @@ void GameStageScene::showMenuPopup(float dt) {
     
     for (int i=0; i<NUM_SHARE_MENU; i++) {
         this->addChild(shareImage[i], Z_ORDER_POPUP);
+    }
+    
+    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
+        this->addChild(optionImage[i], Z_ORDER_POPUP);
     }
 }
 
@@ -581,6 +595,10 @@ void GameStageScene::hideMenuPopup() {
     
     for (int i=0; i<NUM_SHARE_MENU; i++) {
         shareImage[i]->removeFromParent();
+    }
+    
+    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
+        optionImage[i]->removeFromParent();
     }
 }
 

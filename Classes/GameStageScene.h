@@ -33,6 +33,7 @@ private:
     Sprite* bgImage;
     Sprite* shareImage[4];
     Sprite* popMenuImage[5];
+    Sprite* optionImage[4];
     LabelTTF* currentStage;
     Sprite* bgCurrentStage;
     bool isPopupShowing;
