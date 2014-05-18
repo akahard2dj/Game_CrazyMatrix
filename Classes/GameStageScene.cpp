@@ -211,8 +211,13 @@ void GameStageScene::drawInitBoard() {
 
 			auto tile = Sprite::create(IMAGE_TILE_NORAML);
 			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));
-            float tileScale = 4.0f / (float)info.matrixSize;
-			tile->setScale(tileScale);
+            float tileScale;
+            if (info.matrixSize == 2) {
+                tileScale = 1.8f;
+            } else {
+                tileScale = 4.0f / (float)info.matrixSize;
+            }
+            tile->setScale(tileScale);
 			tile->setTag(idx);
 			boardLayer->addChild(tile,10);
             
@@ -358,7 +363,7 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		std::string image = mTilesSelected[tagNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
 		mTiles[tagNum]->setTexture(image);
         float currentScale = mTiles[tagNum]->getScale();
-        mTiles[tagNum]->setScale(currentScale - currentScale * 0.1);
+        mTiles[tagNum]->setScale(currentScale / 1.1);
         flower(touch->getLocation());
         
 		int count = 0;
