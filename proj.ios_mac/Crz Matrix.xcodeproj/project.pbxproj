@@ -74,6 +74,10 @@
 		CD339F901927887C00DBB2E7 /* BGMonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8C1927887C00DBB2E7 /* BGMonIcon.png */; };
 		CD339F911927887C00DBB2E7 /* EffectOffIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8D1927887C00DBB2E7 /* EffectOffIcon.png */; };
 		CD339F921927887C00DBB2E7 /* EffectOnIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8E1927887C00DBB2E7 /* EffectOnIcon.png */; };
+		CD339F981927946300DBB2E7 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD339F941927946300DBB2E7 /* Marker Felt.ttf */; };
+		CD339F991927946300DBB2E7 /* RateIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F951927946300DBB2E7 /* RateIcon.png */; };
+		CD339F9A1927946300DBB2E7 /* ReviewIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F961927946300DBB2E7 /* ReviewIcon.png */; };
+		CD339F9B1927946300DBB2E7 /* TeamIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F971927946300DBB2E7 /* TeamIcon.png */; };
 		CD61909C1924FBC5006D7099 /* BLUE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190961924FBC5006D7099 /* BLUE.png */; };
 		CD61909D1924FBC5006D7099 /* CYAN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190971924FBC5006D7099 /* CYAN.png */; };
 		CD61909E1924FBC5006D7099 /* GREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190981924FBC5006D7099 /* GREEN.png */; };
@@ -318,6 +322,10 @@
 		CD339F8C1927887C00DBB2E7 /* BGMonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BGMonIcon.png; sourceTree = "<group>"; };
 		CD339F8D1927887C00DBB2E7 /* EffectOffIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EffectOffIcon.png; sourceTree = "<group>"; };
 		CD339F8E1927887C00DBB2E7 /* EffectOnIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EffectOnIcon.png; sourceTree = "<group>"; };
+		CD339F941927946300DBB2E7 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
+		CD339F951927946300DBB2E7 /* RateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RateIcon.png; sourceTree = "<group>"; };
+		CD339F961927946300DBB2E7 /* ReviewIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReviewIcon.png; sourceTree = "<group>"; };
+		CD339F971927946300DBB2E7 /* TeamIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeamIcon.png; sourceTree = "<group>"; };
 		CD6190961924FBC5006D7099 /* BLUE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BLUE.png; sourceTree = "<group>"; };
 		CD6190971924FBC5006D7099 /* CYAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CYAN.png; sourceTree = "<group>"; };
 		CD6190981924FBC5006D7099 /* GREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GREEN.png; sourceTree = "<group>"; };
@@ -584,6 +592,10 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD339F931927946300DBB2E7 /* fonts */,
+				CD339F951927946300DBB2E7 /* RateIcon.png */,
+				CD339F961927946300DBB2E7 /* ReviewIcon.png */,
+				CD339F971927946300DBB2E7 /* TeamIcon.png */,
 				CD339F8B1927887C00DBB2E7 /* BGMoffIcon.png */,
 				CD339F8C1927887C00DBB2E7 /* BGMonIcon.png */,
 				CD339F8D1927887C00DBB2E7 /* EffectOffIcon.png */,
@@ -627,6 +639,14 @@
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		CD339F931927946300DBB2E7 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CD339F941927946300DBB2E7 /* Marker Felt.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		E2943FA31923869500E3A52C /* Admob */ = {
@@ -826,6 +846,7 @@
 				CD6190A11924FBC5006D7099 /* YELLOW.png in Resources */,
 				E2064CF2191CF2DC007271A6 /* stars.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				CD339F991927946300DBB2E7 /* RateIcon.png in Resources */,
 				CD339F731926FDFC00DBB2E7 /* popupBg.png in Resources */,
 				CD61909C1924FBC5006D7099 /* BLUE.png in Resources */,
 				CD6190A51924FDBE006D7099 /* GREEN_CIRCLE.png in Resources */,
@@ -851,6 +872,7 @@
 				CD339F921927887C00DBB2E7 /* EffectOnIcon.png in Resources */,
 				CD339F901927887C00DBB2E7 /* BGMonIcon.png in Resources */,
 				CD339F8719273E4100DBB2E7 /* RankingIcon.png in Resources */,
+				CD339F9A1927946300DBB2E7 /* ReviewIcon.png in Resources */,
 				E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */,
 				CD01214C1924CEDD0071F067 /* bgMusic.wav in Resources */,
 				CD339F7619270FBF00DBB2E7 /* failFirst.wav in Resources */,
@@ -859,9 +881,11 @@
 				CD339F911927887C00DBB2E7 /* EffectOffIcon.png in Resources */,
 				CD339F8919273E4100DBB2E7 /* SMSIcon.png in Resources */,
 				CD8A17FB1924CBF400304CD4 /* stage_bg.png in Resources */,
+				CD339F981927946300DBB2E7 /* Marker Felt.ttf in Resources */,
 				E2064CEB191CEFBC007271A6 /* MagentaSquare.png in Resources */,
 				CDC50F1B1923B0AB003391CD /* Icon-40@2x.png in Resources */,
 				CD339F8F1927887C00DBB2E7 /* BGMoffIcon.png in Resources */,
+				CD339F9B1927946300DBB2E7 /* TeamIcon.png in Resources */,
 				E2064CEF191CEFC8007271A6 /* fire.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				CD0121501924D4A50071F067 /* pageFlip.mp3 in Resources */,
