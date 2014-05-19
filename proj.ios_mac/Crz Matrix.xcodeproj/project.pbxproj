@@ -74,7 +74,6 @@
 		CD339F901927887C00DBB2E7 /* BGMonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8C1927887C00DBB2E7 /* BGMonIcon.png */; };
 		CD339F911927887C00DBB2E7 /* EffectOffIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8D1927887C00DBB2E7 /* EffectOffIcon.png */; };
 		CD339F921927887C00DBB2E7 /* EffectOnIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F8E1927887C00DBB2E7 /* EffectOnIcon.png */; };
-		CD339F981927946300DBB2E7 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD339F941927946300DBB2E7 /* Marker Felt.ttf */; };
 		CD339F991927946300DBB2E7 /* RateIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F951927946300DBB2E7 /* RateIcon.png */; };
 		CD339F9A1927946300DBB2E7 /* ReviewIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F961927946300DBB2E7 /* ReviewIcon.png */; };
 		CD339F9B1927946300DBB2E7 /* TeamIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD339F971927946300DBB2E7 /* TeamIcon.png */; };
@@ -85,6 +84,8 @@
 		CD6190A01924FBC5006D7099 /* RED.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909A1924FBC5006D7099 /* RED.png */; };
 		CD6190A11924FBC5006D7099 /* YELLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909B1924FBC5006D7099 /* YELLOW.png */; };
 		CD6190A51924FDBE006D7099 /* GREEN_CIRCLE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190A41924FDBE006D7099 /* GREEN_CIRCLE.png */; };
+		CD632EDC192A4F2300ED5DEE /* LG Weather_Z.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD632EDB192A4F2300ED5DEE /* LG Weather_Z.ttf */; };
+		CD632EDE192A4FB000ED5DEE /* LG_Weather_font_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD632EDD192A4FB000ED5DEE /* LG_Weather_font_bold.ttf */; };
 		CD8A17FB1924CBF400304CD4 /* stage_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8A17FA1924CBF400304CD4 /* stage_bg.png */; };
 		CDC50F141923B0AB003391CD /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F0C1923B0AB003391CD /* Icon-60.png */; };
 		CDC50F151923B0AB003391CD /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F0D1923B0AB003391CD /* Icon-Small.png */; };
@@ -322,7 +323,6 @@
 		CD339F8C1927887C00DBB2E7 /* BGMonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BGMonIcon.png; sourceTree = "<group>"; };
 		CD339F8D1927887C00DBB2E7 /* EffectOffIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EffectOffIcon.png; sourceTree = "<group>"; };
 		CD339F8E1927887C00DBB2E7 /* EffectOnIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EffectOnIcon.png; sourceTree = "<group>"; };
-		CD339F941927946300DBB2E7 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		CD339F951927946300DBB2E7 /* RateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RateIcon.png; sourceTree = "<group>"; };
 		CD339F961927946300DBB2E7 /* ReviewIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReviewIcon.png; sourceTree = "<group>"; };
 		CD339F971927946300DBB2E7 /* TeamIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeamIcon.png; sourceTree = "<group>"; };
@@ -333,6 +333,8 @@
 		CD61909A1924FBC5006D7099 /* RED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RED.png; sourceTree = "<group>"; };
 		CD61909B1924FBC5006D7099 /* YELLOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YELLOW.png; sourceTree = "<group>"; };
 		CD6190A41924FDBE006D7099 /* GREEN_CIRCLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GREEN_CIRCLE.png; sourceTree = "<group>"; };
+		CD632EDB192A4F2300ED5DEE /* LG Weather_Z.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LG Weather_Z.ttf"; sourceTree = "<group>"; };
+		CD632EDD192A4FB000ED5DEE /* LG_Weather_font_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LG_Weather_font_bold.ttf; sourceTree = "<group>"; };
 		CD8A17FA1924CBF400304CD4 /* stage_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stage_bg.png; sourceTree = "<group>"; };
 		CDC50F0C1923B0AB003391CD /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		CDC50F0D1923B0AB003391CD /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -644,7 +646,8 @@
 		CD339F931927946300DBB2E7 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				CD339F941927946300DBB2E7 /* Marker Felt.ttf */,
+				CD632EDD192A4FB000ED5DEE /* LG_Weather_font_bold.ttf */,
+				CD632EDB192A4F2300ED5DEE /* LG Weather_Z.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
 				CD339F6D1926D71B00DBB2E7 /* stageBtClick.wav in Resources */,
 				CD339F8219273E4100DBB2E7 /* BackIcon.png in Resources */,
+				CD632EDE192A4FB000ED5DEE /* LG_Weather_font_bold.ttf in Resources */,
 				CDC50F161923B0AB003391CD /* launcher01.png in Resources */,
 				CDC50F141923B0AB003391CD /* Icon-60.png in Resources */,
 				CD61909D1924FBC5006D7099 /* CYAN.png in Resources */,
@@ -878,10 +882,10 @@
 				CD339F7619270FBF00DBB2E7 /* failFirst.wav in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				E2064CF6191E53F7007271A6 /* es042.wav in Resources */,
+				CD632EDC192A4F2300ED5DEE /* LG Weather_Z.ttf in Resources */,
 				CD339F911927887C00DBB2E7 /* EffectOffIcon.png in Resources */,
 				CD339F8919273E4100DBB2E7 /* SMSIcon.png in Resources */,
 				CD8A17FB1924CBF400304CD4 /* stage_bg.png in Resources */,
-				CD339F981927946300DBB2E7 /* Marker Felt.ttf in Resources */,
 				E2064CEB191CEFBC007271A6 /* MagentaSquare.png in Resources */,
 				CDC50F1B1923B0AB003391CD /* Icon-40@2x.png in Resources */,
 				CD339F8F1927887C00DBB2E7 /* BGMoffIcon.png in Resources */,

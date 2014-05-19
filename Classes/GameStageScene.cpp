@@ -470,7 +470,7 @@ void GameStageScene::effectShowSolution(Point s)
 
 void GameStageScene::makeTimer(float dt) {
 
-    timerLabel = LabelTTF::create("Ready!", "arial", 90.0f);
+    timerLabel = LabelTTF::create("ready!", "LG Weather_Z", 90.0f);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
     timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
     this->addChild(timerLabel);
@@ -514,7 +514,7 @@ void GameStageScene::drawTimerLabel(float dt) {
             }
             
             isGameFinished = true;
-            scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 2.0f);
+            scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 3.0f);
 
             
         }
