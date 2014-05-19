@@ -341,7 +341,7 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
                     if (isGameFinished == true) {
                         // restart game
                         isGameFinished = false;
-                        mCurrentLevel = 1;
+                        //mCurrentLevel = 1;
                         wrongNumberPerGame = 0;
                         hasOneMoreChange = true;
                         gameStart(0);
@@ -470,7 +470,7 @@ void GameStageScene::effectShowSolution(Point s)
 
 void GameStageScene::makeTimer(float dt) {
 
-    timerLabel = LabelTTF::create("ready!", "LG Weather_Z", 90.0f);
+    timerLabel = LabelTTF::create("Ready!", "fonts/LG_Weather_font_bold.ttf", 90.0f);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
     timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
     this->addChild(timerLabel);
