@@ -116,7 +116,7 @@ void GameStageScene::drawBoard() {
 	drawInitBoard();
 	scheduleOnce(schedule_selector(GameStageScene::showTiles), 0.05);
 
-	float delayTime = 2.0f * (float)info.matrixSize / 3.0f;
+	float delayTime = 1.5f * (float)info.matrixSize / 3.0f;
     float hideTime = 1.0f * (float)info.matrixSize / 3.0f;
     const float delayForRotationAnimation = 0.8f;
     const float delayForFlipAnimation = 1.5f;
