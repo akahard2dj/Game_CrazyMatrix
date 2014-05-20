@@ -411,7 +411,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
             case TAG_BUTTON_CURRENT_STAGE_BG:
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
                 bgCurrentStage->stopAllActions();
-                bgCurrentStage->setScale(0.7f);
+                bgCurrentStage->setScale(1.0f);
                 
                 if (isPopupShowing == false) {
                     showMenuPopup(0);
@@ -632,7 +632,7 @@ void GameStageScene::initTimerLabel() {
 void GameStageScene::runTimer(float dt) {
 
     timerLabel->setString("Ready!");
-    timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
+    timerLabel->runAction(ScaleBy::create(0.3, 1.3f));
 
     timerCount = info.TimeLimit;
     schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
