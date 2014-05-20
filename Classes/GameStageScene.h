@@ -37,29 +37,38 @@ private:
     Sprite* bgCurrentStage;
     bool isPopupShowing;
     Sprite* pauseLayout;
-    bool hasOneMoreChange;
     bool isGameFinished;
     Color4F explosion_col[7];
+    EventDispatcher* eventDispatcher;
+    EventListenerTouchOneByOne* buttonListener;
     
-	void gameStart(float dt);
+    
+    void initSound();
+    void initBoard();
+	void initStageButtonInfo();
+    void initMenuPopup();
+    void initTimerLabel();
+    
+    void gameStart(float dt);
 	void getStageInfo();
-	void drawInitBoard();
 	void drawBoard();
     void drawCurrentStageInfo();
-	void makeTimer(float dt);
+    void drawTiles();
+	void runTimer(float dt);
     void drawTimerLabel(float dt);
 	void showTiles(float dt);
 	void hideTiles(float dt);
 	void drawSolutionTiles(int n);
 	void drawBoardTiles(int n);
-	void addEventListener(EventDispatcher* e);
+	void addButtonEventListener(EventDispatcher* e);
+    void addTileButtonEventListener();
 	void explosion(Point s);
     void flower(Point s);
     void effectShowSolution(Point s);
     void stageClear();
     void showMenuPopup(float dt);
     void hideMenuPopup();
-    void makeMenuPopup();
+    
 
 };
 

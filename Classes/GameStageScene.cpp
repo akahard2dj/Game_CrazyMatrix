@@ -10,14 +10,17 @@ USING_NS_CC;
 #define SPEED_FOR_FLIP 0.05
 #define SPEED_FOR_FLIP_DELAY 0.3
 #define MSG_PLAY_AGAIN "play-again"
+
 #define TAG_BUTTON_CURRENT_STAGE_BG 500
+#define TAG_BUTTON_RETRY_BUTTON 501
+
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_ICON 1001
 #define Z_ORDER_POPUP_LABEL 1002
 #define NUM_POPUP_MENU 4
 #define NUM_SHARE_MENU 3
 #define NUM_OPTION_MENU 4
-#define GAME_MAIN_FONT_NAME "LG_Weather_font_bold"
+#define GAME_MAIN_FONT_NAME "LG_Weather_font_bold.ttf"
 
 Scene* GameStageScene::createScene()
 {
@@ -43,17 +46,11 @@ bool GameStageScene::init()
     
     winSize = Director::getInstance()->getWinSize();
 	
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("es042.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ticktock.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("pageFlip.mp3");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("applause.mp3");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("gameFail.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("stageBtClick.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("failFirst.wav");
-    
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
+    initSound();
+    initBoard();
+    initStageButtonInfo();
+    initMenuPopup();
+    initTimerLabel();
     
     explosion_col[0] = Color4F(255,0,0,1);
     explosion_col[1] = Color4F(0,255,0,1);
@@ -64,45 +61,173 @@ bool GameStageScene::init()
     explosion_col[6] = Color4F(255,0,255,1);
     
 	mCurrentLevel = 1;
-    hasOneMoreChange = true;
+    isPopupShowing = false;
     tileTouchEnable = false;
-	gameStart(0);
-
+	eventDispatcher = _eventDispatcher;
+    addButtonEventListener(eventDispatcher);
+    gameStart(0);
+    
     return true;
 }
 
-void GameStageScene::gameStart(float dt) {
+void GameStageScene::initSound() {
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("es042.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ticktock.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("pageFlip.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("applause.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("gameFail.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("stageBtClick.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("failFirst.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
+}
 
-	this->removeAllChildren();
-    isPopupShowing = false;
+void GameStageScene::initBoard() {
     
     bgImage = Sprite::create("stage_bg.png");
     bgImage->setPosition(Point(winSize.width/2, winSize.height/2));
-    this->addChild(bgImage);
+    this->addChild(bgImage, 0);
     
-	mTiles.clear();
-	mTilesSelected.clear();
-	getStageInfo();
-    drawBoard();
-    drawCurrentStageInfo();
-	addEventListener(_eventDispatcher);
+    int MARGIN_BOTTOM;
+    if (winSize.height > 1000) {
+        // 3.5 inch
+        MARGIN_BOTTOM = winSize.height * 0.3;
+    } else {
+        // 4 inch
+        MARGIN_BOTTOM = winSize.height * 0.2;
+    }
     
+    //boardLayer = NodeGrid::create();
+	boardLayer = Layer::create();
+	boardLayer->setPosition(0, MARGIN_BOTTOM);
+    boardLayer->setContentSize(Size(winSize.width, winSize.width));
+	boardLayer->setColor(Color3B(255, 0, 0));
+    
+	this->addChild(boardLayer, 1);
 }
 
-void GameStageScene::drawCurrentStageInfo() {
-    
+void GameStageScene::initStageButtonInfo() {
     bgCurrentStage = Sprite::create(IMAGE_BG_CURRENT_STAGE);
     bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
+    bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
     this->addChild(bgCurrentStage, 0);
     
     char stageInfo[3];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
     currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
-    bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
     this->addChild(currentStage, 1);
+}
+
+void GameStageScene::initMenuPopup() {
     
+    pauseLayout = Sprite::create("popupBg.png", Rect(0, 0, winSize.width, winSize.height));
+    pauseLayout->setPosition(Point(winSize.width/2, winSize.height/2));
+    pauseLayout->setVisible(false);
+    this->addChild(pauseLayout, Z_ORDER_POPUP);
     
+    auto stageLabel = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f);
+    stageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
+    pauseLayout->addChild(stageLabel, Z_ORDER_POPUP_LABEL);
+    
+    // Menu item Layout
+    popMenuImage[0] = Sprite::create("RankingIcon.png");
+    popMenuImage[1] = Sprite::create("OptionIcon.png");
+    popMenuImage[2] = Sprite::create("ShareIcon.png");
+    popMenuImage[3] = Sprite::create("RetryIcon.png");
+    shareImage[0] = Sprite::create("FacebookIcon.png");
+    shareImage[1] = Sprite::create("MailIcon.png");
+    shareImage[2] = Sprite::create("ReviewIcon.png");
+    optionImage[0] = Sprite::create("BGMonIcon.png");
+    optionImage[1] = Sprite::create("EffectOnIcon.png");
+    optionImage[2] = Sprite::create("BGMoffIcon.png");
+    optionImage[3] = Sprite::create("EffectOffIcon.png");
+    
+    float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width*0.125f, winSize.width*0.875f,winSize.width*0.766f};
+    float popY[NUM_POPUP_MENU] = {winSize.height/2, winSize.height*0.912f, winSize.height*0.912f,winSize.height*0.2f};
+    float shareX[NUM_SHARE_MENU] = {winSize.width*0.875f, winSize.width*0.875f, winSize.width*0.875f};
+    float shareY[NUM_SHARE_MENU] = {winSize.height*0.797f, winSize.height*0.710f, winSize.height*0.621f};
+    float optionX[NUM_OPTION_MENU/2] = {winSize.width*0.125f, winSize.width*0.125f};
+    float optionY[NUM_OPTION_MENU/2] = {winSize.height*0.797f, winSize.height*0.710f};
+    
+    for (int i=0; i<NUM_POPUP_MENU; i++) {
+        popMenuImage[i]->setScale(0.7, 0.7);
+        popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
+    }
+    popMenuImage[0]->setScale(0.8, 0.8);
+    
+    for (int i=0; i<NUM_SHARE_MENU; i++) {
+        shareImage[i]->setScale(0.5, 0.5);
+        shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
+    }
+    
+    for (int i=0; i<NUM_OPTION_MENU; i++) {
+        optionImage[i]->setScale(0.5, 0.5);
+        optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
+    }
+    
+    for (int i=0; i<NUM_POPUP_MENU; i++) {
+        pauseLayout->addChild(popMenuImage[i], Z_ORDER_POPUP);
+    }
+    
+    for (int i=0; i<NUM_SHARE_MENU; i++) {
+        pauseLayout->addChild(shareImage[i], Z_ORDER_POPUP);
+    }
+    
+    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
+        pauseLayout->addChild(optionImage[i], Z_ORDER_POPUP);
+    }
+    
+    popMenuImage[3]->setTag(TAG_BUTTON_RETRY_BUTTON);
+}
+
+void GameStageScene::gameStart(float dt) {
+    
+	mTiles.clear();
+	mTilesSelected.clear();
+	getStageInfo();
+    
+    drawCurrentStageInfo();
+    drawBoard();
+    
+    drawTiles();
+}
+
+void GameStageScene::drawTiles() {
+    
+    boardLayer->removeAllChildren();
+    
+    const int BOARD_SIZE = info.matrixSize;
+    for (int n=0; n<BOARD_SIZE; n++) {
+		for (int m=0; m<BOARD_SIZE; m++) {
+            
+			int idx = n * BOARD_SIZE + m;
+            
+			auto tile = Sprite::create(IMAGE_TILE_NORAML);
+			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));
+            float tileScale;
+            if (info.matrixSize == 2) {
+                tileScale = 1.8f;
+            } else {
+                tileScale = 4.0f / (float)info.matrixSize;
+            }
+            tile->setScale(tileScale);
+			tile->setTag(idx);
+			boardLayer->addChild(tile, 10);
+            
+			mTiles.push_back(tile);
+			mTilesSelected.push_back(0);
+		}
+	}
+    addTileButtonEventListener();
+}
+
+void GameStageScene::drawCurrentStageInfo() {
+    char stageInfo[3];
+    std::sprintf(stageInfo, "%d", mCurrentLevel);
+    currentStage->setString(stageInfo);
 }
 
 void GameStageScene::getStageInfo() {
@@ -112,7 +237,6 @@ void GameStageScene::getStageInfo() {
 
 void GameStageScene::drawBoard() {
 	
-	drawInitBoard();
 	scheduleOnce(schedule_selector(GameStageScene::showTiles), 0.05);
 
 	float delayTime = 1.5f * (float)info.matrixSize / 3.0f;
@@ -124,7 +248,7 @@ void GameStageScene::drawBoard() {
                                 + delayAnimationMargin * info.actionNum;
     
 	scheduleOnce(schedule_selector(GameStageScene::hideTiles), delayTime);
-    scheduleOnce(schedule_selector(GameStageScene::makeTimer), delayTime + animationTime + hideTime);
+    scheduleOnce(schedule_selector(GameStageScene::runTimer), delayTime + animationTime + hideTime);
     
     FiniteTimeAction* action1 = NULL;
     FiniteTimeAction* action2 = NULL;
@@ -187,53 +311,6 @@ void GameStageScene::drawBoard() {
     auto delay = DelayTime::create(delayTime + hideTime);
     boardLayer->runAction(Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, delay_interval, action4, delay_interval, action5, NULL));
     
-
-}
-
-
-void GameStageScene::drawInitBoard() {
-
-	const int BOARD_SIZE = info.matrixSize;
-	
-    int MARGIN_BOTTOM;
-    if (winSize.height > 1000) {
-        // 3.5 inch
-        MARGIN_BOTTOM = winSize.height * 0.3;
-    } else {
-        // 4 inch
-        MARGIN_BOTTOM = winSize.height * 0.2;
-    }
-    
-    //nodeGrid = NodeGrid::create();
-    
-	boardLayer = Layer::create();
-	boardLayer->setPosition(0, MARGIN_BOTTOM);
-    boardLayer->setContentSize(Size(winSize.width, winSize.width));
-	boardLayer->setColor(Color3B(255, 0,0));
-
-	for (int n=0; n<BOARD_SIZE; n++) {
-		for (int m=0; m<BOARD_SIZE; m++) {
-
-			int idx = n * BOARD_SIZE + m;
-
-			auto tile = Sprite::create(IMAGE_TILE_NORAML);
-			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));
-            float tileScale;
-            if (info.matrixSize == 2) {
-                tileScale = 1.8f;
-            } else {
-                tileScale = 4.0f / (float)info.matrixSize;
-            }
-            tile->setScale(tileScale);
-			tile->setTag(idx);
-			boardLayer->addChild(tile,10);
-            
-			mTiles.push_back(tile);
-			mTilesSelected.push_back(0);
-		}
-	}
-
-	this->addChild(boardLayer);
 }
 
 void GameStageScene::showTiles(float dt) {
@@ -284,13 +361,110 @@ void GameStageScene::drawBoardTiles(int n) {
 	mTiles.at(n)->setTexture(IMAGE_TILE_NORAML);
 }
 
-void GameStageScene::addEventListener(EventDispatcher* e) {
+void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 
-    auto listener = EventListenerTouchOneByOne::create();
-    listener->setSwallowTouches(false);
-
+    buttonListener = EventListenerTouchOneByOne::create();
+    buttonListener->setSwallowTouches(false);
     
-    listener->onTouchBegan = [=](Touch* touch, Event* event){
+    buttonListener->onTouchBegan = [=](Touch* touch, Event* event){
+        
+        auto target = event->getCurrentTarget();
+        int tagNum = target->getTag();
+        
+        Point locationInNode = target->convertToNodeSpace(touch->getLocation());
+        Size s = target->getContentSize();
+        const float MARGIN_TOUCH_AREA = target->getContentSize().width * 0.1;
+        Rect rect = Rect(-MARGIN_TOUCH_AREA, -MARGIN_TOUCH_AREA, s.width + MARGIN_TOUCH_AREA, s.height + MARGIN_TOUCH_AREA);
+        
+        if (rect.containsPoint(locationInNode)) {
+            auto scaledown = ScaleBy::create(0.1f, 0.9f);
+            auto scaleup = ScaleBy::create(0.1f, 1.1f);
+            auto scaleupdowon = RepeatForever::create(Sequence::create(scaleup, scaledown, NULL));
+            switch (tagNum) {
+                case TAG_BUTTON_CURRENT_STAGE_BG:
+                    bgCurrentStage->setScale(1.3f);
+                    bgCurrentStage->runAction(scaleupdowon);
+                    break;
+                case TAG_BUTTON_RETRY_BUTTON:
+                    auto currentScale = popMenuImage[3]->getScale();
+                    popMenuImage[3]->setScale(currentScale * 1.3);
+                    //popMenuImage[3]->runAction(scaleupdowon);
+                    break;
+            }
+            return true;
+            
+        }
+        return false;
+    };
+    
+    buttonListener->onTouchMoved = [](Touch* touch, Event* event){
+        // nothing..
+    };
+    
+    buttonListener->onTouchEnded = [=](Touch* touch, Event* event){
+        auto target = event->getCurrentTarget();
+		int tagNum = target->getTag();
+ 
+        if (tagNum > mTiles.size()) {
+            
+            switch (tagNum) {
+            case TAG_BUTTON_CURRENT_STAGE_BG:
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
+                bgCurrentStage->stopAllActions();
+                bgCurrentStage->setScale(0.7f);
+                
+                if (isPopupShowing == false) {
+                    showMenuPopup(0);
+                } else {
+                    hideMenuPopup();
+                }
+                
+                if (isGameFinished == true) {
+                    isGameFinished = false;
+                    timerLabel->setString("");
+                    gameStart(0);
+                }
+
+                break;
+                    
+            case TAG_BUTTON_RETRY_BUTTON:
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
+                popMenuImage[3]->stopAllActions();
+                popMenuImage[3]->setScale(0.7f);
+                isGameFinished = false;
+                timerLabel->setString("");
+                mCurrentLevel = 1;
+
+                unschedule(schedule_selector(GameStageScene::showTiles));
+                unschedule(schedule_selector(GameStageScene::hideTiles));
+                unschedule(schedule_selector(GameStageScene::runTimer));
+                unschedule(schedule_selector(GameStageScene::drawTimerLabel));
+                    
+                    
+                gameStart(0);
+                hideMenuPopup();
+  
+                break;
+                    
+            default:
+                break;
+            }
+            
+            return;
+        }
+    };
+    
+    e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), bgCurrentStage);
+    e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), currentStage);
+    e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), popMenuImage[3]);
+    
+}
+
+void GameStageScene::addTileButtonEventListener() {
+    auto tileButtonListener = EventListenerTouchOneByOne::create();
+    tileButtonListener->setSwallowTouches(false);
+    
+    tileButtonListener->onTouchBegan = [=](Touch* touch, Event* event){
         
         auto target = event->getCurrentTarget();
         int tagNum = target->getTag();
@@ -302,68 +476,25 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
         
         if (rect.containsPoint(locationInNode)) {
             
-            if (tagNum > mTiles.size()) {
-                switch (tagNum) {
-                    case TAG_BUTTON_CURRENT_STAGE_BG:
-                        //auto scaleInitup = ScaleBy::create(0.2f, 1.3f);
-                        auto scaledown = ScaleBy::create(0.1f, 0.9f);
-                        auto scaleup = ScaleBy::create(0.1f, 1.1f);
-                        auto scaleupdowon = RepeatForever::create(Sequence::create(scaleup, scaledown, NULL));
-                        bgCurrentStage->setScale(1.3f);
-                        bgCurrentStage->runAction(scaleupdowon);
-                        break;
-                }
-                return true;
-            } else if (tileTouchEnable == true && isPopupShowing == false) {
+            if (tileTouchEnable == true && isPopupShowing == false) {
                 float currentScale = mTiles[tagNum]->getScale();
                 mTiles[tagNum]->setScale(currentScale * 1.1);
-
+                
                 return true;
             }
+            
             
         }
         return false;
     };
     
-    listener->onTouchMoved = [](Touch* touch, Event* event){
+    tileButtonListener->onTouchMoved = [](Touch* touch, Event* event){
         // nothing..
     };
     
-    listener->onTouchEnded = [=](Touch* touch, Event* event){
+    tileButtonListener->onTouchEnded = [=](Touch* touch, Event* event){
         auto target = event->getCurrentTarget();
 		int tagNum = target->getTag();
- 
-        if (tagNum > mTiles.size()) {
-            switch (tagNum) {
-                case TAG_BUTTON_CURRENT_STAGE_BG:
-                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
-                    bgCurrentStage->stopAllActions();
-                    bgCurrentStage->setScale(1.0f);
-                    
-                    if (isPopupShowing == false) {
-                        log("touch show");
-                        showMenuPopup(0);
-                    } else {
-                        log("touch hide");
-                        hideMenuPopup();
-                    }
-                    
-                    if (isGameFinished == true) {
-                        // restart game
-                        isGameFinished = false;
-                        //mCurrentLevel = 1;
-                        hasOneMoreChange = true;
-                        gameStart(0);
-                        isPopupShowing = false;
-                    }
-                    
-                    break;
-                default:
-                    break;
-            }
-            return;
-        }
-        
         
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("es042.wav");
         
@@ -386,12 +517,9 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 		}
     };
     
-    e->addEventListenerWithSceneGraphPriority(listener->clone(), bgCurrentStage);
-    e->addEventListenerWithSceneGraphPriority(listener->clone(), currentStage);
-    
-	for (int n=0; n<mTiles.size(); n++) {
-		e->addEventListenerWithSceneGraphPriority(listener->clone(), mTiles.at(n));
-	}
+    for (int n=0; n<mTiles.size(); n++) {
+        eventDispatcher->addEventListenerWithSceneGraphPriority(tileButtonListener->clone(), mTiles.at(n));
+    }
     
 }
 
@@ -401,8 +529,7 @@ void GameStageScene::stageClear() {
     unschedule(schedule_selector(GameStageScene::drawTimerLabel));
     tileTouchEnable = false;
     mCurrentLevel += 1;
-    hasOneMoreChange = true;
-    this->removeChild(timerLabel);
+    timerLabel->setString("");
     
     auto scaleUp = ScaleBy::create(0.4, 1.2);
     auto scaleDown = scaleUp->reverse();
@@ -496,12 +623,16 @@ void GameStageScene::effectShowSolution(Point s)
     boardLayer->addChild(emitter,0);
 }
 
-void GameStageScene::makeTimer(float dt) {
-
-    timerLabel = LabelTTF::create("Ready!", GAME_MAIN_FONT_NAME, 80.0f);
+void GameStageScene::initTimerLabel() {
+    timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, 80.0f);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
-    timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
     this->addChild(timerLabel);
+}
+
+void GameStageScene::runTimer(float dt) {
+
+    timerLabel->setString("Ready!");
+    timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
 
     timerCount = info.TimeLimit;
     schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
@@ -526,25 +657,11 @@ void GameStageScene::drawTimerLabel(float dt) {
             }
         }
         
-        if (hasOneMoreChange) {
-            // MISSION FAIL BUT HAS ONE CHANCE MORE...
-            hasOneMoreChange = false;
-            timerLabel->setString("Once More!");
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("failFirst.wav");
-            scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
-        } else {
-            // GAME OVER
-            timerLabel->setString("Game Over!");
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
-            if (isPopupShowing == true) {
-                hideMenuPopup();
-            }
-            
-            isGameFinished = true;
-            scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 3.0f);
-
-            
-        }
+        // GAME OVER
+        timerLabel->setString("Game Over!");
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
+        isGameFinished = true;
+        scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 3.0f);
 
     } else {
         if (timerCount < 3) {
@@ -563,163 +680,19 @@ void GameStageScene::drawTimerLabel(float dt) {
 }
 
 void GameStageScene::showMenuPopup(float dt) {
-    log("show popup!");
-    
     isPopupShowing = true;
-    
-    pauseLayout = Sprite::create("popupBg.png", Rect(0, 0, winSize.width, winSize.height));
-    pauseLayout->setPosition(Point(winSize.width/2, winSize.height/2));
-    
-    this->addChild(pauseLayout, Z_ORDER_POPUP);
-    
-    LabelTTF* score = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f);
-    score->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
-    pauseLayout->addChild(score, Z_ORDER_POPUP_LABEL);
-    
-    //char wrongInfo[15];
-    //std::sprintf(wrongInfo, "wrong : %d", wrongNumberPerGame);
-    //LabelTTF* wrong = LabelTTF::create(wrongInfo, "arial", 70.0f);
-    //wrong->setPosition(Point(winSize.width/2, winSize.height - 200));
-    //pauseLayout->addChild(wrong, Z_ORDER_POPUP_LABEL);
-    
+    pauseLayout->setVisible(isPopupShowing);
     this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_ICON);
     this->reorderChild(currentStage, Z_ORDER_POPUP_LABEL);
-    
-    // Menu item Layout
-    popMenuImage[0] = Sprite::create("RecordIcon.png");
-    popMenuImage[1] = Sprite::create("OptionIcon.png");
-    popMenuImage[2] = Sprite::create("ShareIcon.png");
-    popMenuImage[3] = Sprite::create("RetryIcon.png");
-    
-    shareImage[0] = Sprite::create("FacebookIcon.png");
-    shareImage[1] = Sprite::create("MailIcon.png");
-    shareImage[2] = Sprite::create("ReviewIcon.png");
-    
-    optionImage[0] = Sprite::create("BGMonIcon.png");
-    optionImage[1] = Sprite::create("EffectOnIcon.png");
-    optionImage[2] = Sprite::create("BGMoffIcon.png");
-    optionImage[3] = Sprite::create("EffectOffIcon.png");
-
-    //width
-    // 80 : 0.125
-    
-    //height
-    // 200 : 0.176
-    //-100 : 0.912
-    
-    float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width*0.125f, winSize.width*0.875f,winSize.width*0.766f};
-    float popY[NUM_POPUP_MENU] = {winSize.height/2, winSize.height*0.912f, winSize.height*0.912f,winSize.height*0.2f};
-    float shareX[NUM_SHARE_MENU] = {winSize.width*0.875f, winSize.width*0.875f, winSize.width*0.875f};
-    float shareY[NUM_SHARE_MENU] = {winSize.height*0.797f, winSize.height*0.710f, winSize.height*0.621f};
-    float optionX[NUM_OPTION_MENU/2] = {winSize.width*0.125f, winSize.width*0.125f};
-    float optionY[NUM_OPTION_MENU/2] = {winSize.height*0.797f, winSize.height*0.710f};
-    
-    for (int i=0; i<NUM_POPUP_MENU; i++) {
-        popMenuImage[i]->setScale(0.7, 0.7);
-        popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
-    }
-    popMenuImage[0]->setScale(0.8, 0.8);
-    
-    for (int i=0; i<NUM_SHARE_MENU; i++) {
-        shareImage[i]->setScale(0.5, 0.5);
-        shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
-    }
-    
-    for (int i=0; i<NUM_OPTION_MENU; i++) {
-        optionImage[i]->setScale(0.5, 0.5);
-        optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
-    }
-    
-    for (int i=0; i<NUM_POPUP_MENU; i++) {
-        this->addChild(popMenuImage[i], Z_ORDER_POPUP);
-    }
-    
-    for (int i=0; i<NUM_SHARE_MENU; i++) {
-        this->addChild(shareImage[i], Z_ORDER_POPUP);
-    }
-    
-    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
-        this->addChild(optionImage[i], Z_ORDER_POPUP);
-    }
 }
 
 void GameStageScene::hideMenuPopup() {
-    log("hide popup!");
     isPopupShowing = false;
-    pauseLayout->removeFromParent();
+    pauseLayout->setVisible(isPopupShowing);
     this->reorderChild(bgCurrentStage, 0);
-    for (int i=0; i<NUM_POPUP_MENU; i++) {
-        popMenuImage[i]->removeFromParent();
-    }
-    
-    for (int i=0; i<NUM_SHARE_MENU; i++) {
-        shareImage[i]->removeFromParent();
-    }
-    
-    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
-        optionImage[i]->removeFromParent();
-    }
+    this->reorderChild(currentStage, 1);
+
 }
 
-void GameStageScene::makeMenuPopup() {
-    
-    pauseLayout = Sprite::create("popupBg.png", Rect(0, 0, winSize.width, winSize.height));
-    pauseLayout->setPosition(Point(winSize.width/2, winSize.height/2));
-    this->addChild(pauseLayout, Z_ORDER_POPUP);
-    
-    auto stageLabel = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f);
-    stageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
-    pauseLayout->addChild(stageLabel, Z_ORDER_POPUP_LABEL);
-    
-    this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_ICON);
-    this->reorderChild(currentStage, Z_ORDER_POPUP_LABEL);
-    
-    // Menu item Layout
-    popMenuImage[0] = Sprite::create("RankingIcon.png");
-    popMenuImage[1] = Sprite::create("OptionIcon.png");
-    popMenuImage[2] = Sprite::create("ShareIcon.png");
-    popMenuImage[3] = Sprite::create("RetryIcon.png");
-    shareImage[0] = Sprite::create("FacebookIcon.png");
-    shareImage[1] = Sprite::create("MailIcon.png");
-    shareImage[2] = Sprite::create("ReviewIcon.png");
-    optionImage[0] = Sprite::create("BGMonIcon.png");
-    optionImage[1] = Sprite::create("EffectOnIcon.png");
-    optionImage[2] = Sprite::create("BGMoffIcon.png");
-    optionImage[3] = Sprite::create("EffectOffIcon.png");
-    
-    float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width*0.125f, winSize.width*0.875f,winSize.width*0.766f};
-    float popY[NUM_POPUP_MENU] = {winSize.height/2, winSize.height*0.912f, winSize.height*0.912f,winSize.height*0.2f};
-    float shareX[NUM_SHARE_MENU] = {winSize.width*0.875f, winSize.width*0.875f, winSize.width*0.875f};
-    float shareY[NUM_SHARE_MENU] = {winSize.height*0.797f, winSize.height*0.710f, winSize.height*0.621f};
-    float optionX[NUM_OPTION_MENU/2] = {winSize.width*0.125f, winSize.width*0.125f};
-    float optionY[NUM_OPTION_MENU/2] = {winSize.height*0.797f, winSize.height*0.710f};
-    
-    for (int i=0; i<NUM_POPUP_MENU; i++) {
-        popMenuImage[i]->setScale(0.7, 0.7);
-        popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
-    }
-    popMenuImage[0]->setScale(0.8, 0.8);
-    
-    for (int i=0; i<NUM_SHARE_MENU; i++) {
-        shareImage[i]->setScale(0.5, 0.5);
-        shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
-    }
-    
-    for (int i=0; i<NUM_OPTION_MENU; i++) {
-        optionImage[i]->setScale(0.5, 0.5);
-        optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
-    }
-    
-    for (int i=0; i<NUM_POPUP_MENU; i++) {
-        this->addChild(popMenuImage[i], Z_ORDER_POPUP);
-    }
-    
-    for (int i=0; i<NUM_SHARE_MENU; i++) {
-        this->addChild(shareImage[i], Z_ORDER_POPUP);
-    }
-    
-    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
-        this->addChild(optionImage[i], Z_ORDER_POPUP);
-    }
-}
+
 
