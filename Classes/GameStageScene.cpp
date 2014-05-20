@@ -17,7 +17,7 @@ USING_NS_CC;
 #define NUM_POPUP_MENU 4
 #define NUM_SHARE_MENU 3
 #define NUM_OPTION_MENU 4
-
+#define GAME_MAIN_FONT_NAME "LG_Weather_font_bold"
 
 Scene* GameStageScene::createScene()
 {
@@ -64,7 +64,6 @@ bool GameStageScene::init()
     explosion_col[6] = Color4F(255,0,255,1);
     
 	mCurrentLevel = 1;
-    wrongNumberPerGame = 0;
     hasOneMoreChange = true;
     tileTouchEnable = false;
 	gameStart(0);
@@ -98,7 +97,7 @@ void GameStageScene::drawCurrentStageInfo() {
     
     char stageInfo[3];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
-    currentStage = LabelTTF::create(stageInfo, "LG_Weather_font_bold.ttf", 80);
+    currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
     bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
     this->addChild(currentStage, 1);
@@ -353,7 +352,6 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
                         // restart game
                         isGameFinished = false;
                         //mCurrentLevel = 1;
-                        wrongNumberPerGame = 0;
                         hasOneMoreChange = true;
                         gameStart(0);
                         isPopupShowing = false;
@@ -500,7 +498,7 @@ void GameStageScene::effectShowSolution(Point s)
 
 void GameStageScene::makeTimer(float dt) {
 
-    timerLabel = LabelTTF::create("Ready!", "LG_Weather_font_bold.ttf", 80.0f);
+    timerLabel = LabelTTF::create("Ready!", GAME_MAIN_FONT_NAME, 80.0f);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
     timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
     this->addChild(timerLabel);
@@ -531,7 +529,6 @@ void GameStageScene::drawTimerLabel(float dt) {
         if (hasOneMoreChange) {
             // MISSION FAIL BUT HAS ONE CHANCE MORE...
             hasOneMoreChange = false;
-            wrongNumberPerGame++;
             timerLabel->setString("Once More!");
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("failFirst.wav");
             scheduleOnce(schedule_selector(GameStageScene::gameStart), 3.0f);
@@ -575,7 +572,7 @@ void GameStageScene::showMenuPopup(float dt) {
     
     this->addChild(pauseLayout, Z_ORDER_POPUP);
     
-    LabelTTF* score = LabelTTF::create("Stage", "arial", 30.0f);
+    LabelTTF* score = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f);
     score->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
     pauseLayout->addChild(score, Z_ORDER_POPUP_LABEL);
     
@@ -661,6 +658,68 @@ void GameStageScene::hideMenuPopup() {
     
     for (int i=0; i<NUM_OPTION_MENU/2; i++) {
         optionImage[i]->removeFromParent();
+    }
+}
+
+void GameStageScene::makeMenuPopup() {
+    
+    pauseLayout = Sprite::create("popupBg.png", Rect(0, 0, winSize.width, winSize.height));
+    pauseLayout->setPosition(Point(winSize.width/2, winSize.height/2));
+    this->addChild(pauseLayout, Z_ORDER_POPUP);
+    
+    auto stageLabel = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f);
+    stageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
+    pauseLayout->addChild(stageLabel, Z_ORDER_POPUP_LABEL);
+    
+    this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_ICON);
+    this->reorderChild(currentStage, Z_ORDER_POPUP_LABEL);
+    
+    // Menu item Layout
+    popMenuImage[0] = Sprite::create("RankingIcon.png");
+    popMenuImage[1] = Sprite::create("OptionIcon.png");
+    popMenuImage[2] = Sprite::create("ShareIcon.png");
+    popMenuImage[3] = Sprite::create("RetryIcon.png");
+    shareImage[0] = Sprite::create("FacebookIcon.png");
+    shareImage[1] = Sprite::create("MailIcon.png");
+    shareImage[2] = Sprite::create("ReviewIcon.png");
+    optionImage[0] = Sprite::create("BGMonIcon.png");
+    optionImage[1] = Sprite::create("EffectOnIcon.png");
+    optionImage[2] = Sprite::create("BGMoffIcon.png");
+    optionImage[3] = Sprite::create("EffectOffIcon.png");
+    
+    float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width*0.125f, winSize.width*0.875f,winSize.width*0.766f};
+    float popY[NUM_POPUP_MENU] = {winSize.height/2, winSize.height*0.912f, winSize.height*0.912f,winSize.height*0.2f};
+    float shareX[NUM_SHARE_MENU] = {winSize.width*0.875f, winSize.width*0.875f, winSize.width*0.875f};
+    float shareY[NUM_SHARE_MENU] = {winSize.height*0.797f, winSize.height*0.710f, winSize.height*0.621f};
+    float optionX[NUM_OPTION_MENU/2] = {winSize.width*0.125f, winSize.width*0.125f};
+    float optionY[NUM_OPTION_MENU/2] = {winSize.height*0.797f, winSize.height*0.710f};
+    
+    for (int i=0; i<NUM_POPUP_MENU; i++) {
+        popMenuImage[i]->setScale(0.7, 0.7);
+        popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
+    }
+    popMenuImage[0]->setScale(0.8, 0.8);
+    
+    for (int i=0; i<NUM_SHARE_MENU; i++) {
+        shareImage[i]->setScale(0.5, 0.5);
+        shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
+    }
+    
+    for (int i=0; i<NUM_OPTION_MENU; i++) {
+        optionImage[i]->setScale(0.5, 0.5);
+        optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
+    }
+    
+    for (int i=0; i<NUM_POPUP_MENU; i++) {
+        this->addChild(popMenuImage[i], Z_ORDER_POPUP);
+    }
+    
+    for (int i=0; i<NUM_SHARE_MENU; i++) {
+        this->addChild(shareImage[i], Z_ORDER_POPUP);
+    }
+    
+    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
+        this->addChild(optionImage[i], Z_ORDER_POPUP);
     }
 }
 

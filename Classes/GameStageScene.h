@@ -26,7 +26,6 @@ private:
     StageInfo info;
 	int mCurrentLevel;
 	Layer* boardLayer;
-    NodeGrid* nodeGrid;
     LabelTTF* timerLabel;
     int timerCount;
     bool tileTouchEnable;
@@ -39,7 +38,6 @@ private:
     bool isPopupShowing;
     Sprite* pauseLayout;
     bool hasOneMoreChange;
-    int wrongNumberPerGame;
     bool isGameFinished;
     Color4F explosion_col[7];
     
@@ -61,6 +59,7 @@ private:
     void stageClear();
     void showMenuPopup(float dt);
     void hideMenuPopup();
+    void makeMenuPopup();
 
 };
 
