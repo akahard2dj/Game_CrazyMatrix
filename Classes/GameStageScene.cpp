@@ -426,7 +426,7 @@ void GameStageScene::stageClear() {
     float dy = (float)(rand()%8)/100.0;
     
     auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.20f+dx),winSize.height*(0.59f+dy))) );
-    auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.83f+dx),winSize.height*(0.55f+dy))) );
+    auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.78f+dx),winSize.height*(0.55f+dy))) );
     auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.80f+dy))) );
     this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
     
@@ -589,7 +589,7 @@ void GameStageScene::showMenuPopup(float dt) {
     this->reorderChild(currentStage, Z_ORDER_POPUP_LABEL);
     
     // Menu item Layout
-    popMenuImage[0] = Sprite::create("RankingIcon.png");
+    popMenuImage[0] = Sprite::create("RecordIcon.png");
     popMenuImage[1] = Sprite::create("OptionIcon.png");
     popMenuImage[2] = Sprite::create("ShareIcon.png");
     popMenuImage[3] = Sprite::create("RetryIcon.png");

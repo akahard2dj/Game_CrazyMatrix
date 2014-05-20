@@ -45,8 +45,6 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
-		E28360C4192A4B6300BD4275 /* ShareIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E28360C3192A4B6300BD4275 /* ShareIcon.png */; };
-		E28360C8192A4B8D00BD4275 /* RetryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E28360C7192A4B8D00BD4275 /* RetryIcon.png */; };
 		E2943F86192382FB00E3A52C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943F85192382FB00E3A52C /* AdSupport.framework */; };
 		E2943F881923830600E3A52C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943F871923830600E3A52C /* AudioToolbox.framework */; };
 		E2943F8A1923830D00E3A52C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943F891923830D00E3A52C /* AVFoundation.framework */; };
@@ -58,6 +56,8 @@
 		E2943FB31923877900E3A52C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943FB21923877900E3A52C /* CoreTelephony.framework */; };
 		E2AA96CF19242F99004C9CE3 /* StageClearScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2AA96CD19242F99004C9CE3 /* StageClearScene.cpp */; };
 		E2BBB0541927099200491E69 /* GameStageScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BBB0531927099200491E69 /* GameStageScene.cpp */; };
+		E2DF6FC9192B8716005A3192 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2DF6FC8192B8716005A3192 /* Images.xcassets */; };
+		E2DF6FCB192B8A02005A3192 /* RecordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DF6FCA192B8A02005A3192 /* RecordIcon.png */; };
 		E2EF20CF192703DB008AA78D /* CCrazyMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2EF20CD192703DB008AA78D /* CCrazyMatrix.cpp */; };
 /* End PBXBuildFile section */
 
@@ -299,10 +299,13 @@
 		E2B51B161927242400D5C4F9 /* FacebookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookIcon.png; sourceTree = "<group>"; };
 		E2B51B171927242400D5C4F9 /* MailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MailIcon.png; sourceTree = "<group>"; };
 		E2B51B191927242400D5C4F9 /* OptionIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OptionIcon.png; sourceTree = "<group>"; };
-		E2B51B1A1927242400D5C4F9 /* RankingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RankingIcon.png; sourceTree = "<group>"; };
 		E2B51B1C1927242400D5C4F9 /* SMSIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SMSIcon.png; sourceTree = "<group>"; };
 		E2B51B1D1927242400D5C4F9 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterIcon.png; sourceTree = "<group>"; };
 		E2BBB0531927099200491E69 /* GameStageScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameStageScene.cpp; path = ../Classes/GameStageScene.cpp; sourceTree = "<group>"; };
+		E2C95217192A57AC0005999D /* LG Weather_Z.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LG Weather_Z.ttf"; path = "fonts/LG Weather_Z.ttf"; sourceTree = "<group>"; };
+		E2C95218192A57AC0005999D /* LG_Weather_font_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = LG_Weather_font_bold.ttf; path = fonts/LG_Weather_font_bold.ttf; sourceTree = "<group>"; };
+		E2DF6FC8192B8716005A3192 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "CrazyMatrix iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		E2DF6FCA192B8A02005A3192 /* RecordIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordIcon.png; sourceTree = "<group>"; };
 		E2EF20C91927032E008AA78D /* gameFail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameFail.wav; sourceTree = "<group>"; };
 		E2EF20CD192703DB008AA78D /* CCrazyMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCrazyMatrix.cpp; path = ../Classes/CCrazyMatrix.cpp; sourceTree = "<group>"; };
 		E2EF20CE192703DB008AA78D /* CCrazyMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCrazyMatrix.h; path = ../Classes/CCrazyMatrix.h; sourceTree = "<group>"; };
@@ -510,10 +513,13 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2DF6FC8192B8716005A3192 /* Images.xcassets */,
 				E2AC9C1419275884008629E5 /* BGM */,
 				E2AC9C1319275859008629E5 /* Tile */,
 				E2AC9C1019275174008629E5 /* Icon */,
 				E2FB9B67192707A90085D9BB /* popupBg.png */,
+				E2C95217192A57AC0005999D /* LG Weather_Z.ttf */,
+				E2C95218192A57AC0005999D /* LG_Weather_font_bold.ttf */,
 				E290BD971924DF3E003F4EF1 /* stage_bg.png */,
 				E2AA96C719242F45004C9CE3 /* f1.png */,
 				E2AA96C819242F45004C9CE3 /* f2.png */,
@@ -547,6 +553,7 @@
 		E2AC9C1019275174008629E5 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				E2DF6FCA192B8A02005A3192 /* RecordIcon.png */,
 				E28360C7192A4B8D00BD4275 /* RetryIcon.png */,
 				E28360C3192A4B6300BD4275 /* ShareIcon.png */,
 				E278674219278F5400AB395E /* RateIcon.png */,
@@ -559,7 +566,6 @@
 				E2B51B161927242400D5C4F9 /* FacebookIcon.png */,
 				E2B51B171927242400D5C4F9 /* MailIcon.png */,
 				E2B51B191927242400D5C4F9 /* OptionIcon.png */,
-				E2B51B1A1927242400D5C4F9 /* RankingIcon.png */,
 				E2B51B1C1927242400D5C4F9 /* SMSIcon.png */,
 				E2B51B1D1927242400D5C4F9 /* TwitterIcon.png */,
 			);
@@ -765,8 +771,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E28360C4192A4B6300BD4275 /* ShareIcon.png in Resources */,
-				E28360C8192A4B8D00BD4275 /* RetryIcon.png in Resources */,
+				E2DF6FC9192B8716005A3192 /* Images.xcassets in Resources */,
+				E2DF6FCB192B8A02005A3192 /* RecordIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +870,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
@@ -901,6 +909,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
