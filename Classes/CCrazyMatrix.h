@@ -50,6 +50,7 @@ private:
 	int numShuffles;
     int timeLimit;
 	int gameSchedule[MAX_SHUFFLES];
+    int gameScheduleFlag[MAX_SHUFFLES];
 	int **boardOriginal;
     int **board;
     int **boardCheck;
@@ -86,6 +87,7 @@ private:
     void gameDesign();
     void lightGameDesign();
 	void lightGameShuffle();
+    void lightGameShuffle2();
     void boardCopy();
 
 	void Print();

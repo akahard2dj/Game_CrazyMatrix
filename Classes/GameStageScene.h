@@ -41,6 +41,7 @@ private:
     bool hasOneMoreChange;
     int wrongNumberPerGame;
     bool isGameFinished;
+    Color4F explosion_col[7];
     
 	void gameStart(float dt);
 	void getStageInfo();

@@ -156,7 +156,7 @@ void CCrazyMatrix::setPositionLight()
     memset(idxY, 0, sizeof(int)*numPairs);
 
     lightGameDesign();
-	lightGameShuffle();
+	lightGameShuffle2();
 }
 
 void CCrazyMatrix::setPosition()
@@ -209,6 +209,27 @@ void CCrazyMatrix::lightGameDesign()
     boardCopy();
 	//printf("Initial Game Board\n");
 	//Print();
+}
+
+void CCrazyMatrix::lightGameShuffle2()
+{
+    srand((unsigned int)time(NULL));
+    
+    gameScheduleFlag[0] = (rand() % 100) % 2;
+    for (int i=1; i<MAX_SHUFFLES; i++) {
+        gameScheduleFlag[i] = (gameScheduleFlag[i-1] + 1) % 2;
+    }
+    
+    for (int i=0; i<numShuffles; i++) {
+        // 0 flip, 1 rotation
+        if (gameScheduleFlag[i] == 0) {
+            gameSchedule[i] = (rand() % 1000) % 2;
+        }
+        
+        if (gameScheduleFlag[i] == 1) {
+            gameSchedule[i] = (rand() % 1000) % 4 + 2;
+        }
+    }
 }
 
 void CCrazyMatrix::lightGameShuffle()

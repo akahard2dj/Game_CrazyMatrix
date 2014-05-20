@@ -55,6 +55,14 @@ bool GameStageScene::init()
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
     
+    explosion_col[0] = Color4F(255,0,0,1);
+    explosion_col[1] = Color4F(0,255,0,1);
+    explosion_col[2] = Color4F(0,0,255,1);
+    explosion_col[3] = Color4F(255,127,0,1);
+    explosion_col[4] = Color4F(255,255,0,1);
+    explosion_col[5] = Color4F(0,255,255,1);
+    explosion_col[6] = Color4F(255,0,255,1);
+    
 	mCurrentLevel = 1;
     wrongNumberPerGame = 0;
     hasOneMoreChange = true;
@@ -90,7 +98,7 @@ void GameStageScene::drawCurrentStageInfo() {
     
     char stageInfo[3];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
-    currentStage = LabelTTF::create(stageInfo, "arial", 80);
+    currentStage = LabelTTF::create(stageInfo, "LG_Weather_font_bold.ttf", 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
     bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
     this->addChild(currentStage, 1);
@@ -137,7 +145,7 @@ void GameStageScene::drawBoard() {
             log("flip x");
 			break;
 		case TRANSFORM_FLIP_Y:
-            action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0,0);
+            action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, -180, 0,0);
             log("flip y");
 			break;
 		case TRANSFORM_ROT_CW:
@@ -153,7 +161,8 @@ void GameStageScene::drawBoard() {
 			log("trans 1");
 			break;
 		case TRANSFORM_TRANS2:
-            action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
+            //action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
+                action = RotateBy::create(delayForRotationAnimation, -90);
             log("trans 2");
 			break;
 		default:
@@ -280,6 +289,7 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
 
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(false);
+
     
     listener->onTouchBegan = [=](Touch* touch, Event* event){
         
@@ -308,6 +318,7 @@ void GameStageScene::addEventListener(EventDispatcher* e) {
             } else if (tileTouchEnable == true && isPopupShowing == false) {
                 float currentScale = mTiles[tagNum]->getScale();
                 mTiles[tagNum]->setScale(currentScale * 1.1);
+
                 return true;
             }
             
@@ -399,11 +410,24 @@ void GameStageScene::stageClear() {
     auto scaleDown = scaleUp->reverse();
     bgCurrentStage->runAction(Sequence::create(scaleUp, scaleDown, scaleUp, scaleDown, scaleUp, scaleDown, NULL));
     
-    auto delay1_exp = DelayTime::create(0.2);
-    auto delay2_exp = DelayTime::create(0.5);
-    auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(128,672)) );
-    auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(530,622)) );
-    auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(350,912)) );
+    float dt1 = (float)(rand()%5)/100.0;
+    float dt2 = (float)(rand()%5)/100.0;
+    
+    int lotto = rand()%2;
+    if (lotto == 1) {
+        dt1 = dt1 * -1;
+        dt2 = dt2 * -1;
+    }
+    
+    auto delay1_exp = DelayTime::create(0.2 + dt1);
+    auto delay2_exp = DelayTime::create(0.5 + dt2);
+    
+    float dx = (float)(rand()%8)/100.0;
+    float dy = (float)(rand()%8)/100.0;
+    
+    auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.20f+dx),winSize.height*(0.59f+dy))) );
+    auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.83f+dx),winSize.height*(0.55f+dy))) );
+    auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.80f+dy))) );
     this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
     
     scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
@@ -411,16 +435,22 @@ void GameStageScene::stageClear() {
 
 void GameStageScene::explosion(Point s) {
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("firework.mp3");
-	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(150);
+	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(200);
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
 	particle->setGravity(Point(0, -70));
-    particle->setLife(1.8);
-    particle->setSpeed(120);
-    particle->setEmissionRate(1300);
+    particle->setRadialAccel(1);
+    particle->setLife(0.1);
+    particle->setDuration(0.2);
+    particle->setSpeed(270);
+    particle->setTangentialAccel(10);
+    //particle->setEmissionRate(1300);
+    //particle->setStartColor(Color4F(255, 0, 0, 255));
+    int lotto = rand()%7;
+    particle->setStartColor(explosion_col[lotto]);
+    particle->setStartSize(15);
 	particle->setEndColor(Color4F(0,0,0,1));
     particle->setEndSize(0.0);
-    particle->setStartColor(Color4F(255, 0, 0, 255));
 	
     this->addChild(particle,100);
 }
@@ -470,7 +500,7 @@ void GameStageScene::effectShowSolution(Point s)
 
 void GameStageScene::makeTimer(float dt) {
 
-    timerLabel = LabelTTF::create("Ready!", "fonts/LG_Weather_font_bold.ttf", 90.0f);
+    timerLabel = LabelTTF::create("Ready!", "LG_Weather_font_bold.ttf", 80.0f);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
     timerLabel->runAction(ScaleBy::create(0.3, 1.5f));
     this->addChild(timerLabel);
