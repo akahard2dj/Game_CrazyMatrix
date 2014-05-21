@@ -15,14 +15,8 @@ public:
 	virtual bool init();  
 	static cocos2d::Scene* createScene();
     CREATE_FUNC(GameStageScene);
-    
-protected:
-    Sprite* shareImage[3];
-    Sprite* popMenuImage[4];
-    Sprite* optionImage[2];
 
 private:
-
 	Size winSize;
 	std::vector<Sprite*> mTiles;
 	std::vector<int> mTilesSelected;
@@ -35,7 +29,9 @@ private:
     int timerCount;
     bool tileTouchEnable;
     Sprite* bgImage;
-    
+    Sprite* shareImage[3];
+    Sprite* popMenuImage[4];
+    Sprite* optionImage[2];
     LabelTTF* currentStage;
     Sprite* bgCurrentStage;
     bool isPopupShowing;
@@ -47,6 +43,7 @@ private:
     int bestStage;
     std::vector<std::string> _defaultSearchPathArray;
     LabelTTF* bestStageLabel;
+    bool isEffectSoundOn;
     
     void initSound();
     void initBoard();
