@@ -28,7 +28,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
-            endingLineNumber = "87">
+            endingLineNumber = "87"
+            landmarkName = "GameStageScene::initSound()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -43,7 +45,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "GameStageScene::initBoard()"
+            landmarkName = "GameStageScene::initSound()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

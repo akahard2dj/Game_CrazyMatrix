@@ -552,7 +552,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                         optionImage[0]->setTexture("BGMoffIcon.png");
                         
                     } else {
-                        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav");
+                        CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
                         optionImage[0]->setTexture("BGMonIcon.png");
                         
                     }
