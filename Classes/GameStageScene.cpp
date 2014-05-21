@@ -114,7 +114,7 @@ void GameStageScene::initStageButtonInfo() {
     bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
     this->addChild(bgCurrentStage, 0);
     
-    char stageInfo[3];
+    char stageInfo[256];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
     currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, 80);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
@@ -191,7 +191,6 @@ void GameStageScene::gameStart(float dt) {
     
     drawCurrentStageInfo();
     drawBoard();
-    
     drawTiles();
 }
 
@@ -237,6 +236,26 @@ void GameStageScene::getStageInfo() {
 
 void GameStageScene::drawBoard() {
 	
+	//// ADD //////////
+	int MARGIN_BOTTOM;
+    if (winSize.height > 1000) {
+        // 3.5 inch
+        MARGIN_BOTTOM = winSize.height * 0.3;
+    } else {
+        // 4 inch
+        MARGIN_BOTTOM = winSize.height * 0.2;
+    }
+
+	if (boardLayer != NULL) {
+		boardLayer->removeFromParent();
+	}
+	boardLayer = Layer::create();
+	boardLayer->setPosition(0, MARGIN_BOTTOM);
+    boardLayer->setContentSize(Size(winSize.width, winSize.width));
+	boardLayer->setColor(Color3B(255, 0, 0));
+    
+	this->addChild(boardLayer, 1);
+
 	scheduleOnce(schedule_selector(GameStageScene::showTiles), 0.05);
 
 	float delayTime = 1.5f * (float)info.matrixSize / 3.0f;
@@ -256,28 +275,28 @@ void GameStageScene::drawBoard() {
     FiniteTimeAction* action4 = NULL;
     FiniteTimeAction* action5 = NULL;
     
-    auto delay_interval = DelayTime::create(0.1);
-    
-	for (int t=0; t<info.actionNum; t++) {
+    auto delay_interval = DelayTime::create(0.4);
 
+	float orbitOrigin = 0;
+
+	for (int t=0; t<info.actionNum; t++) {
         ActionInterval* action;
         
 		switch(info.actions[t]) {
+		//switch(test[t]) {
 		case TRANSFORM_FLIP_X:
-			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
-            log("flip x");
+			action = OrbitCamera::create(delayForFlipAnimation, 1, 0, orbitOrigin, 180, 0, 0);
+			orbitOrigin = (orbitOrigin == 0) ? 180 : 0; 
 			break;
 		case TRANSFORM_FLIP_Y:
-            action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, -180, 0,0);
-            log("flip y");
+            action = OrbitCamera::create(delayForFlipAnimation, 1, 0, orbitOrigin, 180, 0,0);
+			orbitOrigin = (orbitOrigin == 0) ? 180 : 0;
 			break;
 		case TRANSFORM_ROT_CW:
             action = RotateBy::create(delayForRotationAnimation, 90);
-			log("rotate 90");
 			break;
 		case TRANSFORM_ROT_CCW:
             action = RotateBy::create(delayForRotationAnimation, -90);
-            log("rotate -90");
 			break;
 		case TRANSFORM_TRANS1:
             action = RotateBy::create(delayForRotationAnimation, 90);
@@ -285,14 +304,13 @@ void GameStageScene::drawBoard() {
 			break;
 		case TRANSFORM_TRANS2:
             //action = OrbitCamera::create(delayForFlipAnimation, 1, 0, 0, 180, 0, 0);
-                action = RotateBy::create(delayForRotationAnimation, -90);
+            action = RotateBy::create(delayForRotationAnimation, -90);
             log("trans 2");
 			break;
 		default:
 			break;
 		}
-        
-        //action = EaseExponentialIn::create(action);
+
         action = EaseBackOut::create(action);
         
         if (t==0) {
@@ -693,6 +711,3 @@ void GameStageScene::hideMenuPopup() {
     this->reorderChild(currentStage, 1);
 
 }
-
-
-
