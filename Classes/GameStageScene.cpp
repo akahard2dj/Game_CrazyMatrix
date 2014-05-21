@@ -11,16 +11,21 @@ USING_NS_CC;
 #define SPEED_FOR_FLIP_DELAY 0.3
 #define MSG_PLAY_AGAIN "play-again"
 
+
 #define TAG_BUTTON_CURRENT_STAGE_BG 500
-#define TAG_BUTTON_RETRY_BUTTON 501
+#define TAG_BUTTON_OPTION_BUTTON 501
+#define TAG_BUTTON_SHARE_BUTTON 502
+#define TAG_BUTTON_RETRY_BUTTON 503
+#define TAG_BUTTON_OPTION_BGM_BUTTON 504
+#define TAG_BUTTON_OPTION_EFFECT_BUTTON 505
 
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_ICON 1001
 #define Z_ORDER_POPUP_LABEL 1002
 #define NUM_POPUP_MENU 4
 #define NUM_SHARE_MENU 3
-#define NUM_OPTION_MENU 4
-#define GAME_MAIN_FONT_NAME "LG_Weather_font_bold.ttf"
+#define NUM_OPTION_MENU 2
+#define GAME_MAIN_FONT_NAME "font_bold.ttf"
 
 Scene* GameStageScene::createScene()
 {
@@ -45,6 +50,9 @@ bool GameStageScene::init()
     }
     
     winSize = Director::getInstance()->getWinSize();
+    
+    bestStage = 1;
+    loadBestStage();
 	
     initSound();
     initBoard();
@@ -133,7 +141,7 @@ void GameStageScene::initMenuPopup() {
     pauseLayout->addChild(stageLabel, Z_ORDER_POPUP_LABEL);
     
     // Menu item Layout
-    popMenuImage[0] = Sprite::create("RankingIcon.png");
+    popMenuImage[0] = Sprite::create("RecordIcon.png");
     popMenuImage[1] = Sprite::create("OptionIcon.png");
     popMenuImage[2] = Sprite::create("ShareIcon.png");
     popMenuImage[3] = Sprite::create("RetryIcon.png");
@@ -142,15 +150,15 @@ void GameStageScene::initMenuPopup() {
     shareImage[2] = Sprite::create("ReviewIcon.png");
     optionImage[0] = Sprite::create("BGMonIcon.png");
     optionImage[1] = Sprite::create("EffectOnIcon.png");
-    optionImage[2] = Sprite::create("BGMoffIcon.png");
-    optionImage[3] = Sprite::create("EffectOffIcon.png");
+    //optionImage[2] = Sprite::create("BGMoffIcon.png");
+    //optionImage[3] = Sprite::create("EffectOffIcon.png");
     
     float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width*0.125f, winSize.width*0.875f,winSize.width*0.766f};
     float popY[NUM_POPUP_MENU] = {winSize.height/2, winSize.height*0.912f, winSize.height*0.912f,winSize.height*0.2f};
     float shareX[NUM_SHARE_MENU] = {winSize.width*0.875f, winSize.width*0.875f, winSize.width*0.875f};
     float shareY[NUM_SHARE_MENU] = {winSize.height*0.797f, winSize.height*0.710f, winSize.height*0.621f};
-    float optionX[NUM_OPTION_MENU/2] = {winSize.width*0.125f, winSize.width*0.125f};
-    float optionY[NUM_OPTION_MENU/2] = {winSize.height*0.797f, winSize.height*0.710f};
+    float optionX[NUM_OPTION_MENU] = {winSize.width*0.125f, winSize.width*0.125f};
+    float optionY[NUM_OPTION_MENU] = {winSize.height*0.797f, winSize.height*0.710f};
     
     for (int i=0; i<NUM_POPUP_MENU; i++) {
         popMenuImage[i]->setScale(0.7, 0.7);
@@ -161,11 +169,13 @@ void GameStageScene::initMenuPopup() {
     for (int i=0; i<NUM_SHARE_MENU; i++) {
         shareImage[i]->setScale(0.5, 0.5);
         shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
+        shareImage[i]->setVisible(false);
     }
     
     for (int i=0; i<NUM_OPTION_MENU; i++) {
         optionImage[i]->setScale(0.5, 0.5);
         optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
+        optionImage[i]->setVisible(false);
     }
     
     for (int i=0; i<NUM_POPUP_MENU; i++) {
@@ -176,11 +186,23 @@ void GameStageScene::initMenuPopup() {
         pauseLayout->addChild(shareImage[i], Z_ORDER_POPUP);
     }
     
-    for (int i=0; i<NUM_OPTION_MENU/2; i++) {
+    for (int i=0; i<NUM_OPTION_MENU; i++) {
         pauseLayout->addChild(optionImage[i], Z_ORDER_POPUP);
     }
     
+    popMenuImage[1]->setTag(TAG_BUTTON_OPTION_BUTTON);
+    popMenuImage[2]->setTag(TAG_BUTTON_SHARE_BUTTON);
     popMenuImage[3]->setTag(TAG_BUTTON_RETRY_BUTTON);
+    
+    optionImage[0]->setTag(TAG_BUTTON_OPTION_BGM_BUTTON);
+    optionImage[1]->setTag(TAG_BUTTON_OPTION_EFFECT_BUTTON);
+    
+    // BEST STAGE
+    char best[128];
+    sprintf(best, "%d", bestStage);
+    bestStageLabel = LabelTTF::create(best, GAME_MAIN_FONT_NAME, 50.0f);
+    bestStageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.535));
+    pauseLayout->addChild(bestStageLabel, Z_ORDER_POPUP_LABEL);
 }
 
 void GameStageScene::gameStart(float dt) {
@@ -400,13 +422,38 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
             auto scaleupdowon = RepeatForever::create(Sequence::create(scaleup, scaledown, NULL));
             switch (tagNum) {
                 case TAG_BUTTON_CURRENT_STAGE_BG:
+                {
                     bgCurrentStage->setScale(1.3f);
                     bgCurrentStage->runAction(scaleupdowon);
+                }
                     break;
                 case TAG_BUTTON_RETRY_BUTTON:
-                    auto currentScale = popMenuImage[3]->getScale();
+                {
+                    float currentScale = popMenuImage[3]->getScale();
                     popMenuImage[3]->setScale(currentScale * 1.3);
                     //popMenuImage[3]->runAction(scaleupdowon);
+                }
+                    break;
+                case TAG_BUTTON_OPTION_BUTTON:
+                {
+                    popMenuImage[1]->setScale(popMenuImage[1]->getScale() * 1.2);
+                }
+                    break;
+                case TAG_BUTTON_SHARE_BUTTON:
+                {
+                    popMenuImage[2]->setScale(popMenuImage[2]->getScale() * 1.2);
+                }
+                    break;
+                case TAG_BUTTON_OPTION_BGM_BUTTON:
+                {
+                    optionImage[0]->setScale(optionImage[0]->getScale() * 1.2);
+                    
+                }
+                    break;
+                case TAG_BUTTON_OPTION_EFFECT_BUTTON:
+                {
+                    optionImage[1]->setScale(optionImage[1]->getScale() * 1.2);
+                }
                     break;
             }
             return true;
@@ -426,45 +473,99 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
         if (tagNum > mTiles.size()) {
             
             switch (tagNum) {
-            case TAG_BUTTON_CURRENT_STAGE_BG:
-                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
-                bgCurrentStage->stopAllActions();
-                bgCurrentStage->setScale(1.0f);
-                
-                if (isPopupShowing == false) {
-                    showMenuPopup(0);
-                } else {
-                    hideMenuPopup();
-                }
-                
-                if (isGameFinished == true) {
+                case TAG_BUTTON_CURRENT_STAGE_BG:
+                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
+                    bgCurrentStage->stopAllActions();
+                    bgCurrentStage->setScale(1.0f);
+                    
+                    if (isPopupShowing == false) {
+                        showMenuPopup(0);
+                    } else {
+                        hideMenuPopup();
+                    }
+                    
+                    if (isGameFinished == true) {
+                        isGameFinished = false;
+                        timerLabel->setString("");
+                        gameStart(0);
+                    }
+
+                    break;
+                        
+                case TAG_BUTTON_RETRY_BUTTON:
+                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
+                    popMenuImage[3]->stopAllActions();
+                    popMenuImage[3]->setScale(0.7f);
                     isGameFinished = false;
                     timerLabel->setString("");
+                    mCurrentLevel = 1;
+
+                    unschedule(schedule_selector(GameStageScene::showTiles));
+                    unschedule(schedule_selector(GameStageScene::hideTiles));
+                    unschedule(schedule_selector(GameStageScene::runTimer));
+                    unschedule(schedule_selector(GameStageScene::drawTimerLabel));
+                        
+                        
                     gameStart(0);
+                    hideMenuPopup();
+      
+                    break;
+                        
+                case TAG_BUTTON_OPTION_BUTTON:
+                {
+                    float currentScale1 = popMenuImage[1]->getScale();
+                    popMenuImage[1]->setScale(currentScale1 / 1.2);
+                    
+                    if (optionImage[0]->isVisible() == true) {
+                        for (int i=0; i<NUM_OPTION_MENU; i++) {
+                            optionImage[i]->setVisible(false);
+                        }
+                    } else {
+                        for (int i=0; i<NUM_OPTION_MENU; i++) {
+                            optionImage[i]->setVisible(true);
+                        }
+                    }
                 }
-
-                break;
+                    break;
                     
-            case TAG_BUTTON_RETRY_BUTTON:
-                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
-                popMenuImage[3]->stopAllActions();
-                popMenuImage[3]->setScale(0.7f);
-                isGameFinished = false;
-                timerLabel->setString("");
-                mCurrentLevel = 1;
-
-                unschedule(schedule_selector(GameStageScene::showTiles));
-                unschedule(schedule_selector(GameStageScene::hideTiles));
-                unschedule(schedule_selector(GameStageScene::runTimer));
-                unschedule(schedule_selector(GameStageScene::drawTimerLabel));
+                case TAG_BUTTON_SHARE_BUTTON:
+                {
+                    float currentScale2 = popMenuImage[2]->getScale();
+                    popMenuImage[2]->setScale(currentScale2 / 1.2);
                     
+                    if (shareImage[0]->isVisible() == true) {
+                        for (int i=0; i<NUM_SHARE_MENU; i++) {
+                            shareImage[i]->setVisible(false);
+                        }
+                    } else {
+                        for (int i=0; i<NUM_SHARE_MENU; i++) {
+                            shareImage[i]->setVisible(true);
+                        }
+                    }
+                }
+                    break;
+                case TAG_BUTTON_OPTION_BGM_BUTTON:
+                {
+                    optionImage[0]->setScale(optionImage[0]->getScale() / 1.2);
+                    if (CocosDenshion::SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
+                        CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+                        optionImage[0]->setTexture("BGMoffIcon.png");
+                        
+                    } else {
+                        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav");
+                        optionImage[0]->setTexture("BGMonIcon.png");
+                        
+                    }
                     
-                gameStart(0);
-                hideMenuPopup();
-  
-                break;
+                }
+                    break;
+                case TAG_BUTTON_OPTION_EFFECT_BUTTON:
+                {
+                    optionImage[1]->setScale(optionImage[1]->getScale() / 1.2);
+                }
+                    break;
                     
-            default:
+                default:
                 break;
             }
             
@@ -474,7 +575,11 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
     
     e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), bgCurrentStage);
     e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), currentStage);
+    e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), popMenuImage[1]);
+    e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), popMenuImage[2]);
     e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), popMenuImage[3]);
+    e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), optionImage[0]);
+    e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), optionImage[1]);
     
 }
 
@@ -542,6 +647,11 @@ void GameStageScene::addTileButtonEventListener() {
 }
 
 void GameStageScene::stageClear() {
+    
+    if (mCurrentLevel > bestStage) {
+        bestStage = mCurrentLevel;
+        writeBestStage();
+    }
     
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("applause.mp3");
     unschedule(schedule_selector(GameStageScene::drawTimerLabel));
@@ -699,6 +809,9 @@ void GameStageScene::drawTimerLabel(float dt) {
 
 void GameStageScene::showMenuPopup(float dt) {
     isPopupShowing = true;
+    char best[128];
+    sprintf(best, "%d", bestStage);
+    bestStageLabel->setString(best);
     pauseLayout->setVisible(isPopupShowing);
     this->reorderChild(bgCurrentStage, Z_ORDER_POPUP_ICON);
     this->reorderChild(currentStage, Z_ORDER_POPUP_LABEL);
@@ -710,4 +823,68 @@ void GameStageScene::hideMenuPopup() {
     this->reorderChild(bgCurrentStage, 0);
     this->reorderChild(currentStage, 1);
 
+}
+
+void GameStageScene::writeBestStage()
+{
+    auto sharedFileUtils = FileUtils::getInstance();
+    
+    std::string ret;
+    
+    sharedFileUtils->purgeCachedEntries();
+    _defaultSearchPathArray = sharedFileUtils->getSearchPaths();
+    std::vector<std::string> searchPaths = _defaultSearchPathArray;
+    std::string writablePath = sharedFileUtils->getWritablePath();
+    std::string fileName = writablePath+"best_stage.txt";
+    log("path : %s",writablePath.c_str());
+    char szBuf[100];
+    sprintf(szBuf, "%d", bestStage);
+    FILE* fp = fopen(fileName.c_str(), "wb");
+    if (fp)
+    {
+        size_t ret = fwrite(szBuf, 1, strlen(szBuf), fp);
+        CCASSERT(ret != 0, "fwrite function returned zero value");
+        fclose(fp);
+        if (ret != 0) {
+            log("succeed.");
+        } else {
+            log("fail2");
+        }
+    } else {
+        log("writing file is failed");
+    }
+}
+
+void GameStageScene::loadBestStage()
+{
+    auto sharedFileUtils = FileUtils::getInstance();
+    
+    std::string ret;
+    
+    std::string writablePath = sharedFileUtils->getWritablePath();
+    //std::string fullPath = sharedFileUtils->fullPathForFilename("best_stage.txt");
+    std::string fileName = writablePath+"best_stage.txt";
+    log("external file path = %s", fileName.c_str());
+    FILE* fp;
+    
+    if (fileName.length() > 0)
+    {
+        fp = fopen(fileName.c_str(), "rb");
+
+        if (fp) {
+            char szReadBuf[100] = {0};
+            char szBuf[100];
+            int read = fread(szReadBuf, 1, strlen(szBuf), fp);
+            if (read > 0) {
+                //log("The content of file from writable path: %s", szReadBuf);
+                bestStage = std::atoi(szReadBuf);
+                log("best stage : %d",bestStage);
+            }
+            fclose(fp);
+        } else {
+            fclose(fp);
+            log("no file , create");
+            writeBestStage();
+        }
+    }
 }

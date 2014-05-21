@@ -15,6 +15,11 @@ public:
 	virtual bool init();  
 	static cocos2d::Scene* createScene();
     CREATE_FUNC(GameStageScene);
+    
+protected:
+    Sprite* shareImage[3];
+    Sprite* popMenuImage[4];
+    Sprite* optionImage[2];
 
 private:
 
@@ -30,9 +35,7 @@ private:
     int timerCount;
     bool tileTouchEnable;
     Sprite* bgImage;
-    Sprite* shareImage[3];
-    Sprite* popMenuImage[4];
-    Sprite* optionImage[4];
+    
     LabelTTF* currentStage;
     Sprite* bgCurrentStage;
     bool isPopupShowing;
@@ -41,7 +44,9 @@ private:
     Color4F explosion_col[7];
     EventDispatcher* eventDispatcher;
     EventListenerTouchOneByOne* buttonListener;
-    
+    int bestStage;
+    std::vector<std::string> _defaultSearchPathArray;
+    LabelTTF* bestStageLabel;
     
     void initSound();
     void initBoard();
@@ -68,6 +73,8 @@ private:
     void stageClear();
     void showMenuPopup(float dt);
     void hideMenuPopup();
+    void writeBestStage();
+    void loadBestStage();
     
 
 };
