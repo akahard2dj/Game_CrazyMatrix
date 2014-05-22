@@ -26,6 +26,7 @@ USING_NS_CC;
 #define NUM_SHARE_MENU 3
 #define NUM_OPTION_MENU 2
 #define GAME_MAIN_FONT_NAME "font_bold.ttf"
+#define GAME_PREF_FILE_NAME "game.plist"
 
 Scene* GameStageScene::createScene()
 {
@@ -51,7 +52,7 @@ bool GameStageScene::init()
     
     winSize = Director::getInstance()->getWinSize();
     
-    bestStage = 1;
+    bestStage = 0;
     loadBestStage();
 	
     initSound();
@@ -829,64 +830,33 @@ void GameStageScene::hideMenuPopup() {
 
 void GameStageScene::writeBestStage()
 {
-    auto sharedFileUtils = FileUtils::getInstance();
-    
-    std::string ret;
-    
-    sharedFileUtils->purgeCachedEntries();
-    _defaultSearchPathArray = sharedFileUtils->getSearchPaths();
-    std::vector<std::string> searchPaths = _defaultSearchPathArray;
-    std::string writablePath = sharedFileUtils->getWritablePath();
-    std::string fileName = writablePath+"best_stage.txt";
-    log("path : %s",writablePath.c_str());
-    char szBuf[100];
-    sprintf(szBuf, "%d", bestStage);
-    FILE* fp = fopen(fileName.c_str(), "wb");
-    if (fp)
-    {
-        size_t ret = fwrite(szBuf, 1, strlen(szBuf), fp);
-        CCASSERT(ret != 0, "fwrite function returned zero value");
-        fclose(fp);
-        if (ret != 0) {
-            log("succeed.");
-        } else {
-            log("fail2");
-        }
-    } else {
-        log("writing file is failed");
-    }
+	auto rootDic = Dictionary::create();
+	auto bestStageInteger = Integer::create(bestStage);
+	rootDic->setObject(bestStageInteger, "key_bestStage");
+
+	std::string writablePath = FileUtils::getInstance()->getWritablePath();
+    std::string fullPath = writablePath + GAME_PREF_FILE_NAME;
+    if (rootDic->writeToFile(fullPath.c_str())) {
+        log("write succeed at %s", fullPath.c_str());
+	} else {
+        log("oops! write failed");
+	}
+	
 }
 
 void GameStageScene::loadBestStage()
 {
-    auto sharedFileUtils = FileUtils::getInstance();
-    
-    std::string ret;
-    
-    std::string writablePath = sharedFileUtils->getWritablePath();
-    //std::string fullPath = sharedFileUtils->fullPathForFilename("best_stage.txt");
-    std::string fileName = writablePath+"best_stage.txt";
-    log("external file path = %s", fileName.c_str());
-    FILE* fp;
-    
-    if (fileName.length() > 0)
-    {
-        fp = fopen(fileName.c_str(), "rb");
+	std::string writablePath = FileUtils::getInstance()->getWritablePath();
+    std::string fullPath = writablePath + GAME_PREF_FILE_NAME;
 
-        if (fp) {
-            char szReadBuf[100] = {0};
-            char szBuf[100];
-            int read = fread(szReadBuf, 1, strlen(szBuf), fp);
-            if (read > 0) {
-                //log("The content of file from writable path: %s", szReadBuf);
-                bestStage = std::atoi(szReadBuf);
-                log("best stage : %d",bestStage);
-            }
-            fclose(fp);
-        } else {
-            fclose(fp);
-            log("no file , create");
-            writeBestStage();
-        }
-    }
+	auto loadDict = __Dictionary::createWithContentsOfFile(fullPath.c_str());
+	auto intValue = (__String*)loadDict->objectForKey("key_bestStage");
+
+	if (intValue != NULL) {
+		bestStage = std::atoi(intValue->getCString());
+		log("Load completed / stage = %d", bestStage);
+	} else {
+		log("plist is not exist!");
+	}
+
 }
