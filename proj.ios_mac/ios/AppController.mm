@@ -80,7 +80,7 @@ static AppDelegate s_sharedApplication;
     cocos2d::Application::getInstance()->run();
     
     //Admob
-    CGPoint origin = CGPointMake(0.0,
+    /*CGPoint origin = CGPointMake(0.0,
                                  viewController.view.frame.size.height -
                                  50.0);
     
@@ -92,7 +92,7 @@ static AppDelegate s_sharedApplication;
     [viewController.view addSubview:bannerView];
     
     GADRequest* adRequest = [GADRequest request];
-    [bannerView loadRequest:adRequest];
+    [bannerView loadRequest:adRequest];*/
 
     return YES;
 }
