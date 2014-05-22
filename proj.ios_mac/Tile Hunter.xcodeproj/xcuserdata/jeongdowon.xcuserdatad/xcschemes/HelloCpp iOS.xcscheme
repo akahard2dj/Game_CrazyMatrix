@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "CrazyMatrix iOS.app"
-               BlueprintName = "CrazyMatrix iOS"
-               ReferencedContainer = "container:CrazyMatrix.xcodeproj">
+               BuildableName = "HelloCpp iOS.app"
+               BlueprintName = "HelloCpp iOS"
+               ReferencedContainer = "container:HelloCpp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "CrazyMatrix iOS.app"
-            BlueprintName = "CrazyMatrix iOS"
-            ReferencedContainer = "container:CrazyMatrix.xcodeproj">
+            BuildableName = "Tile Hunter.app"
+            BlueprintName = "Tile Hunter"
+            ReferencedContainer = "container:Tile Hunter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "CrazyMatrix iOS.app"
-            BlueprintName = "CrazyMatrix iOS"
-            ReferencedContainer = "container:CrazyMatrix.xcodeproj">
+            BuildableName = "Tile Hunter.app"
+            BlueprintName = "Tile Hunter"
+            ReferencedContainer = "container:Tile Hunter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "CrazyMatrix iOS.app"
-            BlueprintName = "CrazyMatrix iOS"
-            ReferencedContainer = "container:CrazyMatrix.xcodeproj">
+            BuildableName = "HelloCpp iOS.app"
+            BlueprintName = "HelloCpp iOS"
+            ReferencedContainer = "container:HelloCpp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

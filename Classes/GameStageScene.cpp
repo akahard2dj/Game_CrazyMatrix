@@ -417,7 +417,7 @@ void GameStageScene::drawBoardTiles(int n) {
 void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 
     buttonListener = EventListenerTouchOneByOne::create();
-    buttonListener->setSwallowTouches(false);
+    buttonListener->setSwallowTouches(true);
     
     buttonListener->onTouchBegan = [=](Touch* touch, Event* event){
         
@@ -617,7 +617,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 
 void GameStageScene::addTileButtonEventListener() {
     auto tileButtonListener = EventListenerTouchOneByOne::create();
-    tileButtonListener->setSwallowTouches(false);
+    tileButtonListener->setSwallowTouches(true);
     
     tileButtonListener->onTouchBegan = [=](Touch* touch, Event* event){
         
