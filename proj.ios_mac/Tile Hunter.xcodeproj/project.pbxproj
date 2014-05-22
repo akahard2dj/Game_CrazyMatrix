@@ -61,7 +61,7 @@
 		CD6190A11924FBC5006D7099 /* YELLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909B1924FBC5006D7099 /* YELLOW.png */; };
 		CD6190A51924FDBE006D7099 /* GREEN_CIRCLE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190A41924FDBE006D7099 /* GREEN_CIRCLE.png */; };
 		CD632EE1192A544900ED5DEE /* RetryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD632EE0192A544900ED5DEE /* RetryIcon.png */; };
-		CD632EE7192A58D900ED5DEE /* LG_Weather_font_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD632EE6192A58D900ED5DEE /* LG_Weather_font_bold.ttf */; };
+		CD632EE7192A58D900ED5DEE /* font_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD632EE6192A58D900ED5DEE /* font_bold.ttf */; };
 		CD7B9E5F192B8B6E005AA90B /* RecordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */; };
 		CD7B9E6B192B8C1B005AA90B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD7B9E60192B8C1B005AA90B /* Icon@2x.png */; };
 		CD7B9E6C192B8C1B005AA90B /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD7B9E61192B8C1B005AA90B /* Icon-72@2x.png */; };
@@ -281,7 +281,7 @@
 		CD61909B1924FBC5006D7099 /* YELLOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YELLOW.png; sourceTree = "<group>"; };
 		CD6190A41924FDBE006D7099 /* GREEN_CIRCLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GREEN_CIRCLE.png; sourceTree = "<group>"; };
 		CD632EE0192A544900ED5DEE /* RetryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RetryIcon.png; sourceTree = "<group>"; };
-		CD632EE6192A58D900ED5DEE /* LG_Weather_font_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LG_Weather_font_bold.ttf; sourceTree = "<group>"; };
+		CD632EE6192A58D900ED5DEE /* font_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = font_bold.ttf; sourceTree = "<group>"; };
 		CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordIcon.png; sourceTree = "<group>"; };
 		CD7B9E60192B8C1B005AA90B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		CD7B9E61192B8C1B005AA90B /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -585,7 +585,7 @@
 		CD339F931927946300DBB2E7 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				CD632EE6192A58D900ED5DEE /* LG_Weather_font_bold.ttf */,
+				CD632EE6192A58D900ED5DEE /* font_bold.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -785,7 +785,7 @@
 				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
 				CD7B9E72192B8C1B005AA90B /* Icon-Small-50@2x.png in Resources */,
 				CD339F6D1926D71B00DBB2E7 /* stageBtClick.wav in Resources */,
-				CD632EE7192A58D900ED5DEE /* LG_Weather_font_bold.ttf in Resources */,
+				CD632EE7192A58D900ED5DEE /* font_bold.ttf in Resources */,
 				CD339F8219273E4100DBB2E7 /* BackIcon.png in Resources */,
 				CDC50F161923B0AB003391CD /* launcher01.png in Resources */,
 				CDC50F141923B0AB003391CD /* Icon-60.png in Resources */,

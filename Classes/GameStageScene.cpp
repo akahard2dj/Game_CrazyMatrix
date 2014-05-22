@@ -417,7 +417,7 @@ void GameStageScene::drawBoardTiles(int n) {
 void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 
     buttonListener = EventListenerTouchOneByOne::create();
-    buttonListener->setSwallowTouches(true);
+    buttonListener->setSwallowTouches(false);
     
     buttonListener->onTouchBegan = [=](Touch* touch, Event* event){
         
@@ -437,34 +437,47 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                 case TAG_BUTTON_CURRENT_STAGE_BG:
                     bgCurrentStage->setScale(1.3f);
                     bgCurrentStage->runAction(scaleupdowon);
-                    break;
-                case TAG_BUTTON_RETRY_BUTTON:
-                    popMenuImage[3]->setScale(popMenuImage[3]->getScale() * 1.3);
-                    break;
-                case TAG_BUTTON_OPTION_BUTTON:
-                    popMenuImage[1]->setScale(popMenuImage[1]->getScale() * 1.2);
-                    break;
-                case TAG_BUTTON_SHARE_BUTTON:
-                    popMenuImage[2]->setScale(popMenuImage[2]->getScale() * 1.2);
-                    break;
-                case TAG_BUTTON_OPTION_BGM_BUTTON:
-                    optionImage[0]->setScale(optionImage[0]->getScale() * 1.2);
-                    break;
-                case TAG_BUTTON_OPTION_EFFECT_BUTTON:
-                    optionImage[1]->setScale(optionImage[1]->getScale() * 1.2);
-                    break;
-				case TAG_BUTTON_SHARE_FACEBOOK_BUTTON:
-                    shareImage[0]->setScale(shareImage[1]->getScale() * 1.2);
-                    break;
-				case TAG_BUTTON_SHARE_EMAIL_BUTTON:
-                    shareImage[1]->setScale(shareImage[1]->getScale() * 1.2);
-                    break;
-				case TAG_BUTTON_SHARE_REVIEW_BUTTON:
-                    shareImage[2]->setScale(shareImage[1]->getScale() * 1.2);
+                    return true;
                     break;
             }
-            return true;
             
+            if (isPopupShowing) {
+                switch (tagNum) {
+                    case TAG_BUTTON_RETRY_BUTTON:
+                        popMenuImage[3]->setScale(popMenuImage[3]->getScale() * 1.3);
+                        return true;
+                        break;
+                    case TAG_BUTTON_OPTION_BUTTON:
+                        popMenuImage[1]->setScale(popMenuImage[1]->getScale() * 1.2);
+                        return true;
+                        break;
+                    case TAG_BUTTON_SHARE_BUTTON:
+                        popMenuImage[2]->setScale(popMenuImage[2]->getScale() * 1.2);
+                        return true;
+                        break;
+                    case TAG_BUTTON_OPTION_BGM_BUTTON:
+                        optionImage[0]->setScale(optionImage[0]->getScale() * 1.2);
+                        return true;
+                        break;
+                    case TAG_BUTTON_OPTION_EFFECT_BUTTON:
+                        optionImage[1]->setScale(optionImage[1]->getScale() * 1.2);
+                        return true;
+                        break;
+                    case TAG_BUTTON_SHARE_FACEBOOK_BUTTON:
+                        shareImage[0]->setScale(shareImage[1]->getScale() * 1.2);
+                        return true;
+                        break;
+                    case TAG_BUTTON_SHARE_EMAIL_BUTTON:
+                        shareImage[1]->setScale(shareImage[1]->getScale() * 1.2);
+                        return true;
+                        break;
+                    case TAG_BUTTON_SHARE_REVIEW_BUTTON:
+                        shareImage[2]->setScale(shareImage[1]->getScale() * 1.2);
+                        return true;
+                        break;
+                }
+            }
+        
         }
         return false;
     };
@@ -611,7 +624,6 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 	e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), shareImage[0]);
 	e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), shareImage[1]);
 	e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), shareImage[2]);
-
     
 }
 
@@ -793,6 +805,7 @@ void GameStageScene::initTimerLabel() {
 
 void GameStageScene::runTimer(float dt) {
 
+    timerLabel->setScale(1.0f);
     timerLabel->setString("Ready!");
     timerLabel->runAction(ScaleBy::create(0.3, 1.3f));
 

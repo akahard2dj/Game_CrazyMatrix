@@ -40,7 +40,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>fonts/</string>
+		<string>fonts/font_bold.ttf</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
