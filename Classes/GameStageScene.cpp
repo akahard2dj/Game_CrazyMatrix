@@ -18,6 +18,10 @@ USING_NS_CC;
 #define TAG_BUTTON_RETRY_BUTTON 503
 #define TAG_BUTTON_OPTION_BGM_BUTTON 504
 #define TAG_BUTTON_OPTION_EFFECT_BUTTON 505
+#define TAG_BUTTON_SHARE_FACEBOOK_BUTTON 506
+#define TAG_BUTTON_SHARE_EMAIL_BUTTON 507
+#define TAG_BUTTON_SHARE_REVIEW_BUTTON 508
+
 
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_ICON 1001
@@ -62,6 +66,7 @@ bool GameStageScene::init()
     initTimerLabel();
     
     isEffectSoundOn = true;
+	isBGMOn = true;
     
     explosion_col[0] = Color4F(255,0,0,1);
     explosion_col[1] = Color4F(0,255,0,1);
@@ -199,7 +204,11 @@ void GameStageScene::initMenuPopup() {
     
     optionImage[0]->setTag(TAG_BUTTON_OPTION_BGM_BUTTON);
     optionImage[1]->setTag(TAG_BUTTON_OPTION_EFFECT_BUTTON);
-    
+	
+	shareImage[0]->setTag(TAG_BUTTON_SHARE_FACEBOOK_BUTTON);
+	shareImage[1]->setTag(TAG_BUTTON_SHARE_EMAIL_BUTTON);
+	shareImage[2]->setTag(TAG_BUTTON_SHARE_REVIEW_BUTTON);
+
     // BEST STAGE
     char best[128];
     sprintf(best, "%d", bestStage);
@@ -357,9 +366,7 @@ void GameStageScene::drawBoard() {
 }
 
 void GameStageScene::showTiles(float dt) {
-    if (isEffectSoundOn) {
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("pageFlip.mp3");
-    }
+	playSoundEffect("pageFlip.mp3");
     
 	for (int n=0; n<mTiles.size(); n++) {
 
@@ -419,7 +426,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
         
         Point locationInNode = target->convertToNodeSpace(touch->getLocation());
         Size s = target->getContentSize();
-        const float MARGIN_TOUCH_AREA = target->getContentSize().width * 0.1;
+        const float MARGIN_TOUCH_AREA = target->getContentSize().width * 0.05;
         Rect rect = Rect(-MARGIN_TOUCH_AREA, -MARGIN_TOUCH_AREA, s.width + MARGIN_TOUCH_AREA, s.height + MARGIN_TOUCH_AREA);
         
         if (rect.containsPoint(locationInNode)) {
@@ -446,6 +453,15 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                 case TAG_BUTTON_OPTION_EFFECT_BUTTON:
                     optionImage[1]->setScale(optionImage[1]->getScale() * 1.2);
                     break;
+				case TAG_BUTTON_SHARE_FACEBOOK_BUTTON:
+                    shareImage[0]->setScale(shareImage[1]->getScale() * 1.2);
+                    break;
+				case TAG_BUTTON_SHARE_EMAIL_BUTTON:
+                    shareImage[1]->setScale(shareImage[1]->getScale() * 1.2);
+                    break;
+				case TAG_BUTTON_SHARE_REVIEW_BUTTON:
+                    shareImage[2]->setScale(shareImage[1]->getScale() * 1.2);
+                    break;
             }
             return true;
             
@@ -465,9 +481,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
             
             switch (tagNum) {
                 case TAG_BUTTON_CURRENT_STAGE_BG:
-                    if (isEffectSoundOn) {
-                        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
-                    }
+					playSoundEffect("stageBtClick.wav");
                     bgCurrentStage->stopAllActions();
                     bgCurrentStage->setScale(1.0f);
                     
@@ -486,9 +500,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     break;
                         
                 case TAG_BUTTON_RETRY_BUTTON:
-                    if (isEffectSoundOn) {
-                        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("stageBtClick.wav");
-                    }
+                    playSoundEffect("stageBtClick.wav");
                     popMenuImage[3]->stopAllActions();
                     popMenuImage[3]->setScale(0.7f);
                     isGameFinished = false;
@@ -507,6 +519,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     break;
                         
                 case TAG_BUTTON_OPTION_BUTTON:
+					playSoundEffect("stageBtClick.wav");
                     popMenuImage[1]->setScale(popMenuImage[1]->getScale() / 1.2);
                     
                     if (optionImage[0]->isVisible() == true) {
@@ -521,6 +534,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     break;
                     
                 case TAG_BUTTON_SHARE_BUTTON:
+					playSoundEffect("stageBtClick.wav");
                     popMenuImage[2]->setScale(popMenuImage[2]->getScale() / 1.2);
                     
                     if (shareImage[0]->isVisible() == true) {
@@ -534,18 +548,22 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     }
                     break;
                 case TAG_BUTTON_OPTION_BGM_BUTTON:
+					playSoundEffect("stageBtClick.wav");
                     optionImage[0]->setScale(optionImage[0]->getScale() / 1.2);
-                    if (CocosDenshion::SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
+					if (isBGMOn) {
+						isBGMOn = false;
                         CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
                         optionImage[0]->setTexture("BGMoffIcon.png");
                         
                     } else {
+						isBGMOn = true;
                         CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
                         optionImage[0]->setTexture("BGMonIcon.png");
                         
                     }
                     break;
                 case TAG_BUTTON_OPTION_EFFECT_BUTTON:
+					playSoundEffect("stageBtClick.wav");
                     optionImage[1]->setScale(optionImage[1]->getScale() / 1.2);
                     if (isEffectSoundOn == true) {
                         isEffectSoundOn = false;
@@ -556,9 +574,24 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     }
                     break;
                     
+				case TAG_BUTTON_SHARE_FACEBOOK_BUTTON:
+					playSoundEffect("stageBtClick.wav");
+					shareImage[0]->setScale(shareImage[0]->getScale() / 1.2);
+                    break;
+				case TAG_BUTTON_SHARE_EMAIL_BUTTON:
+					playSoundEffect("stageBtClick.wav");
+					shareImage[1]->setScale(shareImage[1]->getScale() / 1.2);
+                    break;
+				case TAG_BUTTON_SHARE_REVIEW_BUTTON:
+					playSoundEffect("stageBtClick.wav");
+					shareImage[2]->setScale(shareImage[2]->getScale() / 1.2);
+                    break;
+
                 default:
                 break;
             }
+
+
             
             return;
         }
@@ -571,6 +604,10 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
     e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), popMenuImage[3]);
     e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), optionImage[0]);
     e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), optionImage[1]);
+	e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), shareImage[0]);
+	e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), shareImage[1]);
+	e->addEventListenerWithSceneGraphPriority(buttonListener->clone(), shareImage[2]);
+
     
 }
 
@@ -610,9 +647,7 @@ void GameStageScene::addTileButtonEventListener() {
         auto target = event->getCurrentTarget();
 		int tagNum = target->getTag();
         
-        if (isEffectSoundOn) {
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("es042.wav");
-        }
+		playSoundEffect("es042.wav");
         
 		mTilesSelected[tagNum] = (mTilesSelected[tagNum] + 1) % 2;
 		std::string image = mTilesSelected[tagNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
@@ -646,9 +681,7 @@ void GameStageScene::stageClear() {
         writeBestStage();
     }
     
-    if (isEffectSoundOn) {
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("applause.mp3");
-    }
+	playSoundEffect("applause.mp3");
     
     unschedule(schedule_selector(GameStageScene::drawTimerLabel));
     tileTouchEnable = false;
@@ -683,9 +716,7 @@ void GameStageScene::stageClear() {
 }
 
 void GameStageScene::explosion(Point s) {
-    if (isEffectSoundOn) {
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("firework.mp3");
-    }
+	playSoundEffect("firework.mp3");
     
 	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(200);
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
@@ -786,17 +817,13 @@ void GameStageScene::drawTimerLabel(float dt) {
         
         // GAME OVER
         timerLabel->setString("Game Over!");
-        if (isEffectSoundOn) {
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("gameFail.wav");
-        }
+		playSoundEffect("gameFail.wav");
         isGameFinished = true;
         scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 3.0f);
 
     } else {
         if (timerCount < 3) {
-            if (isEffectSoundOn) {
-                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ticktock.wav");
-            }
+			playSoundEffect("ticktock.wav");
             auto jump = JumpBy::create(0.25, Point(0, 0), 20, 1);
             boardLayer->runAction(Sequence::create(jump, jump, NULL));
             
@@ -825,7 +852,11 @@ void GameStageScene::hideMenuPopup() {
     pauseLayout->setVisible(isPopupShowing);
     this->reorderChild(bgCurrentStage, 0);
     this->reorderChild(currentStage, 1);
-
+	optionImage[0]->setVisible(false);
+	optionImage[1]->setVisible(false);
+	shareImage[0]->setVisible(false);
+	shareImage[1]->setVisible(false);
+	shareImage[2]->setVisible(false);
 }
 
 void GameStageScene::writeBestStage()
@@ -860,3 +891,9 @@ void GameStageScene::loadBestStage()
 	}
 
 }
+
+ void GameStageScene::playSoundEffect(char * fileName) {
+	if (isEffectSoundOn) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(fileName);
+    }
+ }
