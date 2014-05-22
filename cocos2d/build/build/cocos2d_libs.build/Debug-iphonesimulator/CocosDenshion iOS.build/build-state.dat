@@ -1,0 +1,353 @@
+TCocosDenshion iOS
+v6
+r1
+cCheck dependencies
+cCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDAudioManager.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDOpenALSupport.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion\ iOS.a normal i386
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk
+c0000000053474F620000000000000198
+t1397182306
+s408
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/SDKSettings.plist
+c00000000531F1BE500000000000003B4
+t1394547685
+s948
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/CoreServices/SystemVersion.plist
+c00000000531F1BEB000000000000019E
+t1394547691
+s414
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion iOS.a
+t2
+s0
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/CDAudioManager.o
+t1398774290
+s91484
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/CDOpenALSupport.o
+t1398774290
+s14404
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/CocosDenshion iOS.LinkFileList
+c00000000535F9A12000000000000033A
+t1398774290
+s826
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/CocosDenshion.o
+t1398774290
+s124856
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/SimpleAudioEngine.o
+t1398774291
+s72244
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.o
+t1398774290
+s36352
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m
+c00000000533A94FA000000000000787A
+t1396348154
+s30842
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m
+c00000000533A8B820000000000002AA4
+t1396345730
+s10916
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m
+c00000000533A8B82000000000000CE44
+t1396345730
+s52804
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm
+c00000000533A8B820000000000001DE5
+t1396345730
+s7653
+
+N/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m
+c00000000533A8B820000000000001663
+t1396345730
+s5731
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies74ee4692d10fb941^81b04792d10fb941^---0#1#1#--18"Check dependencies36"C2F4E9E4-1596-4672-9478-9320B08C7832-
+
+CCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDAudioManager.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s420467090.280545
+e420467090.806671
+r1
+xCompileC
+xbuild/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/CDAudioManager.o
+x/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDConfig.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m283"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDAudioManager.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerddec4792d10fb941^f393ce92d10fb941^---0#0#1#-19%DVTDocumentLocation2@88"file:///Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m0000000000000000^4325"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDAudioManager.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/jeongdowon/cocos2d-x-3.0/tools/cocos2d-console/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/jeongdowon/android/sdk/platform-tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Werror=incompatible-pointer-types -Werror-implicit-function-declaration -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wno-int-conversion -Wbool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DCOCOS2D_DEBUG=1 -DUSE_FILE32API -DCC_ENABLE_CHIPMUNK_INTEGRATION=1 -DCC_TARGET_OS_IPHONE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.1.1 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/CocosDenshion\ iOS.hmap -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/.. -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/base -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/physics -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/math/kazmath -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/audio/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/editor-support -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/ui -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external/chipmunk/include/chipmunk -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/storage -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform/ios -I/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources/i386 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources -F/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios -MMD -MT dependencies -MF /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDAudioManager.d --serialize-diagnostics /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDAudioManager.dia -c /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.m -o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDAudioManager.o36"14B10392-ACA4-4920-A758-7DC399BA4BCA-
+b922FA746-CB7F-4F61-BE16-3B04D9595FE2
+
+CCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDOpenALSupport.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s420467090.701445
+e420467090.873327
+r1
+xCompileC
+xbuild/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/CDOpenALSupport.o
+x/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDConfig.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Compile /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m285"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDOpenALSupport.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilere6acb392d10fb941^ea94df92d10fb941^---0#0#1#-19%DVTDocumentLocation2@89"file:///Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m0000000000000000^4331"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDOpenALSupport.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/jeongdowon/cocos2d-x-3.0/tools/cocos2d-console/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/jeongdowon/android/sdk/platform-tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Werror=incompatible-pointer-types -Werror-implicit-function-declaration -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wno-int-conversion -Wbool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DCOCOS2D_DEBUG=1 -DUSE_FILE32API -DCC_ENABLE_CHIPMUNK_INTEGRATION=1 -DCC_TARGET_OS_IPHONE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.1.1 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/CocosDenshion\ iOS.hmap -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/.. -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/base -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/physics -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/math/kazmath -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/audio/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/editor-support -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/ui -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external/chipmunk/include/chipmunk -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/storage -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform/ios -I/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources/i386 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources -F/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios -MMD -MT dependencies -MF /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDOpenALSupport.d --serialize-diagnostics /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDOpenALSupport.dia -c /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.m -o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CDOpenALSupport.o36"CF3CC025-6EA9-4422-B724-8F702EF4BC9A-
+b922FA746-CB7F-4F61-BE16-3B04D9595FE2
+
+CCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s420467090.280825
+e420467090.701223
+r1
+xCompileC
+xbuild/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/CocosDenshion.o
+x/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDConfig.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m281"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerf4fe4792d10fb941^ae83b392d10fb941^---0#0#1#-19%DVTDocumentLocation2@87"file:///Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m0000000000000000^4319"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/jeongdowon/cocos2d-x-3.0/tools/cocos2d-console/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/jeongdowon/android/sdk/platform-tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Werror=incompatible-pointer-types -Werror-implicit-function-declaration -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wno-int-conversion -Wbool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DCOCOS2D_DEBUG=1 -DUSE_FILE32API -DCC_ENABLE_CHIPMUNK_INTEGRATION=1 -DCC_TARGET_OS_IPHONE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.1.1 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/CocosDenshion\ iOS.hmap -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/.. -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/base -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/physics -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/math/kazmath -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/audio/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/editor-support -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/ui -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external/chipmunk/include/chipmunk -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/storage -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform/ios -I/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources/i386 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources -F/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios -MMD -MT dependencies -MF /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion.d --serialize-diagnostics /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion.dia -c /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.m -o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion.o36"FEE82B38-9201-4EB4-A71C-E4B0ECC1D1BE-
+b922FA746-CB7F-4F61-BE16-3B04D9595FE2
+
+CCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+s420467090.281089
+e420467092.005566
+r1
+xCompileC
+xbuild/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/SimpleAudioEngine.o
+x/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm
+xnormal
+xi386
+xobjective-c++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/include/SimpleAudioEngine.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/include/Export.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDConfig.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/cocos2d.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/ccConfig.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCPlatformConfig.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCAction.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCRef.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCPlatformMacros.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/ios/CCPlatformDefine.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCGeometry.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/ccMacros.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCConsole.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/ios/CCStdC.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionInterval.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCNode.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCAffineTransform.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/kazmath.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/vec2.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/utility.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/vec3.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/vec4.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/mat3.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/mat4.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/quaternion.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/plane.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/aabb.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/ray2.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/ray3.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/ios/CCGL.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/ccGLStateCache.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCGLProgram.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCScriptSupport.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCCommon.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTouch.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventTouch.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEvent.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventKeyboard.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCProtocols.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/ccTypes.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTexture2D.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventDispatcher.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventListener.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCVector.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCSpriteFrame.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCAnimation.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCValue.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionCamera.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionManager.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionEase.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionPageTurn3D.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionGrid3D.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionGrid.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionInstant.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionProgressTimer.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionTiledGrid.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionTween.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCActionCatmullRom.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTweenFunction.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCAtlasNode.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCQuadCommand.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCRenderCommand.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/math/kazmath/kazmath/GL/matrix.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCRenderCommandPool.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCMap.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCAutoreleasePool.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCNS.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCData.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCDrawingPrimitives.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCDrawNode.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCCustomCommand.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCGrabber.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCConfiguration.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCGrid.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCDirector.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCLabelAtlas.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventType.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCLabelTTF.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCLabelBMFont.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCLabel.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCSpriteBatchNode.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTextureAtlas.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCBatchCommand.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCFontAtlas.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCFontFNT.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCFont.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCLayer.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCScene.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/physics/CCPhysicsWorld.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTransition.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTransitionPageTurn.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTransitionProgress.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCMenu.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCMenuItem.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCClippingNode.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCGroupCommand.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCMotionStreak.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCProgressTimer.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCSprite.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/physics/CCPhysicsBody.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/physics/CCPhysicsShape.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCRenderTexture.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCImage.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCNodeGrid.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCParticleBatchNode.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCParticleSystem.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCString.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCArray.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/ccCArray.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/base/CCDataVisitor.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCParticleExamples.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCParticleSystemQuad.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCFrustum.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCMaterialManager.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCRenderMaterial.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/renderer/CCRenderer.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/physics/CCPhysicsContact.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventListenerCustom.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventCustom.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/physics/CCPhysicsJoint.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCDevice.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCFileUtils.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCSAXParser.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCThread.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/ios/CCApplication.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCApplicationProtocol.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/ios/CCGLView.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/platform/CCGLViewProtocol.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCShaderCache.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/ccShaders.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCAnimationCache.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCSpriteFrameCache.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/ccUTF8.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCProfiling.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCUserDefault.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCVertex.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCIMEDelegate.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCIMEDispatcher.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTextFieldTTF.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTextureCache.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCParallaxNode.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTMXLayer.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTMXObjectGroup.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTMXXMLParser.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTMXTiledMap.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCTileMapAtlas.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventListenerTouch.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventListenerKeyboard.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventListenerMouse.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventMouse.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventAcceleration.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCEventListenerAcceleration.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCScheduler.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/uthash.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCComponent.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/2d/CCComponentContainer.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCDictionary.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCSet.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCInteger.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCFloat.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCDouble.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCBool.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCNotificationCenter.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/deprecated/CCDeprecated.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm292"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm[0m normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compilerd3114892d10fb941^546f0194d10fb941^---0#0#1#-19%DVTDocumentLocation2@92"file:///Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm0000000000000000^4421"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm[0m normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/jeongdowon/cocos2d-x-3.0/tools/cocos2d-console/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/jeongdowon/android/sdk/platform-tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Werror=incompatible-pointer-types -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wnon-virtual-dtor -Woverloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wno-int-conversion -Wbool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -DCOCOS2D_DEBUG=1 -DUSE_FILE32API -DCC_ENABLE_CHIPMUNK_INTEGRATION=1 -DCC_TARGET_OS_IPHONE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.1.1 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/CocosDenshion\ iOS.hmap -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/.. -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/base -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/physics -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/math/kazmath -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/audio/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/editor-support -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/ui -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external/chipmunk/include/chipmunk -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/storage -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform/ios -I/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources/i386 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources -F/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios -MMD -MT dependencies -MF /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine.d --serialize-diagnostics /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine.dia -c /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine.mm -o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine.o36"DA3E9779-9A9A-49A6-A794-6484FD7CB20C-
+b922FA746-CB7F-4F61-BE16-3B04D9595FE2
+
+CCompileC build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s420467090.282146
+e420467090.771564
+r1
+xCompileC
+xbuild/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.o
+x/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDAudioManager.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CocosDenshion.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDConfig.h
+d/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/CDOpenALSupport.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection97"Compile /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m299"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler685c4892d10fb941^fb96c592d10fb941^---0#0#1#-19%DVTDocumentLocation2@96"file:///Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m0000000000000000^4373"[1mCompileC[0m build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.o [1m/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/jeongdowon/cocos2d-x-3.0/tools/cocos2d-console/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/jeongdowon/android/sdk/platform-tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Werror=incompatible-pointer-types -Werror-implicit-function-declaration -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wno-int-conversion -Wbool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DCOCOS2D_DEBUG=1 -DUSE_FILE32API -DCC_ENABLE_CHIPMUNK_INTEGRATION=1 -DCC_TARGET_OS_IPHONE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.1.1 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/CocosDenshion\ iOS.hmap -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/.. -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/base -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/physics -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/math/kazmath -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/audio/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/editor-support -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/ui -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external/chipmunk/include/chipmunk -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../external -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/storage -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/../cocos/2d/platform/ios -I/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/include -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources/i386 -I/Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/DerivedSources -F/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios -MMD -MT dependencies -MF /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.d --serialize-diagnostics /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.dia -c /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/cocos/audio/ios/SimpleAudioEngine_objc.m -o /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/SimpleAudioEngine_objc.o36"AF543B8D-EB9D-4086-806F-54CA9350CDE0-
+b922FA746-CB7F-4F61-BE16-3B04D9595FE2
+
+CLibtool /Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion\ iOS.a normal i386
+s420467092.006682
+e420467092.015346
+r1
+xLibtool
+x/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion iOS.a
+xnormal
+xi386
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"[1mLibtool[0m /Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion\ iOS.a normal i386106"[1mLibtool[0m /Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion\ iOS.a normal i3867ac70194d10fb941^3dee0394d10fb941^---0#0#1#--1118"[1mLibtool[0m /Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion\ iOS.a normal i386    cd /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build    export IPHONEOS_DEPLOYMENT_TARGET=5.1.1    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/jeongdowon/cocos2d-x-3.0/tools/cocos2d-console/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/jeongdowon/android/sdk/platform-tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -L/Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios -filelist /Users/jeongdowon/CrazyMatrix/MatrixGame/cocos2d/build/build/cocos2d_libs.build/Debug-iphonesimulator/CocosDenshion\ iOS.build/Objects-normal/i386/CocosDenshion\ iOS.LinkFileList -o /Users/jeongdowon/CrazyMatrix/MatrixGame/bin/debug/ios/libCocosDenshion\ iOS.a36"3BFEEE47-AE05-4D8F-886F-5C6F33F0A2CB-
+b922FA746-CB7F-4F61-BE16-3B04D9595FE2
+

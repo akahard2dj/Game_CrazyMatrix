@@ -577,14 +577,18 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 				case TAG_BUTTON_SHARE_FACEBOOK_BUTTON:
 					playSoundEffect("stageBtClick.wav");
 					shareImage[0]->setScale(shareImage[0]->getScale() / 1.2);
+                    Application::sharedApplication()->openURL("https://www.facebook.com/pages/Tile-Hunters/1503296989889106");
                     break;
 				case TAG_BUTTON_SHARE_EMAIL_BUTTON:
 					playSoundEffect("stageBtClick.wav");
 					shareImage[1]->setScale(shareImage[1]->getScale() / 1.2);
+                    Application::sharedApplication()->openURL("mailto:bora.dowon@gmail.com?&subject=Hi%20Tile%20Hunters%20&body=Hi");
+                    
                     break;
 				case TAG_BUTTON_SHARE_REVIEW_BUTTON:
 					playSoundEffect("stageBtClick.wav");
 					shareImage[2]->setScale(shareImage[2]->getScale() / 1.2);
+                    Application::sharedApplication()->openURL("itms-apps://itunes.apple.com/app/id353372460");
                     break;
 
                 default:
