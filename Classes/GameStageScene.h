@@ -4,7 +4,6 @@
 #include <vector>
 #include "cocos2d.h"
 #include "CCrazyMatrix.h"
-#include "extensions/GUI/CCControlExtension/CCScale9Sprite.h"
 
 USING_NS_CC;
 
@@ -44,6 +43,7 @@ private:
     std::vector<std::string> _defaultSearchPathArray;
     LabelTTF* bestStageLabel;
     bool isEffectSoundOn;
+	bool isBGMOn;
     
     void initSound();
     void initBoard();
@@ -72,7 +72,7 @@ private:
     void hideMenuPopup();
     void writeBestStage();
     void loadBestStage();
-    
+    void playSoundEffect(char * fileName);
 
 };
 
