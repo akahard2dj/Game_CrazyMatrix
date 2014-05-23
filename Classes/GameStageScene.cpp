@@ -296,7 +296,7 @@ void GameStageScene::drawBoard() {
     float hideTime = 1.0f * (float)info.matrixSize / 3.0f;
     const float delayForRotationAnimation = 0.8f;
     const float delayForFlipAnimation = 1.5f;
-    const float delayAnimationMargin = 0.5f;
+    const float delayAnimationMargin = 0.1f;
     const float animationTime = (delayForRotationAnimation + delayForFlipAnimation) / 2
                                 + delayAnimationMargin * info.actionNum;
     
