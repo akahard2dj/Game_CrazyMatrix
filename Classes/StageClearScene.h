@@ -23,7 +23,7 @@ public:
 
 private:
     
-    Size winSize = Director::getInstance()->getWinSize();
+    Size winSize;
     
     void explosionEffect(Point s);
     void playNextStage();
