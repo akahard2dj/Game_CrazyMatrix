@@ -218,14 +218,14 @@ void GameStageScene::initMenuPopup() {
 }
 
 void GameStageScene::gameStart(float dt) {
-    
+    log("gameStart()");
 	mTiles.clear();
 	mTilesSelected.clear();
 	getStageInfo();
     
-    drawCurrentStageInfo();
-    drawBoard();
-    drawTiles();
+	drawCurrentStageInfo();
+	drawBoard();
+	drawTiles();
 }
 
 void GameStageScene::drawTiles() {
@@ -691,7 +691,7 @@ void GameStageScene::addTileButtonEventListener() {
 }
 
 void GameStageScene::stageClear() {
-    
+   
     if (mCurrentLevel > bestStage) {
         bestStage = mCurrentLevel;
         writeBestStage();
@@ -708,27 +708,42 @@ void GameStageScene::stageClear() {
     auto scaleDown = scaleUp->reverse();
     bgCurrentStage->runAction(Sequence::create(scaleUp, scaleDown, scaleUp, scaleDown, scaleUp, scaleDown, NULL));
     
-    float dt1 = (float)(rand()%5)/100.0;
-    float dt2 = (float)(rand()%5)/100.0;
+	const int MAX_STAGE = 50;
+	if (info.level < MAX_STAGE) {
+		float dt1 = (float)(rand()%5)/100.0;
+		float dt2 = (float)(rand()%5)/100.0;
     
-    int lotto = rand()%2;
-    if (lotto == 1) {
-        dt1 = dt1 * -1;
-        dt2 = dt2 * -1;
-    }
+		int lotto = rand()%2;
+		if (lotto == 1) {
+			dt1 = dt1 * -1;
+			dt2 = dt2 * -1;
+		}
     
-    auto delay1_exp = DelayTime::create(0.2 + dt1);
-    auto delay2_exp = DelayTime::create(0.5 + dt2);
+		auto delay1_exp = DelayTime::create(0.2 + dt1);
+		auto delay2_exp = DelayTime::create(0.5 + dt2);
     
-    float dx = (float)(rand()%8)/100.0;
-    float dy = (float)(rand()%8)/100.0;
+		float dx = (float)(rand()%8)/100.0;
+		float dy = (float)(rand()%8)/100.0;
     
-    auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.20f+dx),winSize.height*(0.59f+dy))) );
-    auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.78f+dx),winSize.height*(0.55f+dy))) );
-    auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.80f+dy))) );
-    this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
+		auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.20f+dx),winSize.height*(0.59f+dy))) );
+		auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.78f+dx),winSize.height*(0.55f+dy))) );
+		auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.80f+dy))) );
+		this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
     
-    scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
+		scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
+	} else {
+		// ENDING
+		for (int n = 0; n < 10; n++) {
+			explosion(Point(winSize.width * n * 0.1, winSize.height * n * 0.1));
+		}
+		for (int n = 0; n < 10; n++) {
+			explosion(Point(winSize.width * (1 - n * 0.1), winSize.height * n * 0.1));
+		}
+		mCurrentLevel = 1;
+		scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
+	}
+
+    
 }
 
 void GameStageScene::explosion(Point s) {
