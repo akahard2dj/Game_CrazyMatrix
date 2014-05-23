@@ -601,7 +601,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 				case TAG_BUTTON_SHARE_REVIEW_BUTTON:
 					playSoundEffect("stageBtClick.wav");
 					shareImage[2]->setScale(shareImage[2]->getScale() / 1.2);
-                    Application::sharedApplication()->openURL("itms-apps://itunes.apple.com/app/id353372460");
+                    Application::sharedApplication()->openURL("itms-apps://itunes.apple.com/app/id881870414");
                     break;
 
                 default:
