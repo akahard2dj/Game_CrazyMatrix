@@ -816,7 +816,7 @@ void GameStageScene::runTimer(float dt) {
 
 void GameStageScene::drawTimerLabel(float dt) {
     
-    if (timerCount < 0) {
+    if (timerCount <= 0) {
         
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
         
@@ -839,7 +839,7 @@ void GameStageScene::drawTimerLabel(float dt) {
         scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 3.0f);
 
     } else {
-        if (timerCount < 3) {
+        if (timerCount <= 3) {
 			playSoundEffect("ticktock.wav");
             auto jump = JumpBy::create(0.25, Point(0, 0), 20, 1);
             boardLayer->runAction(Sequence::create(jump, jump, NULL));
