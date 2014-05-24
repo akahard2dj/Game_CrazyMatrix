@@ -76,7 +76,11 @@ bool GameStageScene::init()
     explosion_col[5] = Color4F(0,255,255,1);
     explosion_col[6] = Color4F(255,0,255,1);
     
-	mCurrentLevel = 1;
+    if (bestStage != 0) {
+        mCurrentLevel = bestStage + 1;
+    } else {
+        mCurrentLevel = 1;
+    }
     isPopupShowing = false;
     tileTouchEnable = false;
 	eventDispatcher = _eventDispatcher;
