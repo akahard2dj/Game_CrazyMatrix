@@ -106,7 +106,7 @@ void GameStageScene::initSound() {
 
 void GameStageScene::initBoard() {
     
-    bgImage = Sprite::create("stage_bg.png");
+    bgImage = Sprite::create("stage_bg.png", Rect(0, 0, winSize.width, winSize.height));
     bgImage->setPosition(Point(winSize.width/2, winSize.height/2));
     this->addChild(bgImage, 0);
     

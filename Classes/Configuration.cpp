@@ -8,7 +8,7 @@
 
 #include "Configuration.h"
 
-Configuration* getInstance() {
+Configuration* Configuration::getInstance() {
     
     if (obj == NULL) {
         obj = new Configuration();
