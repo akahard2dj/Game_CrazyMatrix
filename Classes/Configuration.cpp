@@ -10,9 +10,9 @@
 
 Configuration* Configuration::getInstance() {
     
-    if (obj == NULL) {
-        obj = new Configuration();
-    }
+    //if (obj == NULL) {
+    //    obj = new Configuration();
+    //}
     
-    return obj;
+    //return obj;
 }

@@ -4,7 +4,7 @@
 
 USING_NS_CC;
 
-#define IMAGE_TILE_NORAML "YELLOW.png"
+#define IMAGE_TILE_NORMAL "YELLOW.png"
 #define IMAGE_TILE_SELECTED "RED.png"
 #define IMAGE_BG_CURRENT_STAGE "GREEN_CIRCLE.png"
 #define SPEED_FOR_FLIP 0.05
@@ -55,6 +55,7 @@ bool GameStageScene::init()
     }
     
     winSize = Director::getInstance()->getWinSize();
+    iconRatio = winSize.width/640.0f;
     
     bestStage = 0;
     loadBestStage();
@@ -130,14 +131,15 @@ void GameStageScene::initBoard() {
 
 void GameStageScene::initStageButtonInfo() {
     bgCurrentStage = Sprite::create(IMAGE_BG_CURRENT_STAGE);
-    bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
+    bgCurrentStage->setScale(iconRatio, iconRatio);
+    bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.17));
     bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
     this->addChild(bgCurrentStage, 0);
     
     char stageInfo[256];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
-    currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, 80);
-    currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.2));
+    currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, 80*iconRatio);
+    currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.17));
     this->addChild(currentStage, 1);
 }
 
@@ -148,7 +150,7 @@ void GameStageScene::initMenuPopup() {
     pauseLayout->setVisible(false);
     this->addChild(pauseLayout, Z_ORDER_POPUP);
     
-    auto stageLabel = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f);
+    auto stageLabel = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f*iconRatio);
     stageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
     pauseLayout->addChild(stageLabel, Z_ORDER_POPUP_LABEL);
     
@@ -166,26 +168,27 @@ void GameStageScene::initMenuPopup() {
     //optionImage[3] = Sprite::create("EffectOffIcon.png");
     
     float popX[NUM_POPUP_MENU] = {winSize.width/2, winSize.width*0.125f, winSize.width*0.875f,winSize.width*0.766f};
-    float popY[NUM_POPUP_MENU] = {winSize.height/2, winSize.height*0.912f, winSize.height*0.912f,winSize.height*0.2f};
+    float popY[NUM_POPUP_MENU] = {winSize.height/2, winSize.height*0.912f, winSize.height*0.912f,winSize.height*0.17f};
     float shareX[NUM_SHARE_MENU] = {winSize.width*0.875f, winSize.width*0.875f, winSize.width*0.875f};
-    float shareY[NUM_SHARE_MENU] = {winSize.height*0.797f, winSize.height*0.710f, winSize.height*0.621f};
+    float shareY[NUM_SHARE_MENU] = {winSize.height*0.795f, winSize.height*0.695f, winSize.height*0.595f};
+
     float optionX[NUM_OPTION_MENU] = {winSize.width*0.125f, winSize.width*0.125f};
-    float optionY[NUM_OPTION_MENU] = {winSize.height*0.797f, winSize.height*0.710f};
+    float optionY[NUM_OPTION_MENU] = {winSize.height*0.795f, winSize.height*0.695f};
     
     for (int i=0; i<NUM_POPUP_MENU; i++) {
-        popMenuImage[i]->setScale(0.7, 0.7);
+        popMenuImage[i]->setScale(0.7*iconRatio, 0.7*iconRatio);
         popMenuImage[i]->setPosition(Point(popX[i],popY[i]));
     }
-    popMenuImage[0]->setScale(0.8, 0.8);
+    popMenuImage[0]->setScale(0.8*iconRatio, 0.8*iconRatio);
     
     for (int i=0; i<NUM_SHARE_MENU; i++) {
-        shareImage[i]->setScale(0.5, 0.5);
+        shareImage[i]->setScale(0.5*iconRatio, 0.5*iconRatio);
         shareImage[i]->setPosition(Point(shareX[i],shareY[i]));
         shareImage[i]->setVisible(false);
     }
     
     for (int i=0; i<NUM_OPTION_MENU; i++) {
-        optionImage[i]->setScale(0.5, 0.5);
+        optionImage[i]->setScale(0.5*iconRatio, 0.5*iconRatio);
         optionImage[i]->setPosition(Point(optionX[i],optionY[i]));
         optionImage[i]->setVisible(false);
     }
@@ -216,7 +219,7 @@ void GameStageScene::initMenuPopup() {
     // BEST STAGE
     char best[128];
     sprintf(best, "%d", bestStage);
-    bestStageLabel = LabelTTF::create(best, GAME_MAIN_FONT_NAME, 50.0f);
+    bestStageLabel = LabelTTF::create(best, GAME_MAIN_FONT_NAME, 50.0f*iconRatio);
     bestStageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.535));
     pauseLayout->addChild(bestStageLabel, Z_ORDER_POPUP_LABEL);
 }
@@ -242,13 +245,13 @@ void GameStageScene::drawTiles() {
             
 			int idx = n * BOARD_SIZE + m;
             
-			auto tile = Sprite::create(IMAGE_TILE_NORAML);
+			auto tile = Sprite::create(IMAGE_TILE_NORMAL);
 			tile->setPosition(winSize.width/(BOARD_SIZE+1)*(m+1), winSize.width/(BOARD_SIZE+1)*(n+1));
             float tileScale;
             if (info.matrixSize == 2) {
-                tileScale = 1.8f;
+                tileScale = 1.8f * iconRatio;
             } else {
-                tileScale = 4.0f / (float)info.matrixSize;
+                tileScale = (4.0f / (float)info.matrixSize) * iconRatio;
             }
             tile->setScale(tileScale);
 			tile->setTag(idx);
@@ -370,7 +373,7 @@ void GameStageScene::drawBoard() {
 }
 
 void GameStageScene::showTiles(float dt) {
-	playSoundEffect("pageFlip.mp3");
+	playSoundEffect((std::string)"pageFlip.mp3");
     
 	for (int n=0; n<mTiles.size(); n++) {
 
@@ -415,7 +418,7 @@ void GameStageScene::drawSolutionTiles(int n) {
 }
 
 void GameStageScene::drawBoardTiles(int n) {
-	mTiles.at(n)->setTexture(IMAGE_TILE_NORAML);
+	mTiles.at(n)->setTexture(IMAGE_TILE_NORMAL);
 }
 
 void GameStageScene::addButtonEventListener(EventDispatcher* e) {
@@ -439,7 +442,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
             auto scaleupdowon = RepeatForever::create(Sequence::create(scaleup, scaledown, NULL));
             switch (tagNum) {
                 case TAG_BUTTON_CURRENT_STAGE_BG:
-                    bgCurrentStage->setScale(1.3f);
+                    bgCurrentStage->setScale(1.3f*iconRatio);
                     bgCurrentStage->runAction(scaleupdowon);
                     return true;
                     break;
@@ -498,9 +501,10 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
             
             switch (tagNum) {
                 case TAG_BUTTON_CURRENT_STAGE_BG:
-					playSoundEffect("stageBtClick.wav");
+                    playSoundEffect((std::string)"stageBtClick.wav");
+					//playSoundEffect("stageBtClick.wav");
                     bgCurrentStage->stopAllActions();
-                    bgCurrentStage->setScale(1.0f);
+                    bgCurrentStage->setScale(1.0f*iconRatio);
                     
                     if (isPopupShowing == false) {
                         showMenuPopup(0);
@@ -519,7 +523,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                 case TAG_BUTTON_RETRY_BUTTON:
                     playSoundEffect("stageBtClick.wav");
                     popMenuImage[3]->stopAllActions();
-                    popMenuImage[3]->setScale(0.7f);
+                    popMenuImage[3]->setScale(0.7f*iconRatio);
                     isGameFinished = false;
                     timerLabel->setString("");
                     mCurrentLevel = 1;
@@ -536,7 +540,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     break;
                         
                 case TAG_BUTTON_OPTION_BUTTON:
-					playSoundEffect("stageBtClick.wav");
+					playSoundEffect((std::string)"stageBtClick.wav");
                     popMenuImage[1]->setScale(popMenuImage[1]->getScale() / 1.2);
                     
                     if (optionImage[0]->isVisible() == true) {
@@ -551,7 +555,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     break;
                     
                 case TAG_BUTTON_SHARE_BUTTON:
-					playSoundEffect("stageBtClick.wav");
+					playSoundEffect((std::string)"stageBtClick.wav");
                     popMenuImage[2]->setScale(popMenuImage[2]->getScale() / 1.2);
                     
                     if (shareImage[0]->isVisible() == true) {
@@ -565,7 +569,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     }
                     break;
                 case TAG_BUTTON_OPTION_BGM_BUTTON:
-					playSoundEffect("stageBtClick.wav");
+					playSoundEffect((std::string)"stageBtClick.wav");
                     optionImage[0]->setScale(optionImage[0]->getScale() / 1.2);
 					if (isBGMOn) {
 						isBGMOn = false;
@@ -580,7 +584,7 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     }
                     break;
                 case TAG_BUTTON_OPTION_EFFECT_BUTTON:
-					playSoundEffect("stageBtClick.wav");
+					playSoundEffect((std::string)"stageBtClick.wav");
                     optionImage[1]->setScale(optionImage[1]->getScale() / 1.2);
                     if (isEffectSoundOn == true) {
                         isEffectSoundOn = false;
@@ -592,18 +596,18 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                     break;
                     
 				case TAG_BUTTON_SHARE_FACEBOOK_BUTTON:
-					playSoundEffect("stageBtClick.wav");
+					playSoundEffect((std::string)"stageBtClick.wav");
 					shareImage[0]->setScale(shareImage[0]->getScale() / 1.2);
                     Application::sharedApplication()->openURL("https://www.facebook.com/pages/Tile-Hunters/1503296989889106");
                     break;
 				case TAG_BUTTON_SHARE_EMAIL_BUTTON:
-					playSoundEffect("stageBtClick.wav");
+					playSoundEffect((std::string)"stageBtClick.wav");
 					shareImage[1]->setScale(shareImage[1]->getScale() / 1.2);
                     Application::sharedApplication()->openURL("mailto:bora.dowon@gmail.com?&subject=Hi%20Tile%20Hunters%20&body=Hi");
                     
                     break;
 				case TAG_BUTTON_SHARE_REVIEW_BUTTON:
-					playSoundEffect("stageBtClick.wav");
+					playSoundEffect((std::string)"stageBtClick.wav");
 					shareImage[2]->setScale(shareImage[2]->getScale() / 1.2);
                     Application::sharedApplication()->openURL("itms-apps://itunes.apple.com/app/id881870414");
                     break;
@@ -611,9 +615,6 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
                 default:
                 break;
             }
-
-
-            
             return;
         }
     };
@@ -653,8 +654,6 @@ void GameStageScene::addTileButtonEventListener() {
                 
                 return true;
             }
-            
-            
         }
         return false;
     };
@@ -667,11 +666,12 @@ void GameStageScene::addTileButtonEventListener() {
         auto target = event->getCurrentTarget();
 		int tagNum = target->getTag();
         
-		playSoundEffect("es042.wav");
+		playSoundEffect((std::string)"es042.wav");
         
 		mTilesSelected[tagNum] = (mTilesSelected[tagNum] + 1) % 2;
-		std::string image = mTilesSelected[tagNum] == 0 ? IMAGE_TILE_NORAML : IMAGE_TILE_SELECTED;
+		std::string image = mTilesSelected[tagNum] == 0 ? IMAGE_TILE_NORMAL : IMAGE_TILE_SELECTED;
 		mTiles[tagNum]->setTexture(image);
+
         float currentScale = mTiles[tagNum]->getScale();
         mTiles[tagNum]->setScale(currentScale / 1.1);
         //flower(touch->getLocation());
@@ -701,7 +701,7 @@ void GameStageScene::stageClear() {
         writeBestStage();
     }
     
-	playSoundEffect("applause.mp3");
+	playSoundEffect((std::string)"applause.mp3");
     
     unschedule(schedule_selector(GameStageScene::drawTimerLabel));
     tileTouchEnable = false;
@@ -746,14 +746,14 @@ void GameStageScene::stageClear() {
 		mCurrentLevel = 1;
 		scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
 	}
-
-    
 }
 
 void GameStageScene::explosion(Point s) {
-	playSoundEffect("firework.mp3");
+	playSoundEffect((std::string)"firework.mp3");
     
-	ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(200);
+    int lotto = rand()%7;
+	
+    ParticleSystem *particle = ParticleExplosion::createWithTotalParticles(200);
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
 	particle->setGravity(Point(0, -70));
@@ -762,9 +762,6 @@ void GameStageScene::explosion(Point s) {
     particle->setDuration(0.2);
     particle->setSpeed(270);
     particle->setTangentialAccel(10);
-    //particle->setEmissionRate(1300);
-    //particle->setStartColor(Color4F(255, 0, 0, 255));
-    int lotto = rand()%7;
     particle->setStartColor(explosion_col[lotto]);
     particle->setStartSize(15);
 	particle->setEndColor(Color4F(0,0,0,1));
@@ -817,20 +814,19 @@ void GameStageScene::effectShowSolution(Point s)
 }
 
 void GameStageScene::initTimerLabel() {
-    timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, 80.0f);
+    timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, 80.0f*iconRatio);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
     this->addChild(timerLabel);
 }
 
 void GameStageScene::runTimer(float dt) {
 
-    timerLabel->setScale(1.0f);
+    timerLabel->setScale(1.0f*iconRatio);
     timerLabel->setString("Ready!");
     timerLabel->runAction(ScaleBy::create(0.3, 1.3f));
 
     timerCount = info.TimeLimit;
     schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
-    
 }
 
 void GameStageScene::drawTimerLabel(float dt) {
@@ -839,7 +835,7 @@ void GameStageScene::drawTimerLabel(float dt) {
         
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
         
-        timerLabel->setScale(1.0f);
+        timerLabel->setScale(1.0f*iconRatio);
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
         tileTouchEnable = false;
         
@@ -853,20 +849,20 @@ void GameStageScene::drawTimerLabel(float dt) {
         
         // GAME OVER
         timerLabel->setString("Game Over!");
-		playSoundEffect("gameFail.wav");
+		playSoundEffect((std::string)"gameFail.wav");
         isGameFinished = true;
         scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 3.0f);
 
     } else {
         if (timerCount <= 3) {
-			playSoundEffect("ticktock.wav");
+			playSoundEffect((std::string)"ticktock.wav");
             auto jump = JumpBy::create(0.25, Point(0, 0), 20, 1);
             boardLayer->runAction(Sequence::create(jump, jump, NULL));
             
         }
         char buffer[2];
         std::sprintf(buffer, "%d", timerCount--);
-        timerLabel->setScale(1.0f);
+        timerLabel->setScale(1.0f*iconRatio);
         timerLabel->setString(buffer);
         timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
         tileTouchEnable = true;
@@ -928,8 +924,9 @@ void GameStageScene::loadBestStage()
 
 }
 
- void GameStageScene::playSoundEffect(char * fileName) {
+void GameStageScene::playSoundEffect(std::string fileName) {
 	if (isEffectSoundOn) {
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(fileName);
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(fileName.c_str());
     }
- }
+}
+

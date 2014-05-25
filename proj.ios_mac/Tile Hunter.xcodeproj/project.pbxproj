@@ -81,6 +81,7 @@
 		E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E2064CEE191CEFC8007271A6 /* firework.mp3 */; };
 		E2064CF2191CF2DC007271A6 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E2064CF1191CF2DC007271A6 /* stars.png */; };
 		E2064CF6191E53F7007271A6 /* es042.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2064CF5191E53F7007271A6 /* es042.wav */; };
+		E287DA5F1932210700486E7A /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E287DA5E1932210700486E7A /* bgMusic.mp3 */; };
 		E2943F86192382FB00E3A52C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943F85192382FB00E3A52C /* AdSupport.framework */; };
 		E2943F881923830600E3A52C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943F871923830600E3A52C /* AudioToolbox.framework */; };
 		E2943F8A1923830D00E3A52C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943F891923830D00E3A52C /* AVFoundation.framework */; };
@@ -292,6 +293,7 @@
 		E2064CEE191CEFC8007271A6 /* firework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firework.mp3; sourceTree = "<group>"; };
 		E2064CF1191CF2DC007271A6 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
 		E2064CF5191E53F7007271A6 /* es042.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = es042.wav; sourceTree = "<group>"; };
+		E287DA5E1932210700486E7A /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		E2943F85192382FB00E3A52C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		E2943F871923830600E3A52C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		E2943F891923830D00E3A52C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -501,6 +503,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E287DA5E1932210700486E7A /* bgMusic.mp3 */,
 				CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */,
 				CD632EE0192A544900ED5DEE /* RetryIcon.png */,
 				CD339F931927946300DBB2E7 /* fonts */,
@@ -607,7 +610,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 25K2LU66RG;
+						DevelopmentTeam = PFT6ZXU5VE;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -739,6 +742,7 @@
 				CD7B9E73192B8C1B005AA90B /* Icon-72.png in Resources */,
 				CD632EE1192A544900ED5DEE /* RetryIcon.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				E287DA5F1932210700486E7A /* bgMusic.mp3 in Resources */,
 				CD339F8819273E4100DBB2E7 /* ShareIcon.png in Resources */,
 				E29C3D44192252FF00DC481B /* ticktock.wav in Resources */,
 				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
@@ -848,8 +852,8 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
-					/Users/jeongdowon/git/Game_CrazyMatrix/Classes,
-					"/Users/akahard2dj/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
+					/Users/akahard2dj/Documents/Xcode/cocos/Game_CrazyMatrix/Classes,
+					/Users/akahard2dj/Documents/Xcode/cocos/Game_CrazyMatrix/Classes,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
@@ -883,8 +887,8 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
-					/Users/jeongdowon/git/Game_CrazyMatrix/Classes,
-					"/Users/akahard2dj/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
+					/Users/akahard2dj/Documents/Xcode/cocos/Game_CrazyMatrix/Classes,
+					/Users/akahard2dj/Documents/Xcode/cocos/Game_CrazyMatrix/Classes,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";

@@ -44,6 +44,7 @@ private:
     LabelTTF* bestStageLabel;
     bool isEffectSoundOn;
 	bool isBGMOn;
+    float iconRatio;
     
     void initSound();
     void initBoard();
@@ -72,7 +73,7 @@ private:
     void hideMenuPopup();
     void writeBestStage();
     void loadBestStage();
-    void playSoundEffect(char * fileName);
+    void playSoundEffect(std::string fileName);
 
 };
 

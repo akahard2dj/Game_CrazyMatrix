@@ -17,8 +17,8 @@ public:
     static Configuration* getInstance();
     
 private:
+    static Configuration* obj;
     bool backgroundMusic;
-//    Configuration* obj;
     
 };
 
