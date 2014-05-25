@@ -17,9 +17,8 @@ public:
     static Configuration* getInstance();
     
 private:
+    static Configuration* obj;
     bool backgroundMusic;
-//    Configuration* obj;
-    
 };
 
 #endif /* defined(__Tile_Hunter__Configuration__) */
