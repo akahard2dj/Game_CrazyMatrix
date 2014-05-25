@@ -28,6 +28,47 @@ package org.cocos2dx.cpp;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+
 public class AppActivity extends Cocos2dxActivity {
+
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		Log.e("jdw", "create!!");
+		
+		super.onCreate(savedInstanceState);
+	}
+
+	@Override
+	public void onBackPressed() {
+		Log.e("jdw", "sfsdfsf");
+		
+		super.onBackPressed();
+		Log.e("jdw", "sfsdfsf");
+		Log.e("jdw", "sfsdfsf");
+		Log.e("jdw", "sfsdfsf");
+		Log.e("jdw", "sfsdfsf");
+		
+		finish();
+	}
+
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+
+		switch(keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			Log.e("jdw", "keycode_back");
+			finish();
+			break;
+		}
+		return super.onKeyUp(keyCode, event);
+	}
+	
+
 }
  
