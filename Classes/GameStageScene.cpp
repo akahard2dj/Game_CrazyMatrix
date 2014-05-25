@@ -100,8 +100,8 @@ void GameStageScene::initSound() {
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("gameFail.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("stageBtClick.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("failFirst.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.wav");
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.wav", true);
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgMusic.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgMusic.mp3", true);
 }
 
 void GameStageScene::initBoard() {
