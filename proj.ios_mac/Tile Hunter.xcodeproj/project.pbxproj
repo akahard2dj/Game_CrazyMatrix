@@ -71,6 +71,7 @@
 		CDC50F181923B0AB003391CD /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC50F101923B0AB003391CD /* Icon-40.png */; };
 		CDC50F1E1923B206003391CD /* StageClearScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDC50F1C1923B206003391CD /* StageClearScene.cpp */; };
 		CDE9810E1931E8BB00F2DC64 /* Configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDE9810C1931E8BB00F2DC64 /* Configuration.cpp */; };
+		CDE981171932177100F2DC64 /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CDE981161932177100F2DC64 /* bgMusic.mp3 */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -280,6 +281,7 @@
 		CDC50F1D1923B206003391CD /* StageClearScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StageClearScene.h; path = ../Classes/StageClearScene.h; sourceTree = "<group>"; };
 		CDE9810C1931E8BB00F2DC64 /* Configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Configuration.cpp; path = ../Classes/Configuration.cpp; sourceTree = "<group>"; };
 		CDE9810D1931E8BB00F2DC64 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Configuration.h; path = ../Classes/Configuration.h; sourceTree = "<group>"; };
+		CDE981161932177100F2DC64 /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -501,6 +503,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDE981161932177100F2DC64 /* bgMusic.mp3 */,
 				CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */,
 				CD632EE0192A544900ED5DEE /* RetryIcon.png */,
 				CD339F931927946300DBB2E7 /* fonts */,
@@ -739,6 +742,7 @@
 				CD7B9E73192B8C1B005AA90B /* Icon-72.png in Resources */,
 				CD632EE1192A544900ED5DEE /* RetryIcon.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				CDE981171932177100F2DC64 /* bgMusic.mp3 in Resources */,
 				CD339F8819273E4100DBB2E7 /* ShareIcon.png in Resources */,
 				E29C3D44192252FF00DC481B /* ticktock.wav in Resources */,
 				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
