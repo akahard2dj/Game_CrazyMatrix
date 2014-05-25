@@ -14,11 +14,11 @@
 class Configuration {
     
 public:
-    Configuration* static getInstance();
+    static Configuration* getInstance();
     
 private:
     bool backgroundMusic;
-    Configuration* obj;
+//    Configuration* obj;
     
 };
 
