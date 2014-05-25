@@ -9,3 +9,7 @@
 *.class
 
 proj.android/bin/*
+
+proj.android/bin/resources.ap_
+
+proj.android/bin/TileHunters.apk
