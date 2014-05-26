@@ -109,19 +109,13 @@ void GameStageScene::initSound() {
 void GameStageScene::initBoard() {
     
     bgImage = Sprite::create("stage_bg.png", Rect(0, 0, winSize.width, winSize.height));
+    
     bgImage->setPosition(Point(winSize.width/2, winSize.height/2));
     this->addChild(bgImage, 0);
     
     int MARGIN_BOTTOM;
-    if (winSize.height > 1000) {
-        // 3.5 inch
-        MARGIN_BOTTOM = winSize.height * 0.3;
-    } else {
-        // 4 inch
-        MARGIN_BOTTOM = winSize.height * 0.2;
-    }
-    
-    //boardLayer = NodeGrid::create();
+    MARGIN_BOTTOM = (winSize.height - winSize.width)/2;
+
 	boardLayer = Layer::create();
 	boardLayer->setPosition(0, MARGIN_BOTTOM);
     boardLayer->setContentSize(Size(winSize.width, winSize.width));
@@ -279,14 +273,7 @@ void GameStageScene::getStageInfo() {
 void GameStageScene::drawBoard() {
 	
 	//// ADD //////////
-	int MARGIN_BOTTOM;
-    if (winSize.height > 1000) {
-        // 3.5 inch
-        MARGIN_BOTTOM = winSize.height * 0.3;
-    } else {
-        // 4 inch
-        MARGIN_BOTTOM = winSize.height * 0.2;
-    }
+	int MARGIN_BOTTOM = (winSize.height - winSize.width) / 2 + winSize.width / 7;
 
 	if (boardLayer != NULL) {
 		boardLayer->removeFromParent();
@@ -937,6 +924,6 @@ void GameStageScene::playSoundEffect(std::string fileName) {
 
 float GameStageScene::fontCal(float fontSize)
 {
-    float fontSizeCal =  (0.08f * (winSize.width - 640.0f) + fontSize);
+    float fontSizeCal =  (0.04f * (winSize.width - 640.0f) + fontSize);
     return fontSizeCal;
 }
