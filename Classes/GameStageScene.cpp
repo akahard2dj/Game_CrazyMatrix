@@ -609,7 +609,11 @@ void GameStageScene::addButtonEventListener(EventDispatcher* e) {
 				case TAG_BUTTON_SHARE_REVIEW_BUTTON:
 					playSoundEffect((std::string)"stageBtClick.wav");
 					shareImage[2]->setScale(shareImage[2]->getScale() / 1.2);
-                    Application::sharedApplication()->openURL("itms-apps://itunes.apple.com/app/id881870414");
+                    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+                        Application::sharedApplication()->openURL("itms-apps://itunes.apple.com/app/id881870414");
+                    #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+                        Application::sharedApplication()->openURL("market://details?id=com.bora.tilehunters");
+                    #endif
                     break;
 
                 default:
