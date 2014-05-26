@@ -23,6 +23,7 @@ USING_NS_CC;
 #define TAG_BUTTON_SHARE_REVIEW_BUTTON 508
 
 
+#define Z_ORDER_TIMER_LABEL 100
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_ICON 1001
 #define Z_ORDER_POPUP_LABEL 1002
@@ -134,13 +135,13 @@ void GameStageScene::initStageButtonInfo() {
     bgCurrentStage->setScale(iconRatio, iconRatio);
     bgCurrentStage->setPosition(Point(winSize.width/2, winSize.height * 0.17));
     bgCurrentStage->setTag(TAG_BUTTON_CURRENT_STAGE_BG);
-    this->addChild(bgCurrentStage, 0);
+    this->addChild(bgCurrentStage, Z_ORDER_TIMER_LABEL);
     
     char stageInfo[256];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
     currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, 80*iconRatio);
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.17));
-    this->addChild(currentStage, 1);
+    this->addChild(currentStage, Z_ORDER_TIMER_LABEL+1);
 }
 
 void GameStageScene::initMenuPopup() {
@@ -820,7 +821,7 @@ void GameStageScene::effectShowSolution(Point s)
 void GameStageScene::initTimerLabel() {
     timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, 80.0f*iconRatio);
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
-    this->addChild(timerLabel);
+    this->addChild(timerLabel, Z_ORDER_TIMER_LABEL);
 }
 
 void GameStageScene::runTimer(float dt) {
@@ -886,8 +887,8 @@ void GameStageScene::showMenuPopup(float dt) {
 void GameStageScene::hideMenuPopup() {
     isPopupShowing = false;
     pauseLayout->setVisible(isPopupShowing);
-    this->reorderChild(bgCurrentStage, 0);
-    this->reorderChild(currentStage, 1);
+    this->reorderChild(bgCurrentStage, Z_ORDER_TIMER_LABEL);
+    this->reorderChild(currentStage, Z_ORDER_TIMER_LABEL+1);
 	optionImage[0]->setVisible(false);
 	optionImage[1]->setVisible(false);
 	shareImage[0]->setVisible(false);
