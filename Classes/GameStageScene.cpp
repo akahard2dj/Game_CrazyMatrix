@@ -783,22 +783,23 @@ void GameStageScene::effectShowSolution(Point s)
     
     switch (info.matrixSize) {
         case 2:
-            emitter->setSpeed(110);
+            //emitter->setSpeed(110);
+            emitter->setSpeed(speedCal(110.0f));
             break;
         case 3:
-            emitter->setSpeed(95);
+            emitter->setSpeed(speedCal(95.0f));
             break;
         case 4:
-            emitter->setSpeed(85);
+            emitter->setSpeed(speedCal(85.0f));
             break;
         case 5:
-            emitter->setSpeed(70);
+            emitter->setSpeed(speedCal(70));
             break;
         case 6:
-            emitter->setSpeed(65);
+            emitter->setSpeed(speedCal(65));
             break;
         default:
-            emitter->setSpeed(80);
+            emitter->setSpeed(speedCal(80));
             break;
     }
     
@@ -926,4 +927,11 @@ float GameStageScene::fontCal(float fontSize)
 {
     float fontSizeCal =  (0.04f * (winSize.width - 640.0f) + fontSize);
     return fontSizeCal;
+}
+
+float GameStageScene::speedCal(float speed)
+{
+    float speedCal = (0.09f * (winSize.width - 640.0f) + speed);
+    
+    return speedCal;
 }

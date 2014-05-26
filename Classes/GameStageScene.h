@@ -75,7 +75,7 @@ private:
     void loadBestStage();
     void playSoundEffect(std::string fileName);
     float fontCal(float fontSize);
-
+    float speedCal(float speed);
 };
 
 #endif // __GAMESTAGE_SCENE_H__
