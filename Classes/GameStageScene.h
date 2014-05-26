@@ -74,6 +74,7 @@ private:
     void writeBestStage();
     void loadBestStage();
     void playSoundEffect(std::string fileName);
+    float fontCal(float fontSize);
 
 };
 

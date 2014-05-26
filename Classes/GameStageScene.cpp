@@ -139,7 +139,7 @@ void GameStageScene::initStageButtonInfo() {
     
     char stageInfo[256];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
-    currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, 80*iconRatio);
+    currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, fontCal(80));
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.17));
     this->addChild(currentStage, Z_ORDER_TIMER_LABEL+1);
 }
@@ -151,7 +151,7 @@ void GameStageScene::initMenuPopup() {
     pauseLayout->setVisible(false);
     this->addChild(pauseLayout, Z_ORDER_POPUP);
     
-    auto stageLabel = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, 30.0f*iconRatio);
+    auto stageLabel = LabelTTF::create("Stage", GAME_MAIN_FONT_NAME, fontCal(30.0f));
     stageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.3f));
     pauseLayout->addChild(stageLabel, Z_ORDER_POPUP_LABEL);
     
@@ -220,7 +220,7 @@ void GameStageScene::initMenuPopup() {
     // BEST STAGE
     char best[128];
     sprintf(best, "%d", bestStage);
-    bestStageLabel = LabelTTF::create(best, GAME_MAIN_FONT_NAME, 50.0f*iconRatio);
+    bestStageLabel = LabelTTF::create(best, GAME_MAIN_FONT_NAME, fontCal(50.0f));
     bestStageLabel->setPosition(Point(winSize.width/2, winSize.height * 0.535));
     pauseLayout->addChild(bestStageLabel, Z_ORDER_POPUP_LABEL);
 }
@@ -819,7 +819,7 @@ void GameStageScene::effectShowSolution(Point s)
 }
 
 void GameStageScene::initTimerLabel() {
-    timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, 80.0f*iconRatio);
+    timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, fontCal(80.0f));
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
     this->addChild(timerLabel, Z_ORDER_TIMER_LABEL);
 }
@@ -935,3 +935,8 @@ void GameStageScene::playSoundEffect(std::string fileName) {
     }
 }
 
+float GameStageScene::fontCal(float fontSize)
+{
+    float fontSizeCal =  (0.08f * (winSize.width - 640.0f) + fontSize);
+    return fontSizeCal;
+}
