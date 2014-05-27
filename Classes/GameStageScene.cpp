@@ -827,7 +827,7 @@ void GameStageScene::runTimer(float dt) {
     timerLabel->runAction(ScaleBy::create(0.3, 1.3f));
 
     timerCount = info.TimeLimit;
-    //schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
+    schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
 }
 
 void GameStageScene::drawTimerLabel(float dt) {
