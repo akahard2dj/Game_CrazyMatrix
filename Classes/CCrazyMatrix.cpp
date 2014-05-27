@@ -54,6 +54,23 @@ CCrazyMatrix::CCrazyMatrix(int _level)
 	setPositionLight();
 }
 
+void CCrazyMatrix::dealloc()
+{
+    for (int i=0; i<numSides; i++) {
+        delete[] board[i];
+        delete[] boardCheck[i];
+		delete[] boardOriginal[i];
+    }
+    
+    delete[] board;
+    delete[] boardCheck;
+	delete[] boardOriginal;
+    
+    delete[] orderSolution;
+    delete[] idxX;
+    delete[] idxY;
+}
+
 StageInfo CCrazyMatrix::getStageInfo(int _level)
 {
 	if (_level > MAX_LEVEL) {
@@ -91,6 +108,8 @@ StageInfo CCrazyMatrix::getStageInfo(int _level)
 		info.actions[i] = (ShuffleType)gameSchedule[i];
 		//printf("%d %d\n",info.actions[i], gameSchedule[i]);
 	}
+    
+    dealloc();
 
 	return info;
 }

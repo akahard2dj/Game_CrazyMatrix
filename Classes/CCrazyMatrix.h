@@ -89,6 +89,8 @@ private:
 	void lightGameShuffle();
     void lightGameShuffle2();
     void boardCopy();
+    
+    void dealloc();
 
 	void Print();
 protected:
