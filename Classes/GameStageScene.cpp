@@ -232,7 +232,7 @@ void GameStageScene::gameStart(float dt) {
 
 void GameStageScene::drawTiles() {
     
-    boardLayer->removeAllChildren();
+    boardLayer->removeAllChildrenWithCleanup(true);
     
     const int BOARD_SIZE = info.matrixSize;
     for (int n=0; n<BOARD_SIZE; n++) {
@@ -846,6 +846,14 @@ void GameStageScene::drawTimerLabel(float dt) {
         isGameFinished = true;
         scheduleOnce(schedule_selector(GameStageScene::showMenuPopup), 3.0f);
 
+    } else if (timerCount == info.TimeLimit) {
+        char buffer[2];
+        std::sprintf(buffer, "%d", timerCount--);
+        timerLabel->setScale(1.0f*iconRatio);
+        timerLabel->setString("Go!");
+        timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
+        tileTouchEnable = true;
+    
     } else {
         if (timerCount <= 3) {
 			playSoundEffect((std::string)"ticktock.wav");
@@ -858,7 +866,6 @@ void GameStageScene::drawTimerLabel(float dt) {
         timerLabel->setScale(1.0f*iconRatio);
         timerLabel->setString(buffer);
         timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
-        tileTouchEnable = true;
     }
 }
 
