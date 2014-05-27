@@ -722,9 +722,11 @@ void GameStageScene::stageClear() {
 		float dx = (float)(rand()%8)/100.0;
 		float dy = (float)(rand()%8)/100.0;
     
-		auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.20f+dx),winSize.height*(0.59f+dy))) );
-		auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.78f+dx),winSize.height*(0.55f+dy))) );
-		auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.80f+dy))) );
+        int MARGIN_BOTTOM = (winSize.height - winSize.width)/2;
+        
+		auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.20f+dx),winSize.height*(0.59f+dy) - MARGIN_BOTTOM)) );
+		auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.78f+dx),winSize.height*(0.55f+dy) - MARGIN_BOTTOM)) );
+		auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.80f+dy) - MARGIN_BOTTOM)) );
 		this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
     
 		scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
@@ -760,10 +762,11 @@ void GameStageScene::explosion(Point s) {
 	particle->setEndColor(Color4F(0,0,0,1));
     particle->setEndSize(0.0);
 	
-    this->addChild(particle,100);
+    //this->addChild(particle,100);
+    boardLayer->addChild(particle,100);
 }
 
-void GameStageScene::flower(Point s)
+/*void GameStageScene::flower(Point s)
 {
     ParticleSystem *emitter = ParticleFlower::create();
     emitter->setTexture(Director::getInstance()->getTextureCache()->addImage("stars.png"));
@@ -774,7 +777,7 @@ void GameStageScene::flower(Point s)
     emitter->setSpeed(100);
 
     this->addChild(emitter,101);
-}
+}*/
 
 void GameStageScene::effectShowSolution(Point s)
 {
@@ -814,13 +817,17 @@ void GameStageScene::initTimerLabel() {
 }
 
 void GameStageScene::runTimer(float dt) {
-
+    timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, fontCal(80.0f));
+    timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
+    this->addChild(timerLabel, Z_ORDER_TIMER_LABEL);
+    
+    
     timerLabel->setScale(1.0f*iconRatio);
     timerLabel->setString("Ready!");
     timerLabel->runAction(ScaleBy::create(0.3, 1.3f));
 
     timerCount = info.TimeLimit;
-    schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
+    //schedule(schedule_selector(GameStageScene::drawTimerLabel), 1.0f);
 }
 
 void GameStageScene::drawTimerLabel(float dt) {
