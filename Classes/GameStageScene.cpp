@@ -276,6 +276,7 @@ void GameStageScene::drawBoard() {
 	int MARGIN_BOTTOM = (winSize.height - winSize.width) / 2 + winSize.width / 7;
 
 	if (boardLayer != NULL) {
+        boardLayer->removeAllChildrenWithCleanup(true);
 		boardLayer->removeFromParent();
 	}
 	boardLayer = Layer::create();
