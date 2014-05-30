@@ -289,13 +289,14 @@ void GameStageScene::drawBoard() {
 
 	scheduleOnce(schedule_selector(GameStageScene::showTiles), 0.05);
 
-	float delayTime = 1.0f + (float)info.matrixSize / 3.0f;
-    float hideTime = 1.0f * (float)info.matrixSize / 3.0f;
+	const float delayTime = 1.0f + (float)info.matrixSize / 3.0f;
+    const float hideTime = 1.0f * (float)info.matrixSize / 3.0f;
+    const float goDelayTime = delayTime + hideTime + 0.5f;
     const float delayForRotationAnimation = 0.8f;
-    const float delayForFlipAnimation = 1.5f;
-    const float delayAnimationMargin = 0.1f;
-    const float animationTime = (delayForRotationAnimation + delayForFlipAnimation) / 2
-                                + delayAnimationMargin * info.actionNum;
+    const float delayForFlipAnimation = 1.2f;
+    //const float delayAnimationMargin = 0.1f;
+    //const float animationTime = (delayForRotationAnimation + delayForFlipAnimation) / 2
+    //                            + delayAnimationMargin * info.actionNum;
     
 	timerLabel->cleanup();
 	timerLabel->setOpacity(255);
@@ -306,7 +307,7 @@ void GameStageScene::drawBoard() {
     timerCount = info.TimeLimit;
 
 	scheduleOnce(schedule_selector(GameStageScene::hideTiles), delayTime);
-    scheduleOnce(schedule_selector(GameStageScene::drawTimerLabel), delayTime);
+    scheduleOnce(schedule_selector(GameStageScene::drawTimerLabel), goDelayTime);
 
     FiniteTimeAction* action1 = NULL;
     FiniteTimeAction* action2 = NULL;
@@ -314,7 +315,7 @@ void GameStageScene::drawBoard() {
     FiniteTimeAction* action4 = NULL;
     FiniteTimeAction* action5 = NULL;
     
-	auto delay_interval = DelayTime::create(1);
+	auto delay_interval = DelayTime::create(3.0);
 
 	float orbitOrigin = 0;
 
@@ -364,8 +365,7 @@ void GameStageScene::drawBoard() {
         }
 	}
     
-    auto delay = DelayTime::create(delayTime + hideTime);
-    boardLayer->runAction(Sequence::create(delay, action1, delay_interval, action2, delay_interval, action3, delay_interval, action4, delay_interval, action5, NULL));
+    boardLayer->runAction(RepeatForever::create(Sequence::create(action1, delay_interval, action2, delay_interval, action3, delay_interval, action4, delay_interval, action5, delay_interval, NULL)));
     
 }
 
@@ -720,7 +720,7 @@ void GameStageScene::stageClear() {
 	boardLayer->cleanup();
 	for(int n=0; n<mTiles.size(); n++) {
 		if (mTilesSelected[n] == 0) {
-			mTiles[n]->runAction(Spawn::create( RotateBy::create(1.0f, (180 - n * 35))  , FadeOut::create(1.2f)      , NULL));
+			mTiles[n]->runAction(Spawn::create( RotateBy::create(1.0f, (180 - n * 60))  , FadeOut::create(1.2f)      , NULL));
 		} else {
 			//float deg = boardLayer->getRotation();
 			//mTiles[n]->runAction(Spawn::create( ScaleBy::create(0.4f, mTiles[n]->getScale() * 2), FadeOut::create(1.2f),      NULL));
