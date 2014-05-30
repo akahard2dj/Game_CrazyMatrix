@@ -13,6 +13,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 				../../Classes/AppDelegate.cpp \
 				../../Classes/CCrazyMatrix.cpp \
 				../../Classes/GameStageScene.cpp \
+				../../Classes/HelloWorldScene.cpp \
 				../../Classes/StageClearScene.cpp \
 
 

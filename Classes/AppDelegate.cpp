@@ -1,6 +1,9 @@
 #include "AppDelegate.h"
 #include "GameStageScene.h"
+#include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+
+#define GAME_PREF_FILE_NAME "game.plist"
 
 USING_NS_CC;
 
@@ -28,8 +31,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = GameStageScene::createScene();
-
+    //auto scene = GameStageScene::createScene();
+    Scene* scene;
+    bool status = checkFileStatus();
+    if (status == true) {
+        scene = GameStageScene::createScene();
+    }
+    if (status == false) {
+        writeFile();
+        scene = HelloWorld::createScene();
+    }
+    
     // run
     director->runWithScene(scene);
 
@@ -50,4 +62,28 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+}
+
+void AppDelegate::writeFile()
+{
+	auto rootDic = Dictionary::create();
+	auto bestStageInteger = Integer::create(1);
+	rootDic->setObject(bestStageInteger, "key_bestStage");
+    
+	std::string writablePath = FileUtils::getInstance()->getWritablePath();
+    std::string fullPath = writablePath + GAME_PREF_FILE_NAME;
+    if (rootDic->writeToFile(fullPath.c_str())) {
+        log("write succeed at %s", fullPath.c_str());
+	} else {
+        log("oops! write failed");
+	}
+	
+}
+
+bool AppDelegate::checkFileStatus()
+{
+	std::string writablePath = FileUtils::getInstance()->getWritablePath();
+    std::string fullPath = writablePath + GAME_PREF_FILE_NAME;
+    
+    return FileUtils::getInstance()->isFileExist(fullPath);
 }

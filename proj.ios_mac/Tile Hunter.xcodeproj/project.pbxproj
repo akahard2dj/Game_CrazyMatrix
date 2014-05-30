@@ -92,6 +92,10 @@
 		E2943FB1192386A300E3A52C /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943FB0192386A300E3A52C /* libGoogleAdMobAds.a */; };
 		E2943FB31923877900E3A52C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943FB21923877900E3A52C /* CoreTelephony.framework */; };
 		E29C3D44192252FF00DC481B /* ticktock.wav in Resources */ = {isa = PBXBuildFile; fileRef = E29C3D43192252FF00DC481B /* ticktock.wav */; };
+		E2E637551938D102006AB27F /* snapshot_4_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E637511938D102006AB27F /* snapshot_4_1.png */; };
+		E2E637561938D102006AB27F /* snapshot_4_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E637521938D102006AB27F /* snapshot_4_2.png */; };
+		E2E637571938D102006AB27F /* snapshot_4_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E637531938D102006AB27F /* snapshot_4_3.png */; };
+		E2E637581938D102006AB27F /* snapshot_4_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E637541938D102006AB27F /* snapshot_4_4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,6 +320,10 @@
 		E2943FB0192386A300E3A52C /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = ../Classes/libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		E2943FB21923877900E3A52C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		E29C3D43192252FF00DC481B /* ticktock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticktock.wav; sourceTree = "<group>"; };
+		E2E637511938D102006AB27F /* snapshot_4_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_1.png; sourceTree = "<group>"; };
+		E2E637521938D102006AB27F /* snapshot_4_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_2.png; sourceTree = "<group>"; };
+		E2E637531938D102006AB27F /* snapshot_4_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_3.png; sourceTree = "<group>"; };
+		E2E637541938D102006AB27F /* snapshot_4_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,8 +380,6 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CDC50F1C1923B206003391CD /* StageClearScene.cpp */,
-				CDC50F1D1923B206003391CD /* StageClearScene.h */,
 				E2943FA31923869500E3A52C /* Admob */,
 				E2064CE3191CEF56007271A6 /* CCrazyMatrix.cpp */,
 				E2064CE4191CEF56007271A6 /* CCrazyMatrix.h */,
@@ -385,6 +391,8 @@
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				CDE9810C1931E8BB00F2DC64 /* Configuration.cpp */,
 				CDE9810D1931E8BB00F2DC64 /* Configuration.h */,
+				CDC50F1C1923B206003391CD /* StageClearScene.cpp */,
+				CDC50F1D1923B206003391CD /* StageClearScene.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -503,6 +511,10 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2E637511938D102006AB27F /* snapshot_4_1.png */,
+				E2E637521938D102006AB27F /* snapshot_4_2.png */,
+				E2E637531938D102006AB27F /* snapshot_4_3.png */,
+				E2E637541938D102006AB27F /* snapshot_4_4.png */,
 				E287DA5E1932210700486E7A /* bgMusic.mp3 */,
 				CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */,
 				CD632EE0192A544900ED5DEE /* RetryIcon.png */,
@@ -610,7 +622,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 25K2LU66RG;
+						DevelopmentTeam = PFT6ZXU5VE;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -736,14 +748,17 @@
 				CD339F8519273E4100DBB2E7 /* NewIcon.png in Resources */,
 				CD6190A01924FBC5006D7099 /* RED.png in Resources */,
 				CD339F8A19273E4100DBB2E7 /* TwitterIcon.png in Resources */,
+				E2E637581938D102006AB27F /* snapshot_4_4.png in Resources */,
 				CD339F8319273E4100DBB2E7 /* FacebookIcon.png in Resources */,
 				CD7B9E5F192B8B6E005AA90B /* RecordIcon.png in Resources */,
 				CD7B9E6E192B8C1B005AA90B /* Icon-58.png in Resources */,
 				CD7B9E73192B8C1B005AA90B /* Icon-72.png in Resources */,
 				CD632EE1192A544900ED5DEE /* RetryIcon.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				E2E637571938D102006AB27F /* snapshot_4_3.png in Resources */,
 				E287DA5F1932210700486E7A /* bgMusic.mp3 in Resources */,
 				CD339F8819273E4100DBB2E7 /* ShareIcon.png in Resources */,
+				E2E637551938D102006AB27F /* snapshot_4_1.png in Resources */,
 				E29C3D44192252FF00DC481B /* ticktock.wav in Resources */,
 				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
 				CD339F6D1926D71B00DBB2E7 /* stageBtClick.wav in Resources */,
@@ -769,6 +784,7 @@
 				CD339F8F1927887C00DBB2E7 /* BGMoffIcon.png in Resources */,
 				CD339F9B1927946300DBB2E7 /* TeamIcon.png in Resources */,
 				E2064CEF191CEFC8007271A6 /* fire.png in Resources */,
+				E2E637561938D102006AB27F /* snapshot_4_2.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				CD0121501924D4A50071F067 /* pageFlip.mp3 in Resources */,
 				CD61909F1924FBC5006D7099 /* MAGENTA.png in Resources */,
@@ -851,7 +867,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = /Users/jeongdowon/git/Game_CrazyMatrix/Classes;
+				LIBRARY_SEARCH_PATHS = /Users/akahard2dj/Documents/Xcode/cocos/Game_CrazyMatrix/Classes;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -883,7 +899,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = /Users/jeongdowon/git/Game_CrazyMatrix/Classes;
+				LIBRARY_SEARCH_PATHS = /Users/akahard2dj/Documents/Xcode/cocos/Game_CrazyMatrix/Classes;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;

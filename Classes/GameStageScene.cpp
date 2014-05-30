@@ -762,7 +762,7 @@ void GameStageScene::stageClear() {
         
 		auto exp1 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.20f+dx),winSize.height*(0.59f+dy) - MARGIN_BOTTOM)) );
 		auto exp2 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.78f+dx),winSize.height*(0.55f+dy) - MARGIN_BOTTOM)) );
-		auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.80f+dy) - MARGIN_BOTTOM)) );
+		auto exp3 = CallFunc::create( CC_CALLBACK_0(GameStageScene::explosion, this, Point(winSize.width*(0.55f+dx),winSize.height*(0.70f+dy) - MARGIN_BOTTOM)) );
 		this->runAction(Sequence::create(exp1, delay1_exp, exp2, delay2_exp, exp3, NULL));
     
 		scheduleOnce(schedule_selector(GameStageScene::gameStart), 3);
@@ -788,13 +788,13 @@ void GameStageScene::explosion(Point s) {
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
 	particle->setGravity(Point(0, -70));
-    particle->setRadialAccel(-440);
+    particle->setRadialAccel(-220);
     particle->setLife(0.1);
     particle->setDuration(0.15);
-    particle->setSpeed(700);
+    particle->setSpeed(350);
     particle->setTangentialAccel(10);
     particle->setStartColor(explosion_col[lotto]);
-    particle->setStartSize(45);
+    particle->setStartSize(35);
 	particle->setEndColor(Color4F(0,0,0,1));
     particle->setEndSize(0.0);
 	
