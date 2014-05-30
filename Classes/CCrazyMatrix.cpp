@@ -1,6 +1,6 @@
 #include "CCrazyMatrix.h"
 
-int g_designedNumShuffles[MAX_LEVEL] = {0, 0, 0, 1, 1, 1, 1, 2, 2, 3,
+/*int g_designedNumShuffles[MAX_LEVEL] = {0, 0, 0, 1, 1, 1, 1, 2, 2, 3,
                                         1, 1, 1, 1, 1, 1, 2, 2, 2, 3,
                                         1, 1, 1, 1, 1, 1, 2, 2, 3, 3,
                                         1, 1, 1, 2, 2, 2, 3, 3, 4, 4,
@@ -19,7 +19,17 @@ int g_designedTimeLimit[MAX_LEVEL] =   {5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
                                         6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
                                         7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
                                         8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-                                        9, 9, 9, 9, 9, 9, 9, 9, 9, 9};
+                                        9, 9, 9, 9, 9, 9, 9, 9, 9, 9};*/
+
+int g_designedNumShuffles[MAX_LEVEL] = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+
+int g_designedNumPairs[MAX_LEVEL] =    {2, 3, 4, 5, 7, 8, 10, 11, 12, 13};
+
+int g_designedNumSides[MAX_LEVEL] =    {2, 2, 3, 3, 4, 4, 5, 5, 6, 6};
+
+int g_designedTimeLimit[MAX_LEVEL] =   {5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+
+
 
 CCrazyMatrix::CCrazyMatrix()
 {
