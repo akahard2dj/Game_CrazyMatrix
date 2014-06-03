@@ -78,11 +78,15 @@ bool GameStageScene::init()
     explosion_col[5] = Color4F(0,255,255,1);
     explosion_col[6] = Color4F(255,0,255,1);
     
-    if (bestStage != 0) {
-        mCurrentLevel = bestStage + 1;
-    } else {
+    //if (bestStage != 0) {
+    //    mCurrentLevel = bestStage + 1;
+    //} else {
+    //    mCurrentLevel = 1;
+    //}
+    if (bestStage == 0) {
         mCurrentLevel = 1;
     }
+    
     isPopupShowing = false;
     tileTouchEnable = false;
 	eventDispatcher = _eventDispatcher;
@@ -691,8 +695,9 @@ void GameStageScene::stageClear() {
    
     if (mCurrentLevel > bestStage) {
         bestStage = mCurrentLevel;
-        writeBestStage();
+        //writeBestStage();
     }
+    writeBestStage();
     
 	playSoundEffect((std::string)"applause.mp3");
     
@@ -750,13 +755,13 @@ void GameStageScene::explosion(Point s) {
 	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("fire.png"));
 	particle->setPosition(s);
 	particle->setGravity(Point(0, -70));
-    particle->setRadialAccel(1);
+    particle->setRadialAccel(-220);
     particle->setLife(0.1);
-    particle->setDuration(0.2);
-    particle->setSpeed(270);
+    particle->setDuration(0.15);
+    particle->setSpeed(350);
     particle->setTangentialAccel(10);
     particle->setStartColor(explosion_col[lotto]);
-    particle->setStartSize(15);
+    particle->setStartSize(20);
 	particle->setEndColor(Color4F(0,0,0,1));
     particle->setEndSize(0.0);
 	
@@ -896,7 +901,9 @@ void GameStageScene::writeBestStage()
 {
 	auto rootDic = Dictionary::create();
 	auto bestStageInteger = Integer::create(bestStage);
+    auto currentStageInteger = Integer::create(mCurrentLevel);
 	rootDic->setObject(bestStageInteger, "key_bestStage");
+    rootDic->setObject(currentStageInteger, "key_currentStage");
 
 	std::string writablePath = FileUtils::getInstance()->getWritablePath();
     std::string fullPath = writablePath + GAME_PREF_FILE_NAME;
@@ -915,13 +922,22 @@ void GameStageScene::loadBestStage()
 
 	auto loadDict = __Dictionary::createWithContentsOfFile(fullPath.c_str());
 	auto intValue = (__String*)loadDict->objectForKey("key_bestStage");
+    auto intValue2= (__String*)loadDict->objectForKey("key_currentStage");
 
 	if (intValue != NULL) {
 		bestStage = std::atoi(intValue->getCString());
-		log("Load completed / stage = %d", bestStage);
+        //mCurrentLevel = std::atoi(intValue2->getCString());
+		log("Load completed / stage = %d", mCurrentLevel);
 	} else {
 		log("plist is not exist!");
 	}
+    
+    if (intValue2 != NULL) {
+        mCurrentLevel = std::atoi(intValue2->getCString());
+    } else {
+        
+        mCurrentLevel = 1;
+    }
 
 }
 

@@ -76,6 +76,7 @@
 		E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E2064CEE191CEFC8007271A6 /* firework.mp3 */; };
 		E2064CF2191CF2DC007271A6 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E2064CF1191CF2DC007271A6 /* stars.png */; };
 		E2064CF6191E53F7007271A6 /* es042.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2064CF5191E53F7007271A6 /* es042.wav */; };
+		E21004D3193E0032006EAF81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21004D2193E0032006EAF81 /* Images.xcassets */; };
 		E287DA5F1932210700486E7A /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E287DA5E1932210700486E7A /* bgMusic.mp3 */; };
 		E28F2492193DFA28009EC88D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77217EB970100C73F5D /* Default-568h@2x.png */; };
 		E28F2493193DFA28009EC88D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77317EB970100C73F5D /* Default.png */; };
@@ -90,6 +91,9 @@
 		E2943FB1192386A300E3A52C /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943FB0192386A300E3A52C /* libGoogleAdMobAds.a */; };
 		E2943FB31923877900E3A52C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943FB21923877900E3A52C /* CoreTelephony.framework */; };
 		E29C3D44192252FF00DC481B /* ticktock.wav in Resources */ = {isa = PBXBuildFile; fileRef = E29C3D43192252FF00DC481B /* ticktock.wav */; };
+		E2DF69F8193DFEEC00F821CA /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DF69F7193DFEEC00F821CA /* Icon-29.png */; };
+		E2DF69FB193DFFB600F821CA /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DF69F9193DFFB600F821CA /* Icon-57.png */; };
+		E2DF69FC193DFFB600F821CA /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DF69FA193DFFB600F821CA /* Icon-114.png */; };
 		E2F1037F193DF5D400549388 /* RED.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909A1924FBC5006D7099 /* RED.png */; };
 		E2F10380193DF5D400549388 /* YELLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909B1924FBC5006D7099 /* YELLOW.png */; };
 /* End PBXBuildFile section */
@@ -293,6 +297,7 @@
 		E2064CEE191CEFC8007271A6 /* firework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firework.mp3; sourceTree = "<group>"; };
 		E2064CF1191CF2DC007271A6 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
 		E2064CF5191E53F7007271A6 /* es042.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = es042.wav; sourceTree = "<group>"; };
+		E21004D2193E0032006EAF81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Tile Hunter/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		E287DA5E1932210700486E7A /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		E2943F85192382FB00E3A52C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		E2943F871923830600E3A52C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
@@ -316,6 +321,9 @@
 		E2943FB0192386A300E3A52C /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = ../Classes/libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		E2943FB21923877900E3A52C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		E29C3D43192252FF00DC481B /* ticktock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticktock.wav; sourceTree = "<group>"; };
+		E2DF69F7193DFEEC00F821CA /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
+		E2DF69F9193DFFB600F821CA /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
+		E2DF69FA193DFFB600F821CA /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -483,6 +491,9 @@
 		5087E77117EB970100C73F5D /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E2DF69F9193DFFB600F821CA /* Icon-57.png */,
+				E2DF69FA193DFFB600F821CA /* Icon-114.png */,
+				E2DF69F7193DFEEC00F821CA /* Icon-29.png */,
 				CD7B9E63192B8C1B005AA90B /* Icon-58.png */,
 				CD7B9E64192B8C1B005AA90B /* Icon-80.png */,
 				CD7B9E65192B8C1B005AA90B /* Icon-120.png */,
@@ -503,6 +514,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E21004D2193E0032006EAF81 /* Images.xcassets */,
 				E287DA5E1932210700486E7A /* bgMusic.mp3 */,
 				CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */,
 				CD632EE0192A544900ED5DEE /* RetryIcon.png */,
@@ -610,7 +622,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 25K2LU66RG;
+						DevelopmentTeam = PFT6ZXU5VE;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -743,9 +755,12 @@
 				CD7B9E5F192B8B6E005AA90B /* RecordIcon.png in Resources */,
 				CD7B9E6E192B8C1B005AA90B /* Icon-58.png in Resources */,
 				CD7B9E73192B8C1B005AA90B /* Icon-72.png in Resources */,
+				E2DF69FB193DFFB600F821CA /* Icon-57.png in Resources */,
 				CD632EE1192A544900ED5DEE /* RetryIcon.png in Resources */,
 				E287DA5F1932210700486E7A /* bgMusic.mp3 in Resources */,
 				CD339F8819273E4100DBB2E7 /* ShareIcon.png in Resources */,
+				E2DF69FC193DFFB600F821CA /* Icon-114.png in Resources */,
+				E21004D3193E0032006EAF81 /* Images.xcassets in Resources */,
 				E29C3D44192252FF00DC481B /* ticktock.wav in Resources */,
 				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
 				CD339F6D1926D71B00DBB2E7 /* stageBtClick.wav in Resources */,
@@ -765,6 +780,7 @@
 				E2064CF6191E53F7007271A6 /* es042.wav in Resources */,
 				CD339F911927887C00DBB2E7 /* EffectOffIcon.png in Resources */,
 				CD7B9E70192B8C1B005AA90B /* Icon-120.png in Resources */,
+				E2DF69F8193DFEEC00F821CA /* Icon-29.png in Resources */,
 				CD339F8919273E4100DBB2E7 /* SMSIcon.png in Resources */,
 				CD8A17FB1924CBF400304CD4 /* stage_bg.png in Resources */,
 				CD339F8F1927887C00DBB2E7 /* BGMoffIcon.png in Resources */,
@@ -830,6 +846,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
@@ -864,6 +882,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
