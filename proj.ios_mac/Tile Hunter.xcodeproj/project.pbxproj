@@ -55,8 +55,6 @@
 		CD61909D1924FBC5006D7099 /* CYAN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190971924FBC5006D7099 /* CYAN.png */; };
 		CD61909E1924FBC5006D7099 /* GREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190981924FBC5006D7099 /* GREEN.png */; };
 		CD61909F1924FBC5006D7099 /* MAGENTA.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190991924FBC5006D7099 /* MAGENTA.png */; };
-		CD6190A01924FBC5006D7099 /* RED.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909A1924FBC5006D7099 /* RED.png */; };
-		CD6190A11924FBC5006D7099 /* YELLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909B1924FBC5006D7099 /* YELLOW.png */; };
 		CD6190A51924FDBE006D7099 /* GREEN_CIRCLE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190A41924FDBE006D7099 /* GREEN_CIRCLE.png */; };
 		CD632EE1192A544900ED5DEE /* RetryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD632EE0192A544900ED5DEE /* RetryIcon.png */; };
 		CD632EE7192A58D900ED5DEE /* font_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD632EE6192A58D900ED5DEE /* font_bold.ttf */; };
@@ -92,6 +90,8 @@
 		E2943FB1192386A300E3A52C /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943FB0192386A300E3A52C /* libGoogleAdMobAds.a */; };
 		E2943FB31923877900E3A52C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2943FB21923877900E3A52C /* CoreTelephony.framework */; };
 		E29C3D44192252FF00DC481B /* ticktock.wav in Resources */ = {isa = PBXBuildFile; fileRef = E29C3D43192252FF00DC481B /* ticktock.wav */; };
+		E2F1037F193DF5D400549388 /* RED.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909A1924FBC5006D7099 /* RED.png */; };
+		E2F10380193DF5D400549388 /* YELLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = CD61909B1924FBC5006D7099 /* YELLOW.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -722,10 +722,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2F1037F193DF5D400549388 /* RED.png in Resources */,
+				E2F10380193DF5D400549388 /* YELLOW.png in Resources */,
 				CD61909E1924FBC5006D7099 /* GREEN.png in Resources */,
 				CD339F8419273E4100DBB2E7 /* MailIcon.png in Resources */,
 				CD339F691926D67400DBB2E7 /* gameFail.wav in Resources */,
-				CD6190A11924FBC5006D7099 /* YELLOW.png in Resources */,
 				E2064CF2191CF2DC007271A6 /* stars.png in Resources */,
 				CD7B9E6F192B8C1B005AA90B /* Icon-80.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
@@ -734,7 +735,6 @@
 				CD61909C1924FBC5006D7099 /* BLUE.png in Resources */,
 				CD6190A51924FDBE006D7099 /* GREEN_CIRCLE.png in Resources */,
 				CD339F8519273E4100DBB2E7 /* NewIcon.png in Resources */,
-				CD6190A01924FBC5006D7099 /* RED.png in Resources */,
 				CD339F8A19273E4100DBB2E7 /* TwitterIcon.png in Resources */,
 				CD339F8319273E4100DBB2E7 /* FacebookIcon.png in Resources */,
 				CD7B9E5F192B8B6E005AA90B /* RecordIcon.png in Resources */,
