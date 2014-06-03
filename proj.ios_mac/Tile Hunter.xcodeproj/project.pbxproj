@@ -58,6 +58,7 @@
 		CD48E5F3193E74C9001FD714 /* snapshot_4_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD48E5EF193E74C9001FD714 /* snapshot_4_1.png */; };
 		CD48E5F7193E830B001FD714 /* Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD48E5F6193E830B001FD714 /* Bold.ttf */; };
 		CD48E609193E9419001FD714 /* futura-48.fnt in Resources */ = {isa = PBXBuildFile; fileRef = CD48E607193E9419001FD714 /* futura-48.fnt */; };
+		CD48E60B193E9862001FD714 /* buttonTile.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD48E60A193E9862001FD714 /* buttonTile.wav */; };
 		CD61909C1924FBC5006D7099 /* BLUE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190961924FBC5006D7099 /* BLUE.png */; };
 		CD61909D1924FBC5006D7099 /* CYAN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190971924FBC5006D7099 /* CYAN.png */; };
 		CD61909E1924FBC5006D7099 /* GREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190981924FBC5006D7099 /* GREEN.png */; };
@@ -84,7 +85,6 @@
 		E2064CEF191CEFC8007271A6 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = E2064CED191CEFC8007271A6 /* fire.png */; };
 		E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E2064CEE191CEFC8007271A6 /* firework.mp3 */; };
 		E2064CF2191CF2DC007271A6 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E2064CF1191CF2DC007271A6 /* stars.png */; };
-		E2064CF6191E53F7007271A6 /* es042.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2064CF5191E53F7007271A6 /* es042.wav */; };
 		E21004D3193E0032006EAF81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21004D2193E0032006EAF81 /* Images.xcassets */; };
 		E287DA5F1932210700486E7A /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E287DA5E1932210700486E7A /* bgMusic.mp3 */; };
 		E28F2492193DFA28009EC88D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77217EB970100C73F5D /* Default-568h@2x.png */; };
@@ -282,6 +282,7 @@
 		CD48E5EF193E74C9001FD714 /* snapshot_4_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_1.png; sourceTree = "<group>"; };
 		CD48E5F6193E830B001FD714 /* Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bold.ttf; sourceTree = "<group>"; };
 		CD48E607193E9419001FD714 /* futura-48.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "futura-48.fnt"; sourceTree = "<group>"; };
+		CD48E60A193E9862001FD714 /* buttonTile.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonTile.wav; sourceTree = "<group>"; };
 		CD6190961924FBC5006D7099 /* BLUE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BLUE.png; sourceTree = "<group>"; };
 		CD6190971924FBC5006D7099 /* CYAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CYAN.png; sourceTree = "<group>"; };
 		CD6190981924FBC5006D7099 /* GREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GREEN.png; sourceTree = "<group>"; };
@@ -314,7 +315,6 @@
 		E2064CED191CEFC8007271A6 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		E2064CEE191CEFC8007271A6 /* firework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firework.mp3; sourceTree = "<group>"; };
 		E2064CF1191CF2DC007271A6 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
-		E2064CF5191E53F7007271A6 /* es042.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = es042.wav; sourceTree = "<group>"; };
 		E21004D2193E0032006EAF81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Tile Hunter/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		E287DA5E1932210700486E7A /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		E2943F85192382FB00E3A52C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
@@ -536,6 +536,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD48E60A193E9862001FD714 /* buttonTile.wav */,
 				CD48E5EC193E74C9001FD714 /* snapshot_4_2.png */,
 				CD48E5ED193E74C9001FD714 /* snapshot_4_3.png */,
 				CD48E5EE193E74C9001FD714 /* snapshot_4_4.png */,
@@ -577,7 +578,6 @@
 				CD01214B1924CEDD0071F067 /* bgMusic.wav */,
 				CD8A17FA1924CBF400304CD4 /* stage_bg.png */,
 				E29C3D43192252FF00DC481B /* ticktock.wav */,
-				E2064CF5191E53F7007271A6 /* es042.wav */,
 				E2064CF1191CF2DC007271A6 /* stars.png */,
 				E2064CED191CEFC8007271A6 /* fire.png */,
 				E2064CEE191CEFC8007271A6 /* firework.mp3 */,
@@ -811,7 +811,7 @@
 				CD339F7619270FBF00DBB2E7 /* failFirst.wav in Resources */,
 				CD48E5E2193E74B8001FD714 /* Default@2x-cp.png in Resources */,
 				CD48E609193E9419001FD714 /* futura-48.fnt in Resources */,
-				E2064CF6191E53F7007271A6 /* es042.wav in Resources */,
+				CD48E60B193E9862001FD714 /* buttonTile.wav in Resources */,
 				CD339F911927887C00DBB2E7 /* EffectOffIcon.png in Resources */,
 				CD7B9E70192B8C1B005AA90B /* Icon-120.png in Resources */,
 				E2DF69F8193DFEEC00F821CA /* Icon-29.png in Resources */,

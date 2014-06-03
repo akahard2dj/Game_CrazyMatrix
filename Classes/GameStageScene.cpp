@@ -102,7 +102,7 @@ bool GameStageScene::init()
 void GameStageScene::initSound() {
     
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("firework.mp3");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("es042.wav");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("buttonTile.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ticktock.wav");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("pageFlip.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("applause.mp3");
@@ -671,7 +671,7 @@ void GameStageScene::addTileButtonEventListener() {
         auto target = event->getCurrentTarget();
 		int tagNum = target->getTag();
         
-		playSoundEffect((std::string)"es042.wav");
+		playSoundEffect((std::string)"buttonTile.wav");
         
 		mTilesSelected[tagNum] = (mTilesSelected[tagNum] + 1) % 2;
 		std::string image = mTilesSelected[tagNum] == 0 ? IMAGE_TILE_NORMAL : IMAGE_TILE_SELECTED;
