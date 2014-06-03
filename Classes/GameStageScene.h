@@ -57,6 +57,7 @@ private:
 	void drawBoard();
     void drawCurrentStageInfo();
     void drawTiles();
+	void runTimer(float dt);
     void drawTimerLabel(float dt);
 	void showTiles(float dt);
 	void hideTiles(float dt);
