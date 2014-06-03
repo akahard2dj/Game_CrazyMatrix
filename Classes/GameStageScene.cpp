@@ -22,7 +22,6 @@ USING_NS_CC;
 #define TAG_BUTTON_SHARE_EMAIL_BUTTON 507
 #define TAG_BUTTON_SHARE_REVIEW_BUTTON 508
 
-
 #define Z_ORDER_TIMER_LABEL 100
 #define Z_ORDER_POPUP 1000
 #define Z_ORDER_POPUP_ICON 1001
@@ -30,8 +29,11 @@ USING_NS_CC;
 #define NUM_POPUP_MENU 4
 #define NUM_SHARE_MENU 3
 #define NUM_OPTION_MENU 2
-#define GAME_MAIN_FONT_NAME "font_bold.ttf"
+
 #define GAME_PREF_FILE_NAME "game.plist"
+#define GAME_MAIN_FONT_NAME "futura-48.fnt"
+
+
 
 Scene* GameStageScene::createScene()
 {
@@ -57,6 +59,7 @@ bool GameStageScene::init()
     
     winSize = Director::getInstance()->getWinSize();
     iconRatio = winSize.width/640.0f;
+    fontRatio = winSize.width/400.0f;
     
     bestStage = 0;
     loadBestStage();
@@ -137,7 +140,12 @@ void GameStageScene::initStageButtonInfo() {
     
     char stageInfo[256];
     std::sprintf(stageInfo, "%d", mCurrentLevel);
-    currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, fontCal(80));
+    
+    
+    //currentStage = LabelTTF::create(stageInfo, GAME_MAIN_FONT_NAME, fontCal(80));
+    currentStage = LabelBMFont::create(stageInfo, GAME_MAIN_FONT_NAME);
+    currentStage->setScale(fontRatio);
+    //currentStage->setColor(Color3B(240,240,240));
     currentStage->setPosition(Point(winSize.width/2, winSize.height * 0.17));
     this->addChild(currentStage, Z_ORDER_TIMER_LABEL+1);
 }
@@ -813,14 +821,18 @@ void GameStageScene::effectShowSolution(Point s)
 }
 
 void GameStageScene::initTimerLabel() {
-    timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, fontCal(80.0f));
+    //timerLabel = LabelTTF::create("", GAME_MAIN_FONT_NAME, fontCal(80.0f));
+    
+    timerLabel = LabelBMFont::create("", GAME_MAIN_FONT_NAME);
+    timerLabel->setScale(fontRatio);
+    
     timerLabel->setPosition(Point(winSize.width/2, winSize.height * 0.9));
     this->addChild(timerLabel, Z_ORDER_TIMER_LABEL);
 }
 
 void GameStageScene::runTimer(float dt) {
 
-    timerLabel->setScale(1.0f*iconRatio);
+    timerLabel->setScale(fontRatio);
     timerLabel->setString("Ready!");
     timerLabel->runAction(ScaleBy::create(0.3, 1.3f));
 
@@ -834,7 +846,9 @@ void GameStageScene::drawTimerLabel(float dt) {
         
         unschedule(schedule_selector(GameStageScene::drawTimerLabel));
         
-        timerLabel->setScale(1.0f*iconRatio);
+        //timerLabel->setScale(1.0f*iconRatio);
+        timerLabel->setScale(fontRatio);
+        
         timerLabel->runAction(ScaleBy::create(0.5, 1.2f));
         tileTouchEnable = false;
         
@@ -855,7 +869,7 @@ void GameStageScene::drawTimerLabel(float dt) {
     } else if (timerCount == info.TimeLimit) {
         char buffer[2];
         std::sprintf(buffer, "%d", timerCount--);
-        timerLabel->setScale(1.0f*iconRatio);
+        timerLabel->setScale(fontRatio);
         timerLabel->setString("Go!");
         timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
         tileTouchEnable = true;
@@ -869,7 +883,7 @@ void GameStageScene::drawTimerLabel(float dt) {
         }
         char buffer[2];
         std::sprintf(buffer, "%d", timerCount--);
-        timerLabel->setScale(1.0f*iconRatio);
+        timerLabel->setScale(fontRatio);
         timerLabel->setString(buffer);
         timerLabel->runAction(ScaleBy::create(0.5, 1.5f));
     }

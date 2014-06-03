@@ -24,14 +24,14 @@ private:
     StageInfo info;
 	int mCurrentLevel;
 	Layer* boardLayer;
-    LabelTTF* timerLabel;
+    LabelBMFont* timerLabel;
     int timerCount;
     bool tileTouchEnable;
     Sprite* bgImage;
     Sprite* shareImage[3];
     Sprite* popMenuImage[4];
     Sprite* optionImage[2];
-    LabelTTF* currentStage;
+    LabelBMFont* currentStage;
     Sprite* bgCurrentStage;
     bool isPopupShowing;
     Sprite* pauseLayout;
@@ -45,6 +45,7 @@ private:
     bool isEffectSoundOn;
 	bool isBGMOn;
     float iconRatio;
+    float fontRatio;
     
     void initSound();
     void initBoard();

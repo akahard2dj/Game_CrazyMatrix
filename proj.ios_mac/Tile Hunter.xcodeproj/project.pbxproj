@@ -56,13 +56,14 @@
 		CD48E5F1193E74C9001FD714 /* snapshot_4_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CD48E5ED193E74C9001FD714 /* snapshot_4_3.png */; };
 		CD48E5F2193E74C9001FD714 /* snapshot_4_4.png in Resources */ = {isa = PBXBuildFile; fileRef = CD48E5EE193E74C9001FD714 /* snapshot_4_4.png */; };
 		CD48E5F3193E74C9001FD714 /* snapshot_4_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD48E5EF193E74C9001FD714 /* snapshot_4_1.png */; };
+		CD48E5F7193E830B001FD714 /* Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD48E5F6193E830B001FD714 /* Bold.ttf */; };
+		CD48E609193E9419001FD714 /* futura-48.fnt in Resources */ = {isa = PBXBuildFile; fileRef = CD48E607193E9419001FD714 /* futura-48.fnt */; };
 		CD61909C1924FBC5006D7099 /* BLUE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190961924FBC5006D7099 /* BLUE.png */; };
 		CD61909D1924FBC5006D7099 /* CYAN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190971924FBC5006D7099 /* CYAN.png */; };
 		CD61909E1924FBC5006D7099 /* GREEN.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190981924FBC5006D7099 /* GREEN.png */; };
 		CD61909F1924FBC5006D7099 /* MAGENTA.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190991924FBC5006D7099 /* MAGENTA.png */; };
 		CD6190A51924FDBE006D7099 /* GREEN_CIRCLE.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6190A41924FDBE006D7099 /* GREEN_CIRCLE.png */; };
 		CD632EE1192A544900ED5DEE /* RetryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD632EE0192A544900ED5DEE /* RetryIcon.png */; };
-		CD632EE7192A58D900ED5DEE /* font_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD632EE6192A58D900ED5DEE /* font_bold.ttf */; };
 		CD7B9E5F192B8B6E005AA90B /* RecordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */; };
 		CD7B9E6E192B8C1B005AA90B /* Icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = CD7B9E63192B8C1B005AA90B /* Icon-58.png */; };
 		CD7B9E6F192B8C1B005AA90B /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = CD7B9E64192B8C1B005AA90B /* Icon-80.png */; };
@@ -279,6 +280,8 @@
 		CD48E5ED193E74C9001FD714 /* snapshot_4_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_3.png; sourceTree = "<group>"; };
 		CD48E5EE193E74C9001FD714 /* snapshot_4_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_4.png; sourceTree = "<group>"; };
 		CD48E5EF193E74C9001FD714 /* snapshot_4_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot_4_1.png; sourceTree = "<group>"; };
+		CD48E5F6193E830B001FD714 /* Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bold.ttf; sourceTree = "<group>"; };
+		CD48E607193E9419001FD714 /* futura-48.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "futura-48.fnt"; sourceTree = "<group>"; };
 		CD6190961924FBC5006D7099 /* BLUE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BLUE.png; sourceTree = "<group>"; };
 		CD6190971924FBC5006D7099 /* CYAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CYAN.png; sourceTree = "<group>"; };
 		CD6190981924FBC5006D7099 /* GREEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GREEN.png; sourceTree = "<group>"; };
@@ -287,7 +290,6 @@
 		CD61909B1924FBC5006D7099 /* YELLOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YELLOW.png; sourceTree = "<group>"; };
 		CD6190A41924FDBE006D7099 /* GREEN_CIRCLE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GREEN_CIRCLE.png; sourceTree = "<group>"; };
 		CD632EE0192A544900ED5DEE /* RetryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RetryIcon.png; sourceTree = "<group>"; };
-		CD632EE6192A58D900ED5DEE /* font_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = font_bold.ttf; sourceTree = "<group>"; };
 		CD7B9E5E192B8B6E005AA90B /* RecordIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordIcon.png; sourceTree = "<group>"; };
 		CD7B9E63192B8C1B005AA90B /* Icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-58.png"; sourceTree = "<group>"; };
 		CD7B9E64192B8C1B005AA90B /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
@@ -587,7 +589,8 @@
 		CD339F931927946300DBB2E7 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				CD632EE6192A58D900ED5DEE /* font_bold.ttf */,
+				CD48E607193E9419001FD714 /* futura-48.fnt */,
+				CD48E5F6193E830B001FD714 /* Bold.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -646,7 +649,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = PFT6ZXU5VE;
+						DevelopmentTeam = 25K2LU66RG;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -793,7 +796,6 @@
 				E29C3D44192252FF00DC481B /* ticktock.wav in Resources */,
 				CD339F8619273E4100DBB2E7 /* OptionIcon.png in Resources */,
 				CD339F6D1926D71B00DBB2E7 /* stageBtClick.wav in Resources */,
-				CD632EE7192A58D900ED5DEE /* font_bold.ttf in Resources */,
 				CD339F8219273E4100DBB2E7 /* BackIcon.png in Resources */,
 				CDC50F161923B0AB003391CD /* launcher01.png in Resources */,
 				CDC50F141923B0AB003391CD /* Icon-60.png in Resources */,
@@ -801,12 +803,14 @@
 				CD0121521924D8270071F067 /* applause.mp3 in Resources */,
 				CD339F921927887C00DBB2E7 /* EffectOnIcon.png in Resources */,
 				CD339F901927887C00DBB2E7 /* BGMonIcon.png in Resources */,
+				CD48E5F7193E830B001FD714 /* Bold.ttf in Resources */,
 				CD339F8719273E4100DBB2E7 /* RankingIcon.png in Resources */,
 				CD339F9A1927946300DBB2E7 /* ReviewIcon.png in Resources */,
 				E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */,
 				CD01214C1924CEDD0071F067 /* bgMusic.wav in Resources */,
 				CD339F7619270FBF00DBB2E7 /* failFirst.wav in Resources */,
 				CD48E5E2193E74B8001FD714 /* Default@2x-cp.png in Resources */,
+				CD48E609193E9419001FD714 /* futura-48.fnt in Resources */,
 				E2064CF6191E53F7007271A6 /* es042.wav in Resources */,
 				CD339F911927887C00DBB2E7 /* EffectOffIcon.png in Resources */,
 				CD7B9E70192B8C1B005AA90B /* Icon-120.png in Resources */,
