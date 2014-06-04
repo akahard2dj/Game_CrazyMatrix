@@ -17,7 +17,7 @@
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:configChanges="orientation|keyboard|keyboardHidden">
 
-            <meta-data android:name="appirater" android:value="2" />
+            <meta-data android:name="appirater" android:value="5" />
             
             <!-- Tell NativeActivity the name of our .so -->
             <meta-data android:name="android.app.lib_name"
