@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tile Hunters</string>
+	<string name="appirate_utils_message_before_appname"> If you enjoy using </string>
+    <string name="appirate_utils_message_after_appname">, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support! </string>
+    <string name="test"> haha</string>
 </resources>

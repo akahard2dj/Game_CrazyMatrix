@@ -422,6 +422,8 @@ containing a value of this type.
     }
     public static final class string {
         public static final int app_name=0x7f030020;
+        public static final int appirate_utils_message_after_appname=0x7f030022;
+        public static final int appirate_utils_message_before_appname=0x7f030021;
         public static final int auth_client_needs_enabling_title=0x7f030001;
         public static final int auth_client_needs_installation_title=0x7f030002;
         public static final int auth_client_needs_update_title=0x7f030003;
@@ -517,6 +519,7 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f03001e;
+        public static final int test=0x7f030023;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */

@@ -953,7 +953,7 @@ void GameStageScene::loadBestStage()
         mCurrentLevel = std::atoi(intValue2->getCString());
     } else {
         
-        mCurrentLevel = 1;
+        mCurrentLevel = bestStage + 1;
     }
 
 }

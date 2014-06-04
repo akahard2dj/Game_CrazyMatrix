@@ -31,8 +31,10 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.zemariamm.appirater.AppirateUtils;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.WindowManager;
@@ -133,6 +135,36 @@ public class AppActivity extends Cocos2dxActivity {
 			break;
 		}
 		return super.onKeyUp(keyCode, event);
+	}
+	
+	// FOR APP REVIEW
+	protected boolean shouldAppiraterRun() {
+		return true;
+	}
+	
+	public void processNever() {
+		Log.d("Hooligans Appirater","Never");
+	}
+	
+	public void processRate() {
+		Log.d("Hooligans Appirater","Rate");
+	}
+	
+	public void processRemindMe() {
+		Log.d("Hooligans Appirater","Remind Me");
+	}
+	
+	protected void checkAppirater() {
+		if (AppirateUtils.shouldAppirater(this) && this.shouldAppiraterRun())
+		{
+			AppirateUtils.appiraterDialog(this, this);
+		}
+	}
+	
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		checkAppirater();
 	}
 
 }

@@ -659,7 +659,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = PFT6ZXU5VE;
+						DevelopmentTeam = 25K2LU66RG;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
