@@ -31,7 +31,11 @@ USING_NS_CC;
 #define NUM_OPTION_MENU 2
 
 #define GAME_PREF_FILE_NAME "game.plist"
-#define GAME_MAIN_FONT_NAME "futura-48.fnt"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    #define GAME_MAIN_FONT_NAME "futura-48.fnt"
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    #define GAME_MAIN_FONT_NAME "fonts/futura-48.fnt"
+#endif
 
 
 
