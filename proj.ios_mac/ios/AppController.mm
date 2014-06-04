@@ -28,6 +28,8 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 
+#import "appirater.h"
+
 @implementation AppController
 
 #pragma mark -
@@ -93,6 +95,14 @@ static AppDelegate s_sharedApplication;
     
     GADRequest* adRequest = [GADRequest request];
     [bannerView loadRequest:adRequest];*/
+    
+    [Appirater setAppId:@"test"];
+    [Appirater setDaysUntilPrompt:7];
+    [Appirater setUsesUntilPrompt:5];
+    [Appirater setSignificantEventsUntilPrompt:-1];
+    [Appirater setTimeBeforeReminding:2];
+    [Appirater setDebug:YES];
+    [Appirater appLaunched:YES];
 
     return YES;
 }

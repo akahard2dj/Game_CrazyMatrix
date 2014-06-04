@@ -87,6 +87,7 @@
 		E2064CF0191CEFC8007271A6 /* firework.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E2064CEE191CEFC8007271A6 /* firework.mp3 */; };
 		E2064CF2191CF2DC007271A6 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E2064CF1191CF2DC007271A6 /* stars.png */; };
 		E21004D3193E0032006EAF81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21004D2193E0032006EAF81 /* Images.xcassets */; };
+		E24C9858193F2AE4003D6E08 /* appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = E24C9857193F2AE4003D6E08 /* appirater.m */; };
 		E287DA5F1932210700486E7A /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E287DA5E1932210700486E7A /* bgMusic.mp3 */; };
 		E28F2492193DFA28009EC88D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77217EB970100C73F5D /* Default-568h@2x.png */; };
 		E28F2493193DFA28009EC88D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77317EB970100C73F5D /* Default.png */; };
@@ -318,6 +319,9 @@
 		E2064CEE191CEFC8007271A6 /* firework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firework.mp3; sourceTree = "<group>"; };
 		E2064CF1191CF2DC007271A6 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
 		E21004D2193E0032006EAF81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Tile Hunter/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		E24C9856193F2AE4003D6E08 /* appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appirater.h; path = ../Classes/appirater.h; sourceTree = "<group>"; };
+		E24C9857193F2AE4003D6E08 /* appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = appirater.m; path = ../Classes/appirater.m; sourceTree = "<group>"; };
+		E24C9860193F2B48003D6E08 /* AppiraterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppiraterDelegate.h; path = ../Classes/AppiraterDelegate.h; sourceTree = "<group>"; };
 		E287DA5E1932210700486E7A /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 		E2943F85192382FB00E3A52C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		E2943F871923830600E3A52C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
@@ -413,6 +417,9 @@
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				CDE9810C1931E8BB00F2DC64 /* Configuration.cpp */,
 				CDE9810D1931E8BB00F2DC64 /* Configuration.h */,
+				E24C9856193F2AE4003D6E08 /* appirater.h */,
+				E24C9857193F2AE4003D6E08 /* appirater.m */,
+				E24C9860193F2B48003D6E08 /* AppiraterDelegate.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -839,6 +846,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24C9858193F2AE4003D6E08 /* appirater.m in Sources */,
 				E2064CE8191CEF56007271A6 /* GameStageScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
