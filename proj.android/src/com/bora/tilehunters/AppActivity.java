@@ -49,7 +49,9 @@ public class AppActivity extends Cocos2dxActivity {
 	boolean isAdmobInited = false;
 
 	/* Your ad unit id. Replace with your actual ad unit id. */
-	private static final String AD_UNIT_ID = "ca-app-pub-6185986108413626/4819382398";
+	//backup : private static final String AD_UNIT_ID = "ca-app-pub-6185986108413626/4819382398";
+	private static final String AD_UNIT_ID = "ca-app-pub-4871252957066311/2605981788";
+
 
 	/** Called when the activity is first created. */
 	@Override
